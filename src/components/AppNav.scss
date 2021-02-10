@@ -1,8 +1,6 @@
-@import "./theme.scss";
+@import "../theme.scss";
 
-.App {
-  color: aqua;
-  
+.AppNav {
   .navbar-brand {
     font-family: $font-family-serif;
   }
