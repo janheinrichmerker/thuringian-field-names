@@ -1,7 +1,7 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "types": ["cypress", "cypress-react-selector"]
+    "types": ["node", "cypress", "cypress-react-selector"]
   },
   "include": ["**/*.ts", "**/*.tsx"]
 }
