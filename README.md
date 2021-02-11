@@ -6,7 +6,7 @@ _The project is developed as part of the [Client-side web applications](https://
 
 ## Usage
 
-The field name explorer is built and run with [Yarn](https://yarnpkg.com/).
+The field name explorer is a [React](https://reactjs.org/) app, built and run with [Yarn](https://yarnpkg.com/).
 
 ### Run
 
@@ -27,6 +27,15 @@ Launch the test runner in the interactive watch mode:
 yarn test
 
 ```
+
+Launch the integration test suite:
+
+```shell script
+yarn cypress open
+
+```
+
+For more information, see the [`cypress`](cypress) directory.
 
 ### Bundle
 
