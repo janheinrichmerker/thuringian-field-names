@@ -7,10 +7,13 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:cypress": "yarn cypress:run",
     "eject": "react-scripts eject",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
-    "cypress": "cypress"
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "cypress:verify": "cypress verify"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
@@ -34,6 +37,11 @@
     "react-scripts": "4.0.1",
     "typescript": "^4.1.4",
     "web-vitals": "^0.2.4"
+  },
+  "devDependencies": {
+    "@cypress/react": "^4.16.4",
+    "cypress-react-selector": "^2.3.6",
+    "cypress-xpath": "^1.6.2"
   },
   "eslintConfig": {
     "extends": [
