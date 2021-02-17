@@ -7,6 +7,7 @@ _The project is developed as part of the [Client-side web applications](https://
 ## Usage
 
 The field name explorer is a [React](https://reactjs.org/) app, built and run with [Yarn](https://yarnpkg.com/).
+Note that you must specify [API credentials](#api-credentials) for the app to work.
 
 ### Run
 
@@ -47,6 +48,19 @@ yarn build
 ```
 
 You'll find the bundled and optimized app in the `build` folder, ready for deployment.
+
+### API credentials
+
+For accessing the field name API, you must specify username and password to the backend API.
+Create a file `.env.local` with the following content (replace `user` and `pass` with your credentials):
+
+```properties
+REACT_APP_API_USERNAME=user
+REACT_APP_API_PASSWORD=pass
+```
+
+The app won't work without specifying API credentials.
+Note that you need to [restart](#run) the development server for changes to take effect.
 
 ## License
 
