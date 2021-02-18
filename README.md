@@ -1,6 +1,6 @@
 # 🏞️ thuringian-field-names
 
-Explorer for the Thuringian Field Name Archive.
+Explorer for the [Thuringian Field Name Archive](http://projekte.thulb.uni-jena.de/flurnamen/).
 
 _The project is developed as part of the [Client-side web applications](https://mht.uzi.uni-halle.de/client-seitige-web-anwendungen/) lecture at [Martin Luther University Halle-Wittenberg](https://uni-halle.de)._
 
