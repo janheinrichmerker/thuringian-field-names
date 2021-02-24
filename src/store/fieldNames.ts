@@ -4,7 +4,7 @@ import {
   createSlice,
 } from "@reduxjs/toolkit";
 import { RootState } from ".";
-import { getMaps, getMarkings } from "../api";
+import { getFieldNames } from "../api";
 import { Loading } from "../model";
 
 export interface FieldNamesState {
@@ -14,9 +14,7 @@ export interface FieldNamesState {
 }
 
 export const fetchFieldNames = createAsyncThunk("fetchFieldNames", async () => {
-  const markings = (await getMarkings()).response.docs;
-  const maps = (await getMaps()).response.docs;
-  return [...markings, ...maps];
+  return await getFieldNames();
 });
 
 const slice = createSlice({
