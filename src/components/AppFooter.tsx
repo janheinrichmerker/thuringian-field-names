@@ -1,18 +1,25 @@
 import { Component } from "react";
-import { Container, Col, Row } from "react-bootstrap";
+import { Container, Col, Row, Navbar, Nav } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 import "./AppFooter.scss";
 
 export default class AppFooter extends Component {
   render() {
     return (
       <Container fluid className="AppFooter">
-        <Container>
-          <Row>
-            <Col>Footer</Col>
-          </Row>
-          {/* TODO Add footer with project partner logos. */}
-          {/* TODO Add footer imprint and privacy policy. */}
-        </Container>
+        <Navbar fixed="bottom">
+          <Container>
+            <Navbar.Text>© Copyright Information</Navbar.Text>
+            <Nav>
+              <LinkContainer to="/imprint" exact>
+                <Nav.Link>Imprint</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/privacy" exact>
+                <Nav.Link>Privacy</Nav.Link>
+              </LinkContainer>
+            </Nav>
+          </Container>
+        </Navbar>
       </Container>
     );
   }
