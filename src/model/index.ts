@@ -4,12 +4,12 @@ export enum Loading {
 }
 
 export enum FieldNameType {
-  Marking, // Gemarkungen
-  Map, // Flurkarten
+  Marking = "marking", // Gemarkungen
+  Map = "map", // Flurkarten
 }
 
 export interface Modification {
-  timestamp: Date;
+  date: Date;
   author: string;
 }
 
@@ -33,7 +33,7 @@ export interface FieldNameSnippet {
   /**
    * Identification number in DNB's "Gemeinsame Normdatei".
    */
-  gndNumber: number;
+  gndNumber: string;
   title: string;
   type: FieldNameType;
   creation: Modification;
