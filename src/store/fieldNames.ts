@@ -5,11 +5,11 @@ import {
 } from "@reduxjs/toolkit";
 import { RootState } from ".";
 import { getFieldNames } from "../api";
-import { Loading } from "../model";
+import { FieldNameSnippet, Loading } from "../model";
 
 export interface FieldNamesState {
   loading: Loading;
-  fieldNames: Array<any>;
+  fieldNames: Array<FieldNameSnippet>;
   error?: string;
 }
 
@@ -52,9 +52,9 @@ export const selectFieldNamesError = createSelector(
   selectFieldNames,
   (fieldNames) => fieldNames.error
 );
-export const selectFieldNamesLoading = createSelector(
+export const selectFieldNamesIsLoading = createSelector(
   selectFieldNames,
-  (fieldNames) => fieldNames.loading
+  (fieldNames) => fieldNames.loading !== Loading.Idle
 );
 
 export default slice.reducer;

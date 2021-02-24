@@ -1,11 +1,13 @@
 import { api } from ".";
+import { FieldNameSnippet } from "../model";
 import { CbuUnitType, WrappedSearchResponse } from "./model";
+import { parseWrappedSearchResponse } from "./parsers";
 
 export async function getFieldNames(
   types: Iterable<CbuUnitType> = Object.values(CbuUnitType),
   start?: number,
   rows?: number
-) {
+): Promise<Array<FieldNameSnippet>> {
   const query = `cbuUnitTypes.actual:(${Array.from(types).join(" ")})`;
   const result = await api.get<WrappedSearchResponse>("search", {
     params: {
@@ -18,7 +20,8 @@ export async function getFieldNames(
       "Content-Type": "application/json; charset=utf-8",
     },
   });
-  return result.data.response.docs;
+  console.log(result);
+  return parseWrappedSearchResponse(result.data);
 }
 
 export async function getMarkings(start?: number, rows?: number) {

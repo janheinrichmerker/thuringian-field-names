@@ -1,13 +1,12 @@
 import { Component, Fragment } from "react";
 import { Container, Row, Col, Alert } from "react-bootstrap";
 import { connect, ConnectedProps } from "react-redux";
-import { Loading } from "../model";
 import { AppDispatch, RootState } from "../store";
 import { decrement, increment, selectCounterValue } from "../store/counter";
 import {
   fetchFieldNames,
   selectFieldNamesList,
-  selectFieldNamesLoading,
+  selectFieldNamesIsLoading,
 } from "../store/fieldNames";
 
 // Component props.
@@ -29,14 +28,13 @@ class Home extends Component<CombinedProps> {
       <Fragment>
         Field names ({this.props.fieldNames.length}):
         <br />
-        {this.props.fieldNames
-          .map((e) => e.id)
-          .map((id) => (
-            <Fragment>
-              ID: {id}
-              <br />
-            </Fragment>
-          ))}
+        {this.props.fieldNames.map((model) => (
+          <Fragment key={model.id}>
+            ID: {model.id}
+            &emsp; GND: {model.gndNumber}
+            <br />
+          </Fragment>
+        ))}
       </Fragment>
     );
   }
@@ -53,9 +51,7 @@ class Home extends Component<CombinedProps> {
                 <button onClick={this.props.decrement}>-</button>
               </p>
               <p>
-                {this.props.loading === Loading.Idle
-                  ? this.renderList()
-                  : this.renderLoading()}
+                {!this.props.loading ? this.renderList() : this.renderLoading()}
               </p>
             </div>
             <Alert variant="success">Bootstrap works!</Alert>
@@ -70,7 +66,7 @@ const connector = connect(
   (state: RootState) => ({
     counter: selectCounterValue(state),
     fieldNames: selectFieldNamesList(state),
-    loading: selectFieldNamesLoading(state),
+    loading: selectFieldNamesIsLoading(state),
   }),
   (dispatch: AppDispatch) => ({
     fetchFieldNames: () => dispatch(fetchFieldNames()),
