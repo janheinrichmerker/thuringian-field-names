@@ -1,11 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
-import rootReducer from "./rootReducer";
+import { connect, Connect } from "react-redux";
+import rootReducer, { RootState } from "./rootReducer";
 
 export const store = configureStore({
   reducer: rootReducer,
 });
+export default store;
 
 export type { RootState } from "./rootReducer";
 export type AppDispatch = typeof store.dispatch;
 
-export default store;
+export const connectApp: Connect<RootState> = connect;
+
+export * from "./counter"

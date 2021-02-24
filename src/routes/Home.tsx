@@ -1,13 +1,15 @@
 import { Component } from "react";
 import { Container, Row, Col, Alert } from "react-bootstrap";
-import { connect } from "react-redux";
-import { AppDispatch, RootState } from "../store";
-import { increment, decrement, selectCounterValue } from "../store/counter";
+import { ConnectedProps } from "react-redux";
+import { connectApp } from "../store";
+import { decrement, increment, selectCounterValue } from "../store/counter";
 
-type HomeProps = ReturnType<typeof mapStateToProps> &
-  ReturnType<typeof mapDispatchToProps>;
+// Component props.
+interface Props {}
+// Combine component props with connected Redux props (state and actions).
+type CombinedProps = Props & ConnectedProps<typeof connector>;
 
-class Home extends Component<HomeProps> {
+class Home extends Component<CombinedProps> {
   render() {
     return (
       <Container>
@@ -28,17 +30,14 @@ class Home extends Component<HomeProps> {
   }
 }
 
-function mapStateToProps(state: RootState) {
-  return {
+const connector = connectApp(
+  (state) => ({
     counter: selectCounterValue(state),
-  };
-}
-
-function mapDispatchToProps(dispatch: AppDispatch) {
-  return {
+  }),
+  (dispatch) => ({
     increment: () => dispatch(increment()),
     decrement: () => dispatch(decrement()),
-  };
-}
+  })
+);
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connector(Home);
