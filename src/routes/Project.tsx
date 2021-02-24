@@ -1,27 +1,14 @@
 import { Component } from "react";
-import { Container, Row, Col, Alert } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-export class Project extends Component {
+export default class Project extends Component {
   render() {
     return (
       <Container>
         <Row>
           <Col>
-            <p>Project page.</p>
-          </Col>
-        </Row>
-      </Container>
-    );
-  }
-}
-
-export class Archive extends Component {
-  render() {
-    return (
-      <Container>
-        <Row>
-          <Col>
-            <Alert variant="warning">Nothing here yet.</Alert>
+            <p>Project page. Want to learn more about the <Link to="./archive">archive</Link>?</p>
           </Col>
         </Row>
       </Container>

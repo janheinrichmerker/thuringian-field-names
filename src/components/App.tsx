@@ -1,9 +1,10 @@
+import { Component } from "react";
 import { Switch, Route, Redirect, HashRouter } from "react-router-dom";
 import Home from "../routes/Home";
-import { Archive, Project } from "../routes/Project";
-import { Component } from "react";
-import { AppNav } from "./AppNav";
-import { AppFooter } from "./AppFooter";
+import Archive from "../routes/Archive";
+import Project from "../routes/Project";
+import AppNav from "./AppNav";
+import AppFooter from "./AppFooter";
 
 export class App extends Component {
   render() {
@@ -17,6 +18,7 @@ export class App extends Component {
             <Redirect to="/project/archive" />
           </Route>
           <Route exact path="/project/archive" component={Archive} />
+          <Route>404</Route>
         </Switch>
         <AppFooter />
       </HashRouter>

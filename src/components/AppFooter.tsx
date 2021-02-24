@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import { Container, Col, Row } from "react-bootstrap";
 import "./AppFooter.scss";
 
-export class AppFooter extends Component {
+export default class AppFooter extends Component {
   render() {
     return (
       <Container fluid className="AppFooter">

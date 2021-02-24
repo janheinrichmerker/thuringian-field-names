@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import {
   Navbar,
   Nav,
@@ -11,7 +11,7 @@ import {
 import { LinkContainer } from "react-router-bootstrap";
 import "./AppNav.scss";
 
-export class AppNav extends Component {
+export default class AppNav extends Component {
   render() {
     return (
       <Navbar
@@ -28,24 +28,26 @@ export class AppNav extends Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <LinkContainer to="/">
+              <LinkContainer to="/" exact>
                 <Nav.Link>Home</Nav.Link>
               </LinkContainer>
-              <NavDropdown title="Projekt" id="basic-nav-dropdown">
-                <LinkContainer to="/project">
-                  <NavDropdown.Item>Allgemein</NavDropdown.Item>
-                </LinkContainer>
-                <LinkContainer to="/project/archive">
-                  <NavDropdown.Item>Flurnamenarchiv</NavDropdown.Item>
-                </LinkContainer>
-                <LinkContainer to="/project/data">
-                  <NavDropdown.Item>Datengrundlage</NavDropdown.Item>
-                </LinkContainer>
-                <NavDropdown.Divider />
-                <LinkContainer to="/project/partner-projects">
-                  <NavDropdown.Item>Partnerprojekte</NavDropdown.Item>
-                </LinkContainer>
-              </NavDropdown>
+              <LinkContainer to="/project">
+                <NavDropdown title="Projekt" id="basic-nav-dropdown">
+                  <LinkContainer to="/project" exact>
+                    <NavDropdown.Item>Allgemein</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to="/project/archive" exact>
+                    <NavDropdown.Item>Flurnamenarchiv</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to="/project/data" exact>
+                    <NavDropdown.Item>Datengrundlage</NavDropdown.Item>
+                  </LinkContainer>
+                  <NavDropdown.Divider />
+                  <LinkContainer to="/project/partner-projects" exact>
+                    <NavDropdown.Item>Partnerprojekte</NavDropdown.Item>
+                  </LinkContainer>
+                </NavDropdown>
+              </LinkContainer>
             </Nav>
             <Form inline>
               <FormControl
