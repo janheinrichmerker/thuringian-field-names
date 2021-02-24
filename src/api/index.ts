@@ -8,3 +8,5 @@ export const api = axios.create({
     password: API_PASSWORD,
   },
 });
+
+export * from "./fieldNames";
