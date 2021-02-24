@@ -1,3 +1,5 @@
+[![GitHub Actions](https://img.shields.io/github/workflow/status/heinrichreimer/thuringian-field-names/CI?style=flat-square)](https://github.com/heinrichreimer/thuringian-field-names/actions?query=workflow%3A"CI")
+
 # 🏞️ thuringian-field-names
 
 Explorer for the [Thuringian Field Name Archive](http://projekte.thulb.uni-jena.de/flurnamen/).
