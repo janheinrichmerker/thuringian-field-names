@@ -20,7 +20,7 @@ jobs:
       - name: "🧰 Install Node.js"
         uses: actions/setup-node@v1
         with:
-          version: ${{ matrix.node }}
+          node-version: ${{ matrix.node }}
       - name: "🧰 Install dependencies"
         run: yarn install
       - name: "🏗️ Build package"
@@ -29,5 +29,6 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           install: false
+          start: yarn start
           wait-on: "http://localhost:3000"
           tag: node-${{ matrix.node }}
