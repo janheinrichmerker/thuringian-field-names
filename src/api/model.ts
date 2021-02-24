@@ -1,18 +1,22 @@
 export interface WrappedSearchResponse {
-  response: SearchResponse;
+  "response": SearchResponse;
 }
 
 export interface SearchResponse {
-  numFound: number;
-  start: number;
-  docs: Array<SearchDocument>;
+  "numFound": number;
+  "start": number;
+  "docs": Array<SearchDocument>;
 }
 
 export interface SearchDocument {
-  id: string;
-  modified: Date;
-  created: Date;
-  cbuUnitTypes_actual: CbuUnitType;
+  "id": string;
+  "title": Array<string>;
+  "modified": Date;
+  "modifiedby": string;
+  "createdby": Array<string>;
+  "created": Date;
+  "cbuUnitTypes.actual": CbuUnitType;
+  "place.type.gnd": Array<string>
 }
 
 export enum CbuUnitType {
