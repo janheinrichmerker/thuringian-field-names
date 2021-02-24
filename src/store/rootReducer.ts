@@ -1,8 +1,10 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import counter from "./counter";
+import fieldNames from "./fieldNames";
 
 const rootReducer = combineReducers({
-  counter: counter,
+  counter,
+  fieldNames,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
