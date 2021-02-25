@@ -29,12 +29,6 @@ Launch the interactive Cypress test runner:
 yarn cypress:open
 ```
 
-Launch the integration test suite:
-
-```shell script
-yarn cypress open
-```
-
 For more information, see the [`cypress`](cypress) directory.
 
 ### Bundle
