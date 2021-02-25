@@ -1,4 +1,5 @@
 [![GitHub Actions](https://img.shields.io/github/workflow/status/heinrichreimer/thuringian-field-names/CI?style=flat-square)](https://github.com/heinrichreimer/thuringian-field-names/actions?query=workflow%3A"CI")
+[![Codecov](https://img.shields.io/codecov/c/github/heinrichreimer/thuringian-field-names?style=flat-square)](https://codecov.io/github/heinrichreimer/thuringian-field-names/)
 
 # 🏞️ thuringian-field-names
 
