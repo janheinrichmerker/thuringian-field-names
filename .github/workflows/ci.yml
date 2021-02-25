@@ -5,9 +5,28 @@ on:
   pull_request:
 
 jobs:
+  build:
+    name: "🏗️ Build"
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        node: [12, 14]
+    steps:
+      - name: "📥 Check-out"
+        uses: actions/checkout@v2
+      - name: "🧰 Install Node.js"
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+      - name: "🧰 Install dependencies"
+        run: yarn install
+      - name: "🏗️ Build package"
+        run: yarn build
   test:
     name: "🧪 Test"
     runs-on: ubuntu-20.04
+    needs:
+      - build
     strategy:
       matrix:
         node: [12, 14]
@@ -23,8 +42,6 @@ jobs:
           node-version: ${{ matrix.node }}
       - name: "🧰 Install dependencies"
         run: yarn install
-      - name: "🏗️ Build package"
-        run: yarn build
       - name: "🧪 Run Cypress tests"
         uses: cypress-io/github-action@v2
         with:
