@@ -17,25 +17,22 @@ Run the app locally in development mode (page reloads on edits):
 
 ```shell script
 yarn start
-
 ```
 
 Now you use the app from [http://localhost:3000](http://localhost:3000) in your web browser
 
 ### Test
 
-Launch the test runner in the interactive watch mode:
+Launch the interactive Cypress test runner:
 
 ```shell script
-yarn test
-
+yarn cypress:open
 ```
 
 Launch the integration test suite:
 
 ```shell script
 yarn cypress open
-
 ```
 
 For more information, see the [`cypress`](cypress) directory.
@@ -46,7 +43,6 @@ Build the app for production:
 
 ```shell script
 yarn build
-
 ```
 
 You'll find the bundled and optimized app in the `build` folder, ready for deployment.
