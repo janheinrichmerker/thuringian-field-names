@@ -43,3 +43,10 @@ jobs:
         with:
           name: Cypress videos
           path: cypress/videos
+      - name: "📤 Upload test coverage"
+        uses: actions/upload-artifact@v2
+        with:
+          path: coverage/
+          name: Test coverage
+      - name: "📤 Publish test coverage"
+        uses: codecov/codecov-action@v1
