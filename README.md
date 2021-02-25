@@ -9,7 +9,7 @@ _The project is developed as part of the [Client-side web applications](https://
 
 ## User stories
 
-Please refer to the [user stories](docs/user-stoies.md) for details on the implemented features.
+Please refer to the [user stories](docs/user-stories.md) for details on the implemented features.
 
 ## Usage
 
