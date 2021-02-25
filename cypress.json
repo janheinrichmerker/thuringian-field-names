@@ -1,7 +1,5 @@
 {
   "$schema": "https://on.cypress.io/cypress.schema.json",
   "baseUrl": "http://localhost:3000",
-  "video": false,
-  "experimentalComponentTesting": true,
-  "componentFolder": "cypress/component"
+  "video": false
 }
