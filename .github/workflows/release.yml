@@ -22,6 +22,11 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
+      - name: "♻️ Cache dependencies"
+        uses: actions/cache@v2
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-node-${{ matrix.node }}-${{ hashFiles('**/yarn.lock') }}
       - name: "🧰 Install dependencies"
         run: yarn install
       - name: "🏗️ Build package"
