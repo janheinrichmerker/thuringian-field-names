@@ -13,7 +13,7 @@ function requireEnv(key: string, name?: string): string {
   if (!value) {
     throw new Error(
       "You must specify " +
-        (name ? `${name} in` : "") +
+        (name ? `${name} in ` : "") +
         `the \`${key}\` environment variable. ` +
         "Note that you need to restart the React development server for changes to take effect."
     );
