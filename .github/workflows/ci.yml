@@ -25,10 +25,21 @@ jobs:
         run: yarn install
       - name: "🏗️ Build package"
         run: yarn build
-      - name: "🧪 Run tests"
+      - name: "🧪 Run Cypress tests"
         uses: cypress-io/github-action@v2
         with:
           install: false
           start: yarn start
           wait-on: "http://localhost:3000"
-          tag: node-${{ matrix.node }}
+      - name: "📤 Upload Cypress sceenshots"
+        uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: Cypress sceenshots
+          path: cypress/screenshots
+      - name: "📤 Upload Cypress videos"
+        uses: actions/upload-artifact@v1
+        if: always()
+        with:
+          name: Cypress videos
+          path: cypress/videos
