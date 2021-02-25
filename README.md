@@ -7,6 +7,10 @@ Explorer for the [Thuringian Field Name Archive](http://projekte.thulb.uni-jena.
 
 _The project is developed as part of the [Client-side web applications](https://mht.uzi.uni-halle.de/client-seitige-web-anwendungen/) lecture at [Martin Luther University Halle-Wittenberg](https://uni-halle.de)._
 
+## User stories
+
+Please refer to the [user stories](docs/user-stoies.md) for details on the implemented features.
+
 ## Usage
 
 The field name explorer is a [React](https://reactjs.org/) app, built and run with [Yarn](https://yarnpkg.com/).
