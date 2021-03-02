@@ -28,8 +28,8 @@ const slice = createSlice({
   name: "fieldNames",
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
-    builder.addCase(fetchFieldNames.pending, (state) => {
+  extraReducers: builder => {
+    builder.addCase(fetchFieldNames.pending, state => {
       state.fieldNames = [];
       state.loading = Loading.Pending;
     });
@@ -49,15 +49,15 @@ const slice = createSlice({
 export const selectFieldNames = (state: RootState) => state.fieldNames;
 export const selectFieldNamesList = createSelector(
   selectFieldNames,
-  (state) => state.fieldNames
+  state => state.fieldNames
 );
 export const selectFieldNamesError = createSelector(
   selectFieldNames,
-  (state) => state.error
+  state => state.error
 );
 export const selectFieldNamesIsLoading = createSelector(
   selectFieldNames,
-  (state) => state.loading !== Loading.Idle
+  state => state.loading !== Loading.Idle
 );
 
 export const fieldNamesReducer = slice.reducer;

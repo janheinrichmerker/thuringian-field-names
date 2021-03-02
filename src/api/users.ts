@@ -16,7 +16,7 @@ export default class UsersApi extends Api {
   ];
 
   async login(nameOrEmail: string, password: string): Promise<User> {
-    const user = this.users.find((user) => {
+    const user = this.users.find(user => {
       if (user.password !== password) return false;
       if (user.name === nameOrEmail) return true;
       if (user.email === nameOrEmail) return true;
@@ -29,7 +29,7 @@ export default class UsersApi extends Api {
   }
 
   async register(name: string, email: string, password: string): Promise<User> {
-    const existingUser = this.users.find((user) => {
+    const existingUser = this.users.find(user => {
       if (user.name === name) return true;
       if (user.email === email) return true;
       return false;
