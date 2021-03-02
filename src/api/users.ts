@@ -1,7 +1,7 @@
 import Api from ".";
 import { User } from "../model";
 import { validate as checkEmail } from "isemail";
-import { test as checkPassword } from "owasp-password-strength-test";
+import owasp from "owasp-password-strength-test";
 
 /**
  * Fake users API.
@@ -41,7 +41,7 @@ export default class UsersApi extends Api {
     if (!emailCheck) {
       throw Error("Invalid email.");
     }
-    const passwordCheck = checkPassword(password);
+    const passwordCheck = owasp.test(password)
     if (!passwordCheck.strong) {
       throw Error(passwordCheck.errors[0] ?? "Password not strong enough.");
     }

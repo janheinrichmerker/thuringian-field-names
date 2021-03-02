@@ -55,6 +55,7 @@ const slice = createSlice({
     });
     builder.addCase(login.fulfilled, (state, action) => {
       state.active = action.payload;
+      state.error = undefined;
       state.loading = Loading.Idle;
     });
     builder.addCase(login.rejected, (state, action) => {
@@ -67,6 +68,7 @@ const slice = createSlice({
     });
     builder.addCase(register.fulfilled, (state, action) => {
       state.active = action.payload;
+      state.error = undefined;
       state.loading = Loading.Idle;
     });
     builder.addCase(register.rejected, (state, action) => {
