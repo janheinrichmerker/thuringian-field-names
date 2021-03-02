@@ -44,3 +44,9 @@ export interface FieldName extends FieldNameSnippet {
   area: GeoArea;
   license: License;
 }
+
+export interface User {
+  name: string
+  email: string
+  password: string
+}
