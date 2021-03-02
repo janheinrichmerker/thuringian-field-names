@@ -22,7 +22,7 @@ interface Props {}
 // Combine component props with connected Redux props (state and actions).
 type CombinedProps = Props & ConnectedProps<typeof connector>;
 
-class AppNav extends Component<CombinedProps> {
+class _AppNav extends Component<CombinedProps> {
   private id = uuid();
 
   renderLogin() {
@@ -116,7 +116,7 @@ const connector = connect(
   }),
   (dispatch: AppDispatch) => ({
     logout: () => dispatch(logout()),
-  }),
+  })
 );
 
-export default connector(AppNav);
+export const AppNav = connector(_AppNav);

@@ -3,7 +3,7 @@ import { Container, Navbar, Nav, NavLink } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import "./AppFooter.scss";
 
-export default class AppFooter extends Component {
+export class AppFooter extends Component {
   render() {
     return (
       <Navbar fixed="bottom" bg="light" variant="light" className="AppFooter">

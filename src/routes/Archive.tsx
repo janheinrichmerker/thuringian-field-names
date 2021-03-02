@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { Container, Row, Col, Alert } from "react-bootstrap";
 
-export default class Archive extends Component {
+export class Archive extends Component {
   render() {
     return (
       <Container>

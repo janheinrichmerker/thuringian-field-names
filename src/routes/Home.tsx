@@ -13,9 +13,12 @@ interface Props {}
 // Combine component props with connected Redux props (state and actions).
 type CombinedProps = Props & ConnectedProps<typeof connector>;
 
-class Home extends Component<CombinedProps> {
+class _Home extends Component<CombinedProps> {
   componentDidMount() {
-    this.props.fetchFieldNames();
+    // Only fetch field names if needed.
+    if (this.props.fieldNames.length === 0) {
+      this.props.fetchFieldNames();
+    }
   }
 
   renderLoading() {
@@ -67,4 +70,4 @@ const connector = connect(
   })
 );
 
-export default connector(Home);
+export const Home = connector(_Home);

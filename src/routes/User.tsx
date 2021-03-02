@@ -11,15 +11,15 @@ import {
   selectUsersIsActive,
   selectUsersIsLoading,
 } from "../store/users";
-import LoginForm from "../components/LoginForm";
-import RegistrationForm from "../components/RegistrationForm";
+import { LoginForm } from "../components/LoginForm";
+import { RegistrationForm } from "../components/RegistrationForm";
 
 // Component props.
 interface Props {}
 // Combine component props with connected Redux props (state and actions).
 type CombinedProps = Props & ConnectedProps<typeof connector>;
 
-class User extends Component<CombinedProps> {
+class _User extends Component<CombinedProps> {
   render() {
     if (this.props.isLoggedIn) {
       return <Redirect to="/" />;
@@ -92,4 +92,4 @@ const connector = connect(
   })
 );
 
-export default connector(User);
+export const User = connector(_User);

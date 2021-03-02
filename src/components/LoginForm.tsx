@@ -15,7 +15,7 @@ interface Values {
 
 type CombinedProps = Props & FormikProps<Values>;
 
-class LoginForm extends Component<CombinedProps> {
+class _LoginForm extends Component<CombinedProps> {
   renderError() {
     if (this.props.error) {
       return <Alert variant="danger">{this.props.error}</Alert>;
@@ -80,7 +80,7 @@ class LoginForm extends Component<CombinedProps> {
   }
 }
 
-export default withFormik<Props, Values>({
+const connector = withFormik<Props, Values>({
   handleSubmit: (values, { props }) => {
     props.handleLogin(values.nameOrEmail, values.password);
   },
@@ -101,4 +101,6 @@ export default withFormik<Props, Values>({
       password: "",
     };
   },
-})(LoginForm);
+});
+
+export const LoginForm = connector(_LoginForm);

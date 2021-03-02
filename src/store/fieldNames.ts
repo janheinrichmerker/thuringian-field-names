@@ -60,4 +60,4 @@ export const selectFieldNamesIsLoading = createSelector(
   (state) => state.loading !== Loading.Idle
 );
 
-export default slice.reducer;
+export const fieldNamesReducer = slice.reducer;

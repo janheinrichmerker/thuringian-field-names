@@ -2,7 +2,7 @@ import { Component } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export default class Project extends Component {
+export class Project extends Component {
   render() {
     return (
       <Container>

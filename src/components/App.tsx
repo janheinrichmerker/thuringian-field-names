@@ -1,12 +1,12 @@
 import { Component } from "react";
 import { Switch, Route, Redirect, HashRouter } from "react-router-dom";
-import Home from "../routes/Home";
-import Archive from "../routes/Archive";
-import Project from "../routes/Project";
-import AppNav from "./AppNav";
-import AppFooter from "./AppFooter";
-import UnknownRoute from "../routes/UnknownRoute";
-import User from "../routes/User";
+import { Home } from "../routes/Home";
+import { Archive } from "../routes/Archive";
+import { Project } from "../routes/Project";
+import { AppNav } from "./AppNav";
+import { AppFooter } from "./AppFooter";
+import { UnknownRoute } from "../routes/UnknownRoute";
+import { User } from "../routes/User";
 
 export class App extends Component {
   render() {
