@@ -78,21 +78,21 @@ const slice = createSlice({
 
 export const { logout } = slice.actions;
 
-export const selectUser = (state: RootState) => state.users;
-export const selectUserActive = createSelector(
-  selectUser,
+export const selectUsers = (state: RootState) => state.users;
+export const selectUsersActive = createSelector(
+  selectUsers,
   (state) => state.active
 );
-export const selectUserIsActive = createSelector(
-  selectUser,
+export const selectUsersIsActive = createSelector(
+  selectUsers,
   (state) => state.active !== undefined
 );
-export const selectUserError = createSelector(
-  selectUser,
+export const selectUsersError = createSelector(
+  selectUsers,
   (state) => state.error
 );
-export const selectUserIsLoading = createSelector(
-  selectUser,
+export const selectUsersIsLoading = createSelector(
+  selectUsers,
   (state) => state.loading !== Loading.Idle
 );
 
