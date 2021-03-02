@@ -11,8 +11,8 @@ import {
   selectUsersIsActive,
   selectUsersIsLoading,
 } from "../store/users";
-import { LoginForm } from "../components/LoginForm";
-import { RegistrationForm } from "../components/RegistrationForm";
+import { SignIn } from "../components/forms/SignIn";
+import { SignUp } from "../components/forms/SignUp";
 
 // Component props.
 interface Props {}
@@ -42,14 +42,14 @@ class _User extends Component<CombinedProps> {
               <Card.Body>
                 <Switch>
                   <Route exact path="/login">
-                    <LoginForm
+                    <SignIn
                       handleLogin={this.props.login}
                       error={this.props.error}
                       loading={this.props.loading}
                     />
                   </Route>
                   <Route exact path="/signup">
-                    <RegistrationForm
+                    <SignUp
                       handleRegistration={this.props.register}
                       error={this.props.error}
                       loading={this.props.loading}

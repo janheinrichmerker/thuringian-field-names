@@ -16,7 +16,7 @@ interface Values {
 
 type CombinedProps = Props & FormikProps<Values>;
 
-class _RegistrationForm extends Component<CombinedProps> {
+class SignUpForm extends Component<CombinedProps> {
   renderError() {
     if (this.props.error) {
       return <Alert variant="danger">{this.props.error}</Alert>;
@@ -120,4 +120,4 @@ const connector = withFormik<Props, Values>({
   },
 });
 
-export const RegistrationForm = connector(_RegistrationForm);
+export const SignUp = connector(SignUpForm);
