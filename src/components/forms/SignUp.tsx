@@ -110,13 +110,6 @@ const connector = withFormik<Props, Values>({
 
     return errors;
   },
-  mapPropsToValues: () => {
-    return {
-      name: "",
-      email: "",
-      password: "",
-    };
-  },
 });
 
 export const SignUp = connector(SignUpForm);

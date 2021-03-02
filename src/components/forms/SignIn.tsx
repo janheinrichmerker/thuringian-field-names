@@ -94,12 +94,6 @@ const connector = withFormik<Props, Values>({
 
     return errors;
   },
-  mapPropsToValues: () => {
-    return {
-      nameOrEmail: "",
-      password: "",
-    };
-  },
 });
 
 export const SignIn = connector(SignInForm);
