@@ -17,7 +17,7 @@ export default class UsersApi extends Api {
 
   async login(nameOrEmail: string, password: string): Promise<User> {
     const user = this.users.find((user) => {
-      if (user.password === password) return false;
+      if (user.password !== password) return false;
       if (user.name === nameOrEmail) return true;
       if (user.email === nameOrEmail) return true;
       return false;
