@@ -1,2 +1,6 @@
 @import "./theme.scss";
-@import "~bootstrap/scss/bootstrap";
+
+#root > .container {
+  padding-top: $spacer;
+  padding-bottom: max($navbar-brand-height, $nav-link-height) + 2 * $spacer;
+}
