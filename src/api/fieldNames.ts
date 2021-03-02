@@ -21,7 +21,6 @@ export default class FieldNamesApi extends Api {
         "Content-Type": "application/json; charset=utf-8",
       },
     });
-    console.log(result);
     return parseWrappedSearchResponse(result.data);
   }
 
