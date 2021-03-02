@@ -1,8 +1,35 @@
 @import "../theme.scss";
 
 .AppNav {
+  box-shadow: $box-shadow;
+
   .navbar-brand {
     font-family: $font-family-serif;
     font-weight: bold;
+  }
+
+  .input-group {
+    box-shadow: $box-shadow-sm;
+    background: transparentize($input-bg, 0.08);
+    border-radius: $input-border-radius;
+
+    &:active,
+    &:hover,
+    &:focus,
+    &:focus-within {
+      box-shadow: $box-shadow;
+      background: $input-bg;
+    }
+
+    .input-group-append {
+      margin: 0;
+    }
+
+    .form-control,
+    .input-group-text {
+      border: 0;
+      background: 0;
+      box-shadow: none;
+    }
   }
 }
