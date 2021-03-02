@@ -29,7 +29,7 @@ const slice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchFieldNames.pending, (state, action) => {
+    builder.addCase(fetchFieldNames.pending, (state) => {
       state.fieldNames = [];
       state.loading = Loading.Pending;
     });

@@ -49,7 +49,7 @@ const slice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(login.pending, (state, action) => {
+    builder.addCase(login.pending, (state) => {
       state.active = undefined;
       state.loading = Loading.Pending;
     });
@@ -62,7 +62,7 @@ const slice = createSlice({
       state.error = action.error.message;
       state.loading = Loading.Idle;
     });
-    builder.addCase(register.pending, (state, action) => {
+    builder.addCase(register.pending, (state) => {
       state.active = undefined;
       state.loading = Loading.Pending;
     });
@@ -98,4 +98,4 @@ export const selectUsersIsLoading = createSelector(
   (state) => state.loading !== Loading.Idle
 );
 
-export const usersReducer = slice.reducer
+export const usersReducer = slice.reducer;
