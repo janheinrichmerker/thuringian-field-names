@@ -4,8 +4,10 @@ import {
   createSlice,
 } from "@reduxjs/toolkit";
 import { RootState } from ".";
-import { getFieldNames } from "../api";
+import { FieldNamesApi } from "../api";
 import { FieldNameSnippet, Loading } from "../model";
+
+const api = new FieldNamesApi();
 
 export interface FieldNamesState {
   loading: Loading;
@@ -14,12 +16,12 @@ export interface FieldNamesState {
 }
 
 const initialState: FieldNamesState = {
-    fieldNames: [],
-    loading: Loading.Idle,
-}
+  fieldNames: [],
+  loading: Loading.Idle,
+};
 
 export const fetchFieldNames = createAsyncThunk("fetchFieldNames", async () => {
-  return await getFieldNames();
+  return await api.getFieldNames();
 });
 
 const slice = createSlice({
@@ -47,15 +49,15 @@ const slice = createSlice({
 export const selectFieldNames = (state: RootState) => state.fieldNames;
 export const selectFieldNamesList = createSelector(
   selectFieldNames,
-  state => state.fieldNames
+  (state) => state.fieldNames
 );
 export const selectFieldNamesError = createSelector(
   selectFieldNames,
-  state => state.error
+  (state) => state.error
 );
 export const selectFieldNamesIsLoading = createSelector(
   selectFieldNames,
-  state => state.loading !== Loading.Idle
+  (state) => state.loading !== Loading.Idle
 );
 
 export default slice.reducer;
