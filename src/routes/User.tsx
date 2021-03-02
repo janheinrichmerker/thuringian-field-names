@@ -1,10 +1,16 @@
 import { Component } from "react";
-import { Container, Row, Col, Card, Form, Button, Nav } from "react-bootstrap";
+import { Container, Row, Col, Card, Nav } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { connect, ConnectedProps } from "react-redux";
 import { AppDispatch, RootState } from "../store";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { login, register, selectUsersIsActive } from "../store/users";
+import {
+  login,
+  register,
+  selectUsersError,
+  selectUsersIsActive,
+  selectUsersIsLoading,
+} from "../store/users";
 import LoginForm from "../components/LoginForm";
 import RegistrationForm from "../components/RegistrationForm";
 
@@ -36,11 +42,17 @@ class User extends Component<CombinedProps> {
               <Card.Body>
                 <Switch>
                   <Route exact path="/login">
-                    <LoginForm handleLogin={this.props.login} />
+                    <LoginForm
+                      handleLogin={this.props.login}
+                      error={this.props.error}
+                      loading={this.props.loading}
+                    />
                   </Route>
                   <Route exact path="/signup">
                     <RegistrationForm
                       handleRegistration={this.props.register}
+                      error={this.props.error}
+                      loading={this.props.loading}
                     />
                   </Route>
                 </Switch>
@@ -56,6 +68,8 @@ class User extends Component<CombinedProps> {
 const connector = connect(
   (state: RootState) => ({
     isLoggedIn: selectUsersIsActive(state),
+    error: selectUsersError(state),
+    loading: selectUsersIsLoading(state),
   }),
   (dispatch: AppDispatch) => ({
     login: (nameOrEmail: string, password: string) => {
