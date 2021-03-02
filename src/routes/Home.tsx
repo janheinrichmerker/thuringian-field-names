@@ -2,7 +2,6 @@ import { Component, Fragment } from "react";
 import { Container, Row, Col, Alert } from "react-bootstrap";
 import { connect, ConnectedProps } from "react-redux";
 import { AppDispatch, RootState } from "../store";
-import { decrement, increment, selectCounterValue } from "../store/counter";
 import {
   fetchFieldNames,
   selectFieldNamesList,
@@ -31,6 +30,7 @@ class Home extends Component<CombinedProps> {
         {this.props.fieldNames.map((model) => (
           <Fragment key={model.id}>
             ID: {model.id}
+            &emsp; Title: {model.title}
             &emsp; GND: {model.gndNumber}
             <br />
           </Fragment>
@@ -46,11 +46,6 @@ class Home extends Component<CombinedProps> {
           <Col>
             <div>
               <p>
-                Clicked: {this.props.counter} times
-                <button onClick={this.props.increment}>+</button>
-                <button onClick={this.props.decrement}>-</button>
-              </p>
-              <p>
                 {!this.props.loading ? this.renderList() : this.renderLoading()}
               </p>
             </div>
@@ -64,14 +59,11 @@ class Home extends Component<CombinedProps> {
 
 const connector = connect(
   (state: RootState) => ({
-    counter: selectCounterValue(state),
     fieldNames: selectFieldNamesList(state),
     loading: selectFieldNamesIsLoading(state),
   }),
   (dispatch: AppDispatch) => ({
     fetchFieldNames: () => dispatch(fetchFieldNames()),
-    increment: () => dispatch(increment()),
-    decrement: () => dispatch(decrement()),
   })
 );
 
