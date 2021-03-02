@@ -12,3 +12,4 @@ export class Api {
 }
 
 export { FieldNamesApi } from "./fieldNames";
+export { UsersApi } from "./users";
