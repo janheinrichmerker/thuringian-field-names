@@ -15,10 +15,7 @@ type CombinedProps = Props & ConnectedProps<typeof connector>;
 
 class _Home extends Component<CombinedProps> {
   componentDidMount() {
-    // Only fetch field names if needed.
-    if (this.props.fieldNames.length === 0) {
-      this.props.fetchFieldNames();
-    }
+    this.props.fetchFieldNames();
   }
 
   renderLoading() {
@@ -30,7 +27,7 @@ class _Home extends Component<CombinedProps> {
       <Fragment>
         Field names ({this.props.fieldNames.length}):
         <br />
-        {this.props.fieldNames.map(model => (
+        {this.props.fieldNames.map((model) => (
           <Fragment key={model.id}>
             ID: {model.id}
             &emsp; Title: {model.title}
