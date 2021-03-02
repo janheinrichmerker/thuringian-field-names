@@ -36,7 +36,6 @@ class SignInForm extends Component<CombinedProps> {
     const { handleSubmit, handleChange, values, touched, errors } = this.props;
     return (
       <Form noValidate onSubmit={handleSubmit}>
-        {this.props.status}
         {this.renderError()}
         <Form.Group>
           <Form.Label>Email or username</Form.Label>
