@@ -13,17 +13,18 @@ export interface FieldNamesState {
   error?: string;
 }
 
+const initialState: FieldNamesState = {
+    fieldNames: [],
+    loading: Loading.Idle,
+}
+
 export const fetchFieldNames = createAsyncThunk("fetchFieldNames", async () => {
   return await getFieldNames();
 });
 
 const slice = createSlice({
   name: "fieldNames",
-  initialState: {
-    fieldNames: [],
-    loading: Loading.Idle,
-    error: undefined,
-  } as FieldNamesState,
+  initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchFieldNames.pending, (state, action) => {
@@ -46,15 +47,15 @@ const slice = createSlice({
 export const selectFieldNames = (state: RootState) => state.fieldNames;
 export const selectFieldNamesList = createSelector(
   selectFieldNames,
-  (fieldNames) => fieldNames.fieldNames
+  state => state.fieldNames
 );
 export const selectFieldNamesError = createSelector(
   selectFieldNames,
-  (fieldNames) => fieldNames.error
+  state => state.error
 );
 export const selectFieldNamesIsLoading = createSelector(
   selectFieldNames,
-  (fieldNames) => fieldNames.loading !== Loading.Idle
+  state => state.loading !== Loading.Idle
 );
 
 export default slice.reducer;
