@@ -4,7 +4,7 @@ import {
   createSlice,
 } from "@reduxjs/toolkit";
 import { RootState } from ".";
-import { FieldNamesApi } from "../api";
+import FieldNamesApi from "../api/fieldNames";
 import { FieldNameSnippet, Loading } from "../model";
 
 const api = new FieldNamesApi();

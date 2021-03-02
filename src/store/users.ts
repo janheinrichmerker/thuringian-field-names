@@ -4,7 +4,7 @@ import {
   createSlice,
 } from "@reduxjs/toolkit";
 import { RootState } from ".";
-import { UsersApi } from "../api";
+import UsersApi from "../api/users";
 import { Loading, User } from "../model";
 
 const api = new UsersApi();
@@ -25,7 +25,7 @@ export const login = createAsyncThunk<
     nameOrEmail: string;
     password: string;
   }
->("fetchFieldNames", async ({ nameOrEmail, password }) => {
+>("login", async ({ nameOrEmail, password }) => {
   return await api.login(nameOrEmail, password);
 });
 export const register = createAsyncThunk<
@@ -35,12 +35,12 @@ export const register = createAsyncThunk<
     email: string;
     password: string;
   }
->("fetchFieldNames", async ({ name, email, password }) => {
+>("register", async ({ name, email, password }) => {
   return await api.register(name, email, password);
 });
 
 const slice = createSlice({
-  name: "user",
+  name: "users",
   initialState,
   reducers: {
     logout: (state) => {
@@ -78,7 +78,7 @@ const slice = createSlice({
 
 export const { logout } = slice.actions;
 
-export const selectUser = (state: RootState) => state.user;
+export const selectUser = (state: RootState) => state.users;
 export const selectUserActive = createSelector(
   selectUser,
   (state) => state.active

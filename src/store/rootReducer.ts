@@ -1,10 +1,10 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import user from "./user";
+import users from "./users";
 import fieldNames from "./fieldNames";
 
 const rootReducer = combineReducers({
   fieldNames,
-  user,
+  users,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

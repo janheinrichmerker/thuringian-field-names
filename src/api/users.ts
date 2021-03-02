@@ -1,4 +1,4 @@
-import { Api } from ".";
+import Api from ".";
 import { User } from "../model";
 import { validate as checkEmail } from "isemail";
 import { test as checkPassword } from "owasp-password-strength-test";
@@ -6,7 +6,7 @@ import { test as checkPassword } from "owasp-password-strength-test";
 /**
  * Fake users API.
  */
-export class UsersApi extends Api {
+export default class UsersApi extends Api {
   private users: Array<User> = [
     {
       name: "test",

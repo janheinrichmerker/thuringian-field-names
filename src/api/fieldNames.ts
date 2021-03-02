@@ -1,9 +1,9 @@
-import { Api } from ".";
+import Api from ".";
 import { FieldNameSnippet } from "../model";
 import { CbuUnitType, WrappedSearchResponse } from "./model";
 import { parseWrappedSearchResponse } from "./parsers";
 
-export class FieldNamesApi extends Api {
+export default class FieldNamesApi extends Api {
   async getFieldNames(
     types: Iterable<CbuUnitType> = Object.values(CbuUnitType),
     start?: number,
