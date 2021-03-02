@@ -1,26 +1,15 @@
 import { Component } from "react";
-import {
-  Navbar,
-  Nav,
-  NavDropdown,
-  Container,
-  Form,
-  FormControl,
-  InputGroup,
-} from "react-bootstrap";
+import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import "./AppNav.scss";
 import { v4 as uuid } from "uuid";
 import { connect, ConnectedProps } from "react-redux";
 import { logout, selectUsersActive } from "../store/users";
 import { AppDispatch, RootState } from "../store";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { Search } from "./forms/Search";
+import { RouteComponentProps, withRouter } from "react-router-dom";
 
-// Component props.
-interface Props {}
-// Combine component props with connected Redux props (state and actions).
-type CombinedProps = Props & ConnectedProps<typeof connector>;
+type CombinedProps = RouteComponentProps & ConnectedProps<typeof connector>;
 
 class _AppNav extends Component<CombinedProps> {
   private id = uuid();
@@ -92,21 +81,16 @@ class _AppNav extends Component<CombinedProps> {
                 </NavDropdown>
               </LinkContainer>
             </Nav>
-            <Form inline>
-              <InputGroup className="mr-sm-2">
-                <FormControl type="text" placeholder="Search..." />
-                <InputGroup.Append>
-                  <InputGroup.Text>
-                    <FontAwesomeIcon icon={faSearch} />
-                  </InputGroup.Text>
-                </InputGroup.Append>
-              </InputGroup>
-            </Form>
+            <Search handleSearch={this.search.bind(this)} />
             {this.renderLogin()}
           </Navbar.Collapse>
         </Container>
       </Navbar>
     );
+  }
+
+  search(query: string) {
+    this.props.history.push(`/search/${query}`);
   }
 }
 
@@ -119,4 +103,4 @@ const connector = connect(
   })
 );
 
-export const AppNav = connector(_AppNav);
+export const AppNav = connector(withRouter(_AppNav));
