@@ -57,8 +57,8 @@ class _AppNav extends Component<CombinedProps> {
           <LinkContainer to="/">
             <Navbar.Brand>Thüringische Flurnamen</Navbar.Brand>
           </LinkContainer>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse>
+          <Navbar.Toggle aria-controls={`${this.id}-collapse`} />
+          <Navbar.Collapse id={`${this.id}-collapse`}>
             <Nav className="mr-auto">
               <LinkContainer to="/" exact>
                 <Nav.Link>Home</Nav.Link>
