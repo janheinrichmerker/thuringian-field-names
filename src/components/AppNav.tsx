@@ -8,6 +8,7 @@ import { logout, selectUsersActive } from "../store/users";
 import { AppDispatch, RootState } from "../store";
 import { Search } from "./forms/Search";
 import { RouteComponentProps, withRouter } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 
 type CombinedProps = RouteComponentProps & ConnectedProps<typeof connector>;
 
@@ -55,13 +56,17 @@ class _AppNav extends Component<CombinedProps> {
       >
         <Container>
           <LinkContainer to="/">
-            <Navbar.Brand>Thüringische Flurnamen</Navbar.Brand>
+            <Navbar.Brand>
+              <FormattedMessage id="app.title" />
+            </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls={`${this.id}-collapse`} />
           <Navbar.Collapse id={`${this.id}-collapse`}>
             <Nav className="mr-auto">
               <LinkContainer to="/" exact>
-                <Nav.Link>Home</Nav.Link>
+                <Nav.Link>
+                  <FormattedMessage id="app.nav.home" />
+                </Nav.Link>
               </LinkContainer>
               <LinkContainer to="/project">
                 <NavDropdown title="Projekt" id={`${this.id}-dropdown-project`}>
