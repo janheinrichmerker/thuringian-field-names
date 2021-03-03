@@ -37,7 +37,7 @@
     "@types/react-router-dom": "^5.1.7",
     "@types/uuid": "^8.3.0",
     "axios": "^0.21.1",
-    "babel-loader": "~8.1.0",
+    "babel-loader": "~8.2.2",
     "bootstrap": "^4.6.0",
     "cypress": "6.6.0",
     "cypress-react-selector": "^2.3.6",
