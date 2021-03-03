@@ -1,5 +1,6 @@
 import { Component, Fragment } from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import { FormattedDate } from "react-intl";
 import { connect, ConnectedProps } from "react-redux";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { FieldNameType } from "../model";
@@ -9,7 +10,6 @@ import {
   selectFieldNamesIsLoading,
   searchFieldNames,
 } from "../store/fieldNames";
-import { moment } from "moment";
 
 interface Parameters {
   query: string;
@@ -40,8 +40,9 @@ class _Search extends Component<
                 : model.type === FieldNameType.Marking
                 ? "Marking"
                 : "Unknown type"}
-                <br/>
-                Created {moment(model.creation.date).fromNow()} by {model.creation.author}
+              <br />
+              Created <FormattedDate value={model.creation.date} /> by{" "}
+              {model.creation.author}
               <details>
                 <summary>JSON</summary>
                 <pre>{JSON.stringify(model)}</pre>
