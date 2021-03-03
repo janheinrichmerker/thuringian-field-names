@@ -6,23 +6,23 @@ import { v4 as uuid } from "uuid";
 import { connect, ConnectedProps } from "react-redux";
 import { selectSettingsLocale, updateLocale } from "../store/settings";
 import { AppDispatch, RootState } from "../store";
+import { FormattedDisplayName } from "react-intl";
 
 class _AppFooter extends Component<ConnectedProps<typeof connector>> {
   private id = uuid();
-  private locales = {
-    "en-US": "English",
-    "de-DE": "German",
-  };
 
   renderLocales() {
-    const links = Object.entries(this.locales).map(([key, label]) => {
+    const locales = Array.from(
+      new Set(["en-US", "de-DE", this.props.locale, navigator.language])
+    );
+    const links = locales.map((locale) => {
       return (
         <NavDropdown.Item
-          key={key}
-          active={this.props.locale === key}
-          onClick={() => this.props.updateLocale(key)}
+          key={locale}
+          active={this.props.locale === locale}
+          onClick={() => this.props.updateLocale(locale)}
         >
-          {label}
+          <FormattedDisplayName type="language" value={locale} />
         </NavDropdown.Item>
       );
     });
