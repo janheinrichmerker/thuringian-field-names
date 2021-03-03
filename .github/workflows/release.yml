@@ -34,7 +34,7 @@ jobs:
         run: yarn install
       - name: "🏗️ Build package"
         run: yarn build
-      - name: "📤 Deploy to GitHub pages"
+      - name: "🚀 Deploy to GitHub pages"
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
