@@ -4,6 +4,6 @@ context("Home page", () => {
   });
 
   it("contains project name", () => {
-    cy.get("nav.navbar .navbar-brand").contains("Thüringische Flurnamen");
+    cy.get("nav.navbar .navbar-brand").contains("Thuringian Field Names");
   });
 });
