@@ -39,7 +39,7 @@
     "axios": "^0.21.1",
     "babel-loader": "~8.1.0",
     "bootstrap": "^4.6.0",
-    "cypress": "6.5.0",
+    "cypress": "6.6.0",
     "cypress-react-selector": "^2.3.6",
     "cypress-xpath": "^1.6.2",
     "formik": "^2.2.6",
