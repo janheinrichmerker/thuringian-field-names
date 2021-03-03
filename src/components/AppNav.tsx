@@ -8,11 +8,15 @@ import { logout, selectUsersActive } from "../store/users";
 import { AppDispatch, RootState } from "../store";
 import { Search } from "./forms/Search";
 import { RouteComponentProps, withRouter } from "react-router-dom";
-import { FormattedMessage } from "react-intl";
+import {
+  FormattedMessage,
+  injectIntl,
+  WrappedComponentProps,
+} from "react-intl";
 
-type CombinedProps = RouteComponentProps & ConnectedProps<typeof connector>;
-
-class _AppNav extends Component<CombinedProps> {
+class ConnectedAppNav extends Component<
+  WrappedComponentProps & RouteComponentProps & ConnectedProps<typeof connector>
+> {
   private id = uuid();
 
   renderLogin() {
@@ -22,11 +26,13 @@ class _AppNav extends Component<CombinedProps> {
         <Nav>
           <NavDropdown title={user.name} id={`${this.id}-dropdown-user`}>
             <LinkContainer to="/submit" exact>
-              <NavDropdown.Item>Submit field name</NavDropdown.Item>
+              <NavDropdown.Item>
+                <FormattedMessage id="app.nav.submitFieldName" />
+              </NavDropdown.Item>
             </LinkContainer>
             <NavDropdown.Divider />
             <NavDropdown.Item onClick={this.props.logout}>
-              Sign out
+              <FormattedMessage id="app.nav.signOut" />
             </NavDropdown.Item>
           </NavDropdown>
         </Nav>
@@ -35,10 +41,14 @@ class _AppNav extends Component<CombinedProps> {
       return (
         <Nav>
           <LinkContainer to="/login" exact>
-            <Nav.Link>Sign in</Nav.Link>
+            <Nav.Link>
+              <FormattedMessage id="app.nav.signIn" />
+            </Nav.Link>
           </LinkContainer>
           <LinkContainer to="/signup" exact>
-            <Nav.Link>Sign up</Nav.Link>
+            <Nav.Link>
+              <FormattedMessage id="app.nav.signUp" />
+            </Nav.Link>
           </LinkContainer>
         </Nav>
       );
@@ -69,19 +79,32 @@ class _AppNav extends Component<CombinedProps> {
                 </Nav.Link>
               </LinkContainer>
               <LinkContainer to="/project">
-                <NavDropdown title="Projekt" id={`${this.id}-dropdown-project`}>
+                <NavDropdown
+                  title={this.props.intl.formatMessage({
+                    id: "app.nav.project",
+                  })}
+                  id={`${this.id}-dropdown-project`}
+                >
                   <LinkContainer to="/project" exact>
-                    <NavDropdown.Item>Allgemein</NavDropdown.Item>
+                    <NavDropdown.Item>
+                      <FormattedMessage id="app.nav.project.overview" />
+                    </NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to="/project/archive" exact>
-                    <NavDropdown.Item>Flurnamenarchiv</NavDropdown.Item>
+                    <NavDropdown.Item>
+                      <FormattedMessage id="app.nav.project.archive" />
+                    </NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to="/project/data" exact>
-                    <NavDropdown.Item>Datengrundlage</NavDropdown.Item>
+                    <NavDropdown.Item>
+                      <FormattedMessage id="app.nav.project.data" />
+                    </NavDropdown.Item>
                   </LinkContainer>
                   <NavDropdown.Divider />
                   <LinkContainer to="/project/partner-projects" exact>
-                    <NavDropdown.Item>Partnerprojekte</NavDropdown.Item>
+                    <NavDropdown.Item>
+                      <FormattedMessage id="app.nav.project.partnerProjects" />
+                    </NavDropdown.Item>
                   </LinkContainer>
                 </NavDropdown>
               </LinkContainer>
@@ -108,4 +131,4 @@ const connector = connect(
   })
 );
 
-export const AppNav = connector(withRouter(_AppNav));
+export const AppNav = connector(withRouter(injectIntl(ConnectedAppNav)));

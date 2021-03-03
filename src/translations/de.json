@@ -1,4 +1,16 @@
 {
   "app.title": "Thüringische Flurnamen",
-  "app.nav.home": "Start"
+  "app.nav.home": "Start",
+  "app.nav.project": "Projekt",
+  "app.nav.project.overview": "Allgemein",
+  "app.nav.project.archive": "Flurnamenarchiv",
+  "app.nav.project.data": "Datengrundlage",
+  "app.nav.project.partnerProjects": "Partnerprojekte",
+  "app.nav.signIn": "Anmelden",
+  "app.nav.signOut": "Abmelden",
+  "app.nav.signUp": "Registrieren",
+  "app.nav.submitFieldName": "Flurname eintragen",
+  "app.user.signIn": "Anmelden",
+  "app.user.signOut": "Abmelden",
+  "app.user.signUp": "Registrieren"
 }

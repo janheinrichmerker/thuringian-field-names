@@ -1,4 +1,16 @@
 {
   "app.title": "Thuringian Field Names",
-  "app.nav.home": "Home"
+  "app.nav.home": "Home",
+  "app.nav.project": "Project",
+  "app.nav.project.overview": "Overview",
+  "app.nav.project.archive": "Archive",
+  "app.nav.project.data": "Data",
+  "app.nav.project.partnerProjects": "Partner projects",
+  "app.nav.signIn": "Sign in",
+  "app.nav.signOut": "Sign out",
+  "app.nav.signUp": "Sign up",
+  "app.nav.submitFieldName": "Submit field name",
+  "app.user.signIn": "Sign in",
+  "app.user.signOut": "Sign out",
+  "app.user.signUp": "Sign up"
 }
