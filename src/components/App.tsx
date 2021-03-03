@@ -7,6 +7,7 @@ import { AppNav } from "./AppNav";
 import { AppFooter } from "./AppFooter";
 import { UnknownRoute } from "../routes/UnknownRoute";
 import { User } from "../routes/User";
+import { Search } from "../routes/Search";
 
 export class App extends Component {
   render() {
@@ -32,6 +33,7 @@ export class App extends Component {
           <Route exact path="/signup">
             <User />
           </Route>
+          <Route path="/search/:id" component={Search} />
           <Route>
             <UnknownRoute />
           </Route>
