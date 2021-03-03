@@ -14,12 +14,7 @@ import {
 import { SignIn } from "../components/forms/SignIn";
 import { SignUp } from "../components/forms/SignUp";
 
-// Component props.
-interface Props {}
-// Combine component props with connected Redux props (state and actions).
-type CombinedProps = Props & ConnectedProps<typeof connector>;
-
-class _User extends Component<CombinedProps> {
+class ConnectedUser extends Component<ConnectedProps<typeof connector>> {
   render() {
     if (this.props.isLoggedIn) {
       return <Redirect to="/" />;
@@ -92,4 +87,4 @@ const connector = connect(
   })
 );
 
-export const User = connector(_User);
+export const User = connector(ConnectedUser);

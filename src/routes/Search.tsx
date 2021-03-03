@@ -15,7 +15,7 @@ interface Parameters {
   query: string;
 }
 
-class _Search extends Component<
+class ConnectedSearch extends Component<
   RouteComponentProps<Parameters> & ConnectedProps<typeof connector>
 > {
   componentDidMount() {
@@ -81,4 +81,4 @@ const connector = connect(
   })
 );
 
-export const Search = connector(withRouter(_Search));
+export const Search = connector(withRouter(ConnectedSearch));

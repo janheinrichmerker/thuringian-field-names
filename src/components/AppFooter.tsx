@@ -8,7 +8,7 @@ import { selectSettingsLocale, updateLocale } from "../store/settings";
 import { AppDispatch, RootState } from "../store";
 import { FormattedDisplayName } from "react-intl";
 
-class _AppFooter extends Component<ConnectedProps<typeof connector>> {
+class ConnectedAppFooter extends Component<ConnectedProps<typeof connector>> {
   private id = uuid();
 
   renderLocales() {
@@ -82,4 +82,4 @@ const connector = connect(
   })
 );
 
-export const AppFooter = connector(_AppFooter);
+export const AppFooter = connector(ConnectedAppFooter);

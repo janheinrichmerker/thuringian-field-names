@@ -8,12 +8,7 @@ import {
   selectFieldNamesIsLoading,
 } from "../store/fieldNames";
 
-// Component props.
-interface Props {}
-// Combine component props with connected Redux props (state and actions).
-type CombinedProps = Props & ConnectedProps<typeof connector>;
-
-class _Home extends Component<CombinedProps> {
+class ConnectedHome extends Component<ConnectedProps<typeof connector>> {
   componentDidMount() {
     this.props.fetchFieldNames();
   }
@@ -67,4 +62,4 @@ const connector = connect(
   })
 );
 
-export const Home = connector(_Home);
+export const Home = connector(ConnectedHome);
