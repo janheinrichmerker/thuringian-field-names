@@ -4,15 +4,19 @@ import { CbuUnitType, WrappedSearchResponse } from "./model";
 import { parseWrappedSearchResponse } from "./parsers";
 
 export default class FieldNamesApi extends Api {
-  async getFieldNames(
+  async searchFieldNames(
+    query?: string,
     types: Iterable<CbuUnitType> = Object.values(CbuUnitType),
     start?: number,
     rows?: number
   ): Promise<Array<FieldNameSnippet>> {
-    const query = `cbuUnitTypes.actual:(${Array.from(types).join(" ")})`;
+    const typesQuery = `cbuUnitTypes.actual:(${Array.from(types).join(" ")})`;
+    const solrQuery = [query, typesQuery]
+      .filter((element) => element)
+      .join(" ");
     const result = await this.endpoint.get<WrappedSearchResponse>("search", {
       params: {
-        q: query,
+        q: solrQuery,
         wt: "json",
         start,
         rows,
@@ -22,6 +26,14 @@ export default class FieldNamesApi extends Api {
       },
     });
     return parseWrappedSearchResponse(result.data);
+  }
+
+  async getFieldNames(
+    types: Iterable<CbuUnitType> = Object.values(CbuUnitType),
+    start?: number,
+    rows?: number
+  ): Promise<Array<FieldNameSnippet>> {
+    return await this.searchFieldNames(undefined, types, start, rows);
   }
 
   async getMarkings(start?: number, rows?: number) {
