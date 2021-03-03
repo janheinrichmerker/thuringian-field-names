@@ -19,11 +19,11 @@ jobs:
       - name: "📥 Check-out"
         uses: actions/checkout@v2
       - name: "🧰 Install Node.js"
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2.1.5
         with:
           node-version: ${{ matrix.node }}
       - name: "♻️ Cache dependencies"
-        uses: actions/cache@v2
+        uses: actions/cache@v2.1.4
         with:
           path: |
             node_modules

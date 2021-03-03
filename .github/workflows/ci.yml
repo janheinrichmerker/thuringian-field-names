@@ -15,11 +15,11 @@ jobs:
       - name: "📥 Check-out"
         uses: actions/checkout@v2
       - name: "🧰 Install Node.js"
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2.1.5
         with:
           node-version: ${{ matrix.node }}
       - name: "♻️ Cache dependencies"
-        uses: actions/cache@v2
+        uses: actions/cache@v2.1.4
         with:
           path: |
             node_modules
@@ -45,11 +45,11 @@ jobs:
       - name: "📥 Check-out"
         uses: actions/checkout@v2
       - name: "🧰 Install Node.js"
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2.1.5
         with:
           node-version: ${{ matrix.node }}
       - name: "♻️ Cache dependencies"
-        uses: actions/cache@v2
+        uses: actions/cache@v2.1.4
         with:
           path: |
             node_modules
@@ -65,19 +65,19 @@ jobs:
           start: yarn start
           wait-on: "http://localhost:3000"
       - name: "📤 Upload Cypress sceenshots"
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2.2.2
         if: failure()
         with:
           name: Cypress sceenshots
           path: cypress/screenshots
       - name: "📤 Upload Cypress videos"
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2.2.2
         if: always()
         with:
           name: Cypress videos
           path: cypress/videos
       - name: "📤 Upload test coverage"
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v2.2.2
         with:
           path: coverage/
           name: Test coverage
