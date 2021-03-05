@@ -6,6 +6,7 @@ import {
   fetchFieldNames,
   selectFieldNamesList,
   selectFieldNamesIsLoading,
+  selectFieldNamesError,
 } from "../store/fieldNames";
 
 class ConnectedHome extends Component<ConnectedProps<typeof connector>> {
@@ -14,24 +15,30 @@ class ConnectedHome extends Component<ConnectedProps<typeof connector>> {
   }
 
   renderLoading() {
-    return <Fragment>Loading...</Fragment>;
+    return <Alert variant="info">Loading...</Alert>;
   }
 
   renderList() {
     return (
-      <Fragment>
-        Field names ({this.props.fieldNames.length}):
-        <br />
-        {this.props.fieldNames.map((model) => (
-          <Fragment key={model.id}>
-            ID: {model.id}
-            &emsp; Title: {model.title}
-            &emsp; GND: {model.gndNumber}
-            <br />
-          </Fragment>
-        ))}
-      </Fragment>
+      <div>
+        <p>
+          Field names ({this.props.fieldNames.length}):
+          <br />
+          {this.props.fieldNames.map((model) => (
+            <Fragment key={model.id}>
+              ID: {model.id}
+              &emsp; Title: {model.title}
+              &emsp; GND: {model.gndNumber}
+              <br />
+            </Fragment>
+          ))}
+        </p>
+      </div>
     );
+  }
+
+  renderError() {
+    return <Alert variant="warning">{this.props.error}</Alert>;
   }
 
   render() {
@@ -39,12 +46,11 @@ class ConnectedHome extends Component<ConnectedProps<typeof connector>> {
       <Container>
         <Row>
           <Col>
-            <div>
-              <p>
-                {!this.props.loading ? this.renderList() : this.renderLoading()}
-              </p>
-            </div>
-            <Alert variant="success">Bootstrap works!</Alert>
+            {this.props.loading
+              ? this.renderLoading()
+              : this.props.error
+              ? this.renderError()
+              : this.renderList()}
           </Col>
         </Row>
       </Container>
@@ -56,6 +62,7 @@ const connector = connect(
   (state: RootState) => ({
     fieldNames: selectFieldNamesList(state),
     loading: selectFieldNamesIsLoading(state),
+    error: selectFieldNamesError(state),
   }),
   (dispatch: AppDispatch) => ({
     fetchFieldNames: () => dispatch(fetchFieldNames()),
