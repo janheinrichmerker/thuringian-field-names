@@ -43,7 +43,7 @@ class ConnectedSignIn extends Component<
             type="email"
             name="nameOrEmail"
             placeholder="john.doe@example.com"
-            value={values.nameOrEmail}
+            value={values.nameOrEmail || ""}
             onChange={handleChange}
             isValid={touched.nameOrEmail && !errors.nameOrEmail}
             isInvalid={!!errors.nameOrEmail}
@@ -61,7 +61,7 @@ class ConnectedSignIn extends Component<
             type="password"
             name="password"
             placeholder="Password"
-            value={values.password}
+            value={values.password || ""}
             onChange={handleChange}
             isValid={touched.password && !errors.password}
             isInvalid={!!errors.password}

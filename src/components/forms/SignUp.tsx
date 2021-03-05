@@ -44,7 +44,7 @@ class ConnectedSignUp extends Component<
             type="text"
             name="name"
             placeholder="John Doe"
-            value={values.name}
+            value={values.name || ""}
             onChange={handleChange}
             isValid={touched.name && !errors.name}
             isInvalid={!!errors.name}
@@ -59,7 +59,7 @@ class ConnectedSignUp extends Component<
             type="email"
             name="email"
             placeholder="john.doe@example.com"
-            value={values.email}
+            value={values.email || ""}
             onChange={handleChange}
             isValid={touched.email && !errors.email}
             isInvalid={!!errors.email}
@@ -74,7 +74,7 @@ class ConnectedSignUp extends Component<
             type="password"
             name="password"
             placeholder="Password"
-            value={values.password}
+            value={values.password || ""}
             onChange={handleChange}
             isValid={touched.password && !errors.password}
             isInvalid={!!errors.password}

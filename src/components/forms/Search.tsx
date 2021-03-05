@@ -37,7 +37,7 @@ class ConnectedSearch extends Component<
             type="text"
             name="query"
             placeholder="Search..."
-            value={values.query}
+            value={values.query || ""}
             onChange={handleChange}
             isValid={touched.query && !errors.query}
             isInvalid={!!errors.query}
