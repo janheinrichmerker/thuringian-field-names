@@ -59,11 +59,7 @@ class ConnectedSearch extends Component<
       <Container>
         <Row>
           <Col>
-            <div>
-              <p>
-                {!this.props.loading ? this.renderList() : this.renderLoading()}
-              </p>
-            </div>
+            {!this.props.loading ? this.renderList() : this.renderLoading()}
           </Col>
         </Row>
       </Container>
