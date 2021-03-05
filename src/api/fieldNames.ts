@@ -10,8 +10,9 @@ export default class FieldNamesApi extends Api {
     start?: number,
     rows?: number
   ): Promise<Array<FieldNameSnippet>> {
+    const typeQuery = "objectType:cbu";
     const typesQuery = `cbuUnitTypes.actual:(${Array.from(types).join(" ")})`;
-    const solrQuery = [query, typesQuery]
+    const solrQuery = [query, typeQuery, typesQuery]
       .filter((element) => element)
       .join(" ");
     const result = await this.endpoint.get<WrappedSearchResponse>("search", {
