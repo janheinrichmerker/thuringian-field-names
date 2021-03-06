@@ -7,6 +7,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 interface SearchProps {
   handleSearch: (query: string) => void;
   loading?: boolean;
+  query?: string;
 }
 
 interface SearchValues {
@@ -29,7 +30,7 @@ class ConnectedSearch extends Component<
   }
 
   render() {
-    const { handleSubmit, handleChange, values, touched, errors } = this.props;
+    const { handleSubmit, handleChange, values, errors } = this.props;
     return (
       <Form inline noValidate onSubmit={handleSubmit}>
         <InputGroup className="mr-sm-2">
@@ -39,7 +40,6 @@ class ConnectedSearch extends Component<
             placeholder="Search..."
             value={values.query || ""}
             onChange={handleChange}
-            isValid={touched.query && !errors.query}
             isInvalid={!!errors.query}
           />
           {/* TODO Show tooltip with error message. */}
@@ -63,6 +63,9 @@ const connector = withFormik<SearchProps, SearchValues>({
     }
     return errors;
   },
+  mapPropsToValues: (props) => ({
+    query: props.query ?? "",
+  }),
 });
 
 export const Search = connector(ConnectedSearch);
