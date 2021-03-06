@@ -22,8 +22,6 @@ function parseCbuUnitType(raw: CbuUnitType): FieldNameType {
       return FieldNameType.Map;
     case CbuUnitType.Marking:
       return FieldNameType.Marking;
-    default:
-      throw SyntaxError("Unknown field name type.");
   }
 }
 
