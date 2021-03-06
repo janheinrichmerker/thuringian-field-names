@@ -20,15 +20,6 @@ const initialState: FieldNamesState = {
   loading: Loading.Idle,
 };
 
-export const searchFieldNames = createAsyncThunk<
-  Array<FieldNameSnippet>,
-  {
-    query: string;
-  }
->("fetchFieldNames", async ({ query }) => {
-  return await api.searchFieldNames(query);
-});
-
 export const fetchFieldNames = createAsyncThunk("fetchFieldNames", async () => {
   return await api.getFieldNames();
 });
@@ -52,8 +43,6 @@ const slice = createSlice({
     });
   },
 });
-
-// export const {} = slice.actions;
 
 export const selectFieldNames = (state: RootState) => state.fieldNames;
 export const selectFieldNamesList = createSelector(
