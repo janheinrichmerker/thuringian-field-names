@@ -1,73 +1,75 @@
 # User stories
 
-## Information
+## Basic information
 
-**Task:** Read general information about the field name project.
+**Story:** As a Thuringian citizen, I want to read basic, simple information about the field name project and how I can contribute.
 
-**Story:**
+**Details:**
+Information should include 
 
-1. TODO
+## Detailed information
 
-## Register
+**Story:** As a researcher, I want to read information about the field name archive and dataset.
 
-**Task:** Register a new user account for submitting field names.
+**Details:**
+Information should include 
 
-**Story:**
+## Sign up
 
-1. TODO
+**Story:** As a new user, I want to create a user account for submitting field names. I choose a valid email and a secure, long password.
 
-## Log in
+**Details:**
+The home page should open again. In the navigation bar, now there should be links to submit new field names and to sign out.
 
-**Task:** Log into an existing user account for submitting field names.
+## Sign up existing
 
-**Story:**
+**Story:** As an existing user, I forgot about my old existing account and want to create a user account for submitting field names.
 
-1. TODO
+**Details:**
+A message should be shown that a user with that name and/or email address already exists.
 
-## Log out
+## Sign in
 
-**Task:** Log out of the plattform.
+**Story:** As an existing user, I want to sign in to my user account for submitting field names.
 
-**Story:**
+## Sign out
 
-1. TODO
+**Story:** As a signed in user, I want to sign out of the platform.
+
+**Details:**
+If currently on a restricted page such as submitting field names, the login page should open.
 
 ## Search existing
 
-**Task:** Search for the field name called "Hahnengrundweg" that exists in the database.
+**Story:** As a hiker, I want to check if the field name called "Hahnengrundweg" exists in the database. That field name should indeed exist in the database.
 
-**Story:**
-
-1. TODO
+**Details:**
+There should be a list of snippets for the found maps and markings that match the searched field name. Maps should be distinguishable from markings. Field names should link to a detail page, but also the GND number should point to an appropriate library such as the DNB.
 
 ## Search missing
 
-**Task:** Search for the field name called "Yorkshire" that does not exist in the database.
+**Story:** As a contributor, I want to check if the field name called "Yorkshire" already exists in the database. That field name should indeed not yet exist in the database.
 
-**Story:**
-
-1. TODO
+**Details:**
+The result list should be empty and show a information that no results could be found.
 
 ## Details
 
-**Task:** Display detailed information for a search result snippet.
+**Story:** Having searched for "Hahnengrundweg", I now want to find detailed information about the search result snippet "Hahnengrundweg" with the GND number "7621021-2".
 
-**Story:**
-
-1. TODO
+**Details:**
+TODO
 
 ## Submit logged in
 
-**Task:** Submit a new field name.
+**Story:** As a signed in user, I want to submit a new field name.
 
-**Story:**
-
-1. TODO
+**Details:**
+TODO
 
 ## Submit logged out
 
-**Task:** Attempt to submit a new field name, but get redirected to the login/signup page.
+**Story:** As a user who is not yet signed in, I want to submit a new field name.
 
-**Story:**
-
-1. TODO
+**Details:**
+The sign in/sign up page should open.
