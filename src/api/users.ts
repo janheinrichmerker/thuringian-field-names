@@ -39,7 +39,7 @@ export default class UsersApi extends Api {
     }
     const emailCheck = checkEmail(email);
     if (!emailCheck) {
-      throw Error("Invalid email.");
+      throw Error("Invalid email address.");
     }
     const passwordCheck = owasp.test(password)
     if (!passwordCheck.strong) {
