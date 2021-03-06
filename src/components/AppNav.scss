@@ -10,7 +10,7 @@
 
   .input-group {
     box-shadow: $box-shadow-sm;
-    background: transparentize($input-bg, 0.08);
+    background: transparentize($input-bg, 0.3);
     border-radius: $input-border-radius;
 
     &:active,
