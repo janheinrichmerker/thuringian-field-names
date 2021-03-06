@@ -6,10 +6,13 @@ import { RouteComponentProps, withRouter } from "react-router-dom";
 import { FieldNameType } from "../model";
 import { AppDispatch, RootState } from "../store";
 import {
-  selectFieldNamesList,
-  selectFieldNamesIsLoading,
+  selectSearchResults,
+  selectSearchIsLoading,
   searchFieldNames,
-} from "../store/fieldNames";
+  selectSearchError,
+} from "../store/search";
+import { Search as SearchForm } from "../components/forms/Search";
+import { ApiErrorAlert } from "../components/ApiErrorAlert";
 
 interface Parameters {
   query: string;
@@ -22,6 +25,12 @@ class ConnectedSearch extends Component<
     this.props.search(this.props.match.params.query);
   }
 
+  componentDidUpdate(prevProps: Readonly<ConnectedSearch["props"]>) {
+    if (this.props.match.params.query !== prevProps.match.params.query) {
+      this.props.search(this.props.match.params.query);
+    }
+  }
+
   renderLoading() {
     return <Fragment>Searching...</Fragment>;
   }
@@ -29,9 +38,9 @@ class ConnectedSearch extends Component<
   renderList() {
     return (
       <Fragment>
-        Field names ({this.props.fieldNames.length}):
+        Field names ({this.props.results.length}):
         <ol>
-          {this.props.fieldNames.map((model) => (
+          {this.props.results.map((model) => (
             <li key={model.id}>
               <strong>{model.title}</strong>
               <br />
@@ -55,25 +64,45 @@ class ConnectedSearch extends Component<
   }
 
   render() {
+    console.log(this.props.location);
     return (
-      <Container>
+      <Container key={this.props.location.pathname}>
         <Row>
           <Col>
-            {!this.props.loading ? this.renderList() : this.renderLoading()}
+            <SearchForm
+              handleSearch={this.search.bind(this)}
+              query={this.props.match.params.query}
+            />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            {this.props.loading ? (
+              this.renderLoading()
+            ) : this.props.error ? (
+              <ApiErrorAlert error={this.props.error} />
+            ) : (
+              this.renderList()
+            )}
           </Col>
         </Row>
       </Container>
     );
   }
+
+  search(query: string) {
+    this.props.history.push(`/search/${query}`);
+  }
 }
 
 const connector = connect(
   (state: RootState) => ({
-    fieldNames: selectFieldNamesList(state),
-    loading: selectFieldNamesIsLoading(state),
+    results: selectSearchResults(state),
+    loading: selectSearchIsLoading(state),
+    error: selectSearchError(state),
   }),
   (dispatch: AppDispatch) => ({
-    search: (query: string) => dispatch(searchFieldNames({ query })),
+    search: (query: string) => dispatch(searchFieldNames(query)),
   })
 );
 
