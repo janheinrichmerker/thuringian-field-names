@@ -33,7 +33,7 @@ export class App extends Component {
           <Route exact path="/signup">
             <User />
           </Route>
-          <Route path="/search/:id" component={Search} />
+          <Route path="/search/:query" component={Search} />
           <Route>
             <UnknownRoute />
           </Route>
