@@ -8,6 +8,7 @@ import {
   selectFieldNamesIsLoading,
   selectFieldNamesError,
 } from "../store/fieldNames";
+import { ApiErrorAlert } from "../components/ApiErrorAlert";
 
 class ConnectedHome extends Component<ConnectedProps<typeof connector>> {
   componentDidMount() {
@@ -37,20 +38,18 @@ class ConnectedHome extends Component<ConnectedProps<typeof connector>> {
     );
   }
 
-  renderError() {
-    return <Alert variant="warning">{this.props.error}</Alert>;
-  }
-
   render() {
     return (
       <Container>
         <Row>
           <Col>
-            {this.props.loading
-              ? this.renderLoading()
-              : this.props.error
-              ? this.renderError()
-              : this.renderList()}
+            {this.props.loading ? (
+              this.renderLoading()
+            ) : this.props.error ? (
+              <ApiErrorAlert error={this.props.error} />
+            ) : (
+              this.renderList()
+            )}
           </Col>
         </Row>
       </Container>
