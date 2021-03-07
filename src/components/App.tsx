@@ -8,6 +8,12 @@ import { AppFooter } from "./AppFooter";
 import { UnknownRoute } from "../routes/UnknownRoute";
 import { User } from "../routes/User";
 import { Search } from "../routes/Search";
+import { Data } from "../routes/Data";
+import { Partners } from "../routes/Partners";
+import { Imprint } from "../routes/Imprint";
+import { Privacy } from "../routes/Privacy";
+import { Details } from "../routes/Details";
+import { Submit } from "../routes/Submit";
 
 export class App extends Component {
   render() {
@@ -21,17 +27,26 @@ export class App extends Component {
           <Route exact path="/project">
             <Project />
           </Route>
-          <Route path="/archive">
-            <Redirect to="/project/archive" />
-          </Route>
           <Route exact path="/project/archive">
             <Archive />
           </Route>
+          <Route path="/archive">
+            {/* Short link to project archive page. */}
+            <Redirect to="/project/archive" />
+          </Route>
           <Route exact path="/project/data">
-            TODO
+            <Data />
+          </Route>
+          <Route path="/data">
+            {/* Short link to project data page. */}
+            <Redirect to="/project/data" />
           </Route>
           <Route exact path="/project/partners">
-            TODO
+            <Partners />
+          </Route>
+          <Route path="/partners">
+            {/* Short link to project partners page. */}
+            <Redirect to="/project/partners" />
           </Route>
           <Route exact path="/login">
             <User />
@@ -42,14 +57,23 @@ export class App extends Component {
           <Route exact path="/search">
             TODO Empty search.
           </Route>
-          <Route path="/search/:query" component={Search} />
+          <Route path="/search/:query">
+            <Search />
+          </Route>
+          <Route path="/details/:id">
+            <Details />
+          </Route>
+          <Route exact path="/submit">
+            <Submit />
+          </Route>
           <Route exact path="/imprint">
-            TODO
+            <Imprint />
           </Route>
           <Route exact path="/privacy">
-            TODO
+            <Privacy />
           </Route>
           <Route>
+            {/* Fallback route if no other route matches. */}
             <UnknownRoute />
           </Route>
         </Switch>

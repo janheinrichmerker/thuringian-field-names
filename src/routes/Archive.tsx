@@ -7,7 +7,10 @@ export class Archive extends Component {
       <Container>
         <Row>
           <Col>
-            <Alert variant="warning">Nothing here yet.</Alert>
+            <Alert variant="danger">
+              {/* TODO Implement component */}
+              Component not yet developed.
+            </Alert>
           </Col>
         </Row>
       </Container>

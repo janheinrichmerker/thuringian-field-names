@@ -1,15 +1,16 @@
 import { Component } from "react";
 import { Container, Row, Col, Alert } from "react-bootstrap";
 
-export class Submit extends Component {
+export class Privacy extends Component {
   render() {
     return (
       <Container>
         <Row>
           <Col>
-            <Alert variant="danger">
-              {/* TODO Implement component */}
-              Component not yet developed.
+            <Alert variant="warning">
+              This is a conceptual development app.
+              Later, you would find a privacy policy here.
+              Developers are no lawyers ⚖️😉
             </Alert>
           </Col>
         </Row>
@@ -17,6 +18,3 @@ export class Submit extends Component {
     );
   }
 }
-
-// TODO Redirect if not logged in.
-// Choose location from OpenStreetMap.
