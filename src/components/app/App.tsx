@@ -13,8 +13,9 @@ import {
   PrivacyPage,
   DetailsPage,
   SubmitPage,
-} from "../../routes";
-import { AppNav, AppFooter } from "..";
+  AppNav,
+  AppFooter,
+} from "..";
 
 export class App extends Component {
   render() {

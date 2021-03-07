@@ -1,19 +1,19 @@
 import { Component } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { connect, ConnectedProps } from "react-redux";
-import { AppDispatch, RootState } from "../store";
+import { AppDispatch, RootState } from "../../store";
 import {
   fetchFeaturedFieldNames,
   selectFeaturedSnippets,
   selectFeaturedIsLoading,
   selectFeaturedError,
-} from "../store/featured";
+} from "../../store/featured";
 import {
   ApiErrorAlert,
   LoadingAlert,
   ProjectBanner,
   FeaturedFieldNames,
-} from "../components";
+} from "..";
 
 class ConnectedHomePage extends Component<ConnectedProps<typeof connector>> {
   componentDidMount() {
