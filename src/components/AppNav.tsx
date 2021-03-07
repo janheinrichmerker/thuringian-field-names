@@ -101,9 +101,9 @@ class ConnectedAppNav extends Component<
                     </NavDropdown.Item>
                   </LinkContainer>
                   <NavDropdown.Divider />
-                  <LinkContainer to="/project/partner-projects" exact>
+                  <LinkContainer to="/project/partners" exact>
                     <NavDropdown.Item>
-                      <FormattedMessage id="app.nav.project.partnerProjects" />
+                      <FormattedMessage id="app.nav.project.partners" />
                     </NavDropdown.Item>
                   </LinkContainer>
                 </NavDropdown>
