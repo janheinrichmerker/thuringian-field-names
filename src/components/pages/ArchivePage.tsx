@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import { FormattedMessage } from "react-intl";
 
 export class ArchivePage extends Component {
   render() {
@@ -7,7 +8,9 @@ export class ArchivePage extends Component {
       <Container>
         <Row>
           <Col>
-            <h2>Das Thüringer Flurnamenarchiv</h2>
+            <h2>
+              <FormattedMessage id="project.title.full" />
+            </h2>
             <p>
               Das Thüringische Flurnamenarchiv wurde 1933 an der
               Friedrich-Schiller-Universität Jena im Rahmen der thüringischen
