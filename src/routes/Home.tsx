@@ -1,5 +1,5 @@
-import { Component, Fragment } from "react";
-import { Container, Row, Col, Alert } from "react-bootstrap";
+import { Component } from "react";
+import { Container, Row, Col } from "react-bootstrap";
 import { connect, ConnectedProps } from "react-redux";
 import { AppDispatch, RootState } from "../store";
 import {
@@ -9,34 +9,13 @@ import {
   selectFeaturedError,
 } from "../store/featured";
 import { ApiErrorAlert } from "../components/ApiErrorAlert";
+import { LoadingAlert } from "../components/LoadingAlert";
 import { ProjectBanner } from "../components/ProjectBanner";
+import { FeaturedFieldNames } from "../components/FeaturedFieldNames";
 
 class ConnectedHome extends Component<ConnectedProps<typeof connector>> {
   componentDidMount() {
     this.props.fetchFieldNames();
-  }
-
-  renderLoading() {
-    return <Alert variant="info">Loading...</Alert>;
-  }
-
-  renderList() {
-    return (
-      <div>
-        <p>
-          Field names ({this.props.fieldNames.length}):
-          <br />
-          {this.props.fieldNames.map((model) => (
-            <Fragment key={model.id}>
-              ID: {model.id}
-              &emsp; Title: {model.title}
-              &emsp; GND: {model.gndNumber}
-              <br />
-            </Fragment>
-          ))}
-        </p>
-      </div>
-    );
   }
 
   render() {
@@ -47,11 +26,11 @@ class ConnectedHome extends Component<ConnectedProps<typeof connector>> {
           <Col>
             <h2>Featured field names</h2>
             {this.props.loading ? (
-              this.renderLoading()
+              <LoadingAlert />
             ) : this.props.error ? (
               <ApiErrorAlert error={this.props.error} />
             ) : (
-              this.renderList()
+              <FeaturedFieldNames snippets={this.props.fieldNames} />
             )}
           </Col>
         </Row>
