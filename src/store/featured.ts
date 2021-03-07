@@ -21,7 +21,9 @@ const initialState: FeaturedState = {
 };
 
 export const fetchFeaturedFieldNames = createAsyncThunk("fetchFieldNames", async () => {
-  return await api.getFieldNames();
+  const featured = await api.getFieldNames(undefined, undefined, 10)
+  // TODO shuffle field names.
+  return featured.reverse().slice(undefined, 5);
 });
 
 const slice = createSlice({
