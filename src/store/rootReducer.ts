@@ -4,7 +4,7 @@ import {
   featuredReducer,
   settingsReducer,
   searchReducer,
-} from ".";
+} from "./slices"; // Don't import from ".", as the dependency loop causes issues in Redux.
 
 export const rootReducer = combineReducers({
   featured: featuredReducer,
