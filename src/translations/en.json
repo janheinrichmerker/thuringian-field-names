@@ -16,5 +16,8 @@
   "project.title": "Thuringian Field Names",
   "project.shortDescription": "Digitalisation and preparation of the Thuringian Field Name Archive's document collection at Friedrich-Schiller-Universität Jena. The project facilitates further research on Thuringia's field names, for amateurs as well as for researchers in various fields.",
   "project.longDescription": "The project deals with digitalizing and preparing the index collection of the Field Name Archive at Friedrich-Schiller-Universität Jena. During the process, index cards will be digitalized and the containing places will be linked with the associated place ID from the Gemeinsame Normdatei (GND) of the German National Library. Digitalized data will then be presented in OpenStreetMap. The project facilitates further research on Thuringia's field names, for amateurs as well as for researchers in various fields.",
-  "project.status": "The project was started in June 2019 and is scheduled to finish in 2021. The database is constantly being updated, but yet is under construction."
+  "project.status": "The project was started in June 2019 and is scheduled to finish in 2021. The database is constantly being updated, but yet is under construction.",
+  "fieldName.type.map": "Map",
+  "fieldName.type.marking": "Marking",
+  "fieldName.type.unknown": "Unknown type"
 }
