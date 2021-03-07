@@ -1,16 +1,15 @@
 import { Component } from "react";
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import "./AppNav.scss";
-import { v4 as uuid } from "uuid";
-import { SearchForm } from "./forms/SearchForm";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import {
   FormattedMessage,
   injectIntl,
   WrappedComponentProps,
 } from "react-intl";
-import { LoginNav } from "./LoginNav";
+import { v4 as uuid } from "uuid";
+import { SearchForm, LoginNav } from ".";
+import "./AppNav.scss";
 
 class ConnectedAppNav extends Component<
   WrappedComponentProps & RouteComponentProps

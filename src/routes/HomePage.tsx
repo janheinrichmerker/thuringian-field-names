@@ -8,10 +8,12 @@ import {
   selectFeaturedIsLoading,
   selectFeaturedError,
 } from "../store/featured";
-import { ApiErrorAlert } from "../components/alerts/ApiErrorAlert";
-import { LoadingAlert } from "../components/alerts/LoadingAlert";
-import { ProjectBanner } from "../components/ProjectBanner";
-import { FeaturedFieldNames } from "../components/FeaturedFieldNames";
+import {
+  ApiErrorAlert,
+  LoadingAlert,
+  ProjectBanner,
+  FeaturedFieldNames,
+} from "../components";
 
 class ConnectedHomePage extends Component<ConnectedProps<typeof connector>> {
   componentDidMount() {

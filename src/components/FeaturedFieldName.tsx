@@ -1,8 +1,8 @@
 import { Component } from "react";
 import { Card } from "react-bootstrap";
-import { FieldNameSnippet, FieldNameType } from "../model";
 import { LinkContainer } from "react-router-bootstrap";
 import { FormattedDate } from "react-intl";
+import { FieldNameSnippet, FieldNameType } from "../model";
 
 export class FeaturedFieldName extends Component<{
   snippet: FieldNameSnippet;

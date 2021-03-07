@@ -1,7 +1,7 @@
 import { Component, Fragment } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { connect, ConnectedProps } from "react-redux";
 import { RouteComponentProps, withRouter } from "react-router-dom";
+import { connect, ConnectedProps } from "react-redux";
 import { AppDispatch, RootState } from "../store";
 import {
   selectSearchResults,
@@ -9,10 +9,12 @@ import {
   searchFieldNames,
   selectSearchError,
 } from "../store/search";
-import { SearchForm } from "../components/forms/SearchForm";
-import { ApiErrorAlert } from "../components/alerts/ApiErrorAlert";
-import { SearchSnippets } from "../components/SearchSnippets";
-import { LoadingAlert } from "../components/alerts/LoadingAlert";
+import {
+  SearchForm,
+  ApiErrorAlert,
+  SearchSnippets,
+  LoadingAlert,
+} from "../components";
 
 interface Parameters {
   query: string;

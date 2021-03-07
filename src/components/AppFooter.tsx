@@ -1,12 +1,12 @@
 import { Component } from "react";
 import { Container, Navbar, Nav, NavDropdown, Col } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import "./AppFooter.scss";
-import { v4 as uuid } from "uuid";
 import { connect, ConnectedProps } from "react-redux";
+import { FormattedDisplayName } from "react-intl";
+import { v4 as uuid } from "uuid";
 import { selectSettingsLocale, updateLocale } from "../store/settings";
 import { AppDispatch, RootState } from "../store";
-import { FormattedDisplayName } from "react-intl";
+import "./AppFooter.scss";
 
 class ConnectedAppFooter extends Component<ConnectedProps<typeof connector>> {
   private id = uuid();

@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { Button, Jumbotron } from "react-bootstrap";
-import { FormattedMessage } from "react-intl";
 import { LinkContainer } from "react-router-bootstrap";
+import { FormattedMessage } from "react-intl";
 
 export class ProjectBanner extends Component {
   render() {

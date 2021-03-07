@@ -1,19 +1,20 @@
 import { Component, Fragment } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { HomePage } from "../routes/HomePage";
-import { ArchivePage } from "../routes/ArchivePage";
-import { ProjectPage } from "../routes/ProjectPage";
-import { AppNav } from "./AppNav";
-import { AppFooter } from "./AppFooter";
-import { UnknownPage } from "../routes/UnknownPage";
-import { UserPage } from "../routes/UserPage";
-import { SearchPage } from "../routes/SearchPage";
-import { DataPage } from "../routes/DataPage";
-import { PartnersPage } from "../routes/PartnersPage";
-import { ImprintPage } from "../routes/ImprintPage";
-import { PrivacyPage } from "../routes/PrivacyPage";
-import { DetailsPage } from "../routes/DetailsPage";
-import { SubmitPage } from "../routes/SubmitPage";
+import {
+  HomePage,
+  ArchivePage,
+  ProjectPage,
+  UnknownPage,
+  UserPage,
+  SearchPage,
+  DataPage,
+  PartnersPage,
+  ImprintPage,
+  PrivacyPage,
+  DetailsPage,
+  SubmitPage,
+} from "../routes";
+import { AppNav, AppFooter } from ".";
 
 export class App extends Component {
   render() {

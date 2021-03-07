@@ -1,9 +1,9 @@
 import { Component } from "react";
 import { Container, Row, Col, Card, Nav } from "react-bootstrap";
+import { Switch, Route, Redirect } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import { connect, ConnectedProps } from "react-redux";
 import { AppDispatch, RootState } from "../store";
-import { Switch, Route, Redirect } from "react-router-dom";
 import {
   login,
   register,
@@ -11,8 +11,7 @@ import {
   selectUsersIsActive,
   selectUsersIsLoading,
 } from "../store/users";
-import { SignInForm } from "../components/forms/SignInForm";
-import { SignUpForm } from "../components/forms/SignUpForm";
+import { SignInForm, SignUpForm } from "../components";
 
 class ConnectedUserPage extends Component<ConnectedProps<typeof connector>> {
   render() {

@@ -1,7 +1,7 @@
 import { Component, Fragment } from "react";
 import { Row, Col } from "react-bootstrap";
 import { FieldNameSnippet } from "../model";
-import { SearchSnippet } from "../components/SearchSnippet";
+import { SearchSnippet } from "../components";
 
 export class SearchSnippets extends Component<{
   snippets: Array<FieldNameSnippet>;

@@ -1,8 +1,7 @@
 import { Component } from "react";
 import { CardColumns } from "react-bootstrap";
 import { FieldNameSnippet } from "../model";
-import { FeaturedFieldName } from "./FeaturedFieldName";
-import { FeaturedTeaser } from "./FeaturedTeaser";
+import { FeaturedFieldName, FeaturedTeaser } from ".";
 
 export class FeaturedFieldNames extends Component<{
   snippets: Array<FieldNameSnippet>;

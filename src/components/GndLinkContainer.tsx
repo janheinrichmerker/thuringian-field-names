@@ -4,7 +4,7 @@ import {
   Component,
   ReactElement,
 } from "react";
-import { GndOverlay } from "./GndOverlay";
+import { GndOverlay } from ".";
 
 export class GndLinkContainer extends Component<{
   gndNumber: string;

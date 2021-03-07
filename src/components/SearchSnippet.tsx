@@ -1,11 +1,13 @@
 import { Component } from "react";
 import { Card } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 import { FormattedDate } from "react-intl";
 import { FieldNameSnippet } from "../model";
-import { FormattedFieldNameType } from "../components/FormattedFieldNameType";
-import { GndLink } from "../components/GndLink";
-import { GndLinkContainer } from "../components/GndLinkContainer";
-import { LinkContainer } from "react-router-bootstrap";
+import {
+  FormattedFieldNameType,
+  GndLink,
+  GndLinkContainer,
+} from "../components";
 
 export class SearchSnippet extends Component<{
   snippet: FieldNameSnippet;
