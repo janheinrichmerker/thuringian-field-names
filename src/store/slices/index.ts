@@ -1,11 +1,3 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { rootReducer } from "./rootReducer";
-
-export const store = configureStore({
-  reducer: rootReducer,
-});
-export type AppDispatch = typeof store.dispatch;
-
 // Re-export to simplify importing.
 export {
   featuredReducer,
@@ -14,6 +6,9 @@ export {
   selectFeaturedError,
   selectFeaturedIsLoading,
   fetchFeaturedFieldNames,
+} from "./featured";
+export type { FeaturedState } from "./featured";
+export {
   searchReducer,
   selectSearch,
   selectSearchQuery,
@@ -21,10 +16,16 @@ export {
   selectSearchError,
   selectSearchIsLoading,
   searchFieldNames,
+} from "./search";
+export type { SearchState } from "./search";
+export {
   settingsReducer,
   selectSettings,
   selectSettingsLocale,
   updateLocale,
+} from "./settings";
+export type { SettingsState } from "./settings";
+export {
   usersReducer,
   selectUsers,
   selectUsersActive,
@@ -34,11 +35,5 @@ export {
   login,
   logout,
   register,
-} from "./slices";
-export type { RootState } from "./rootReducer";
-export type {
-  FeaturedState,
-  SearchState,
-  SettingsState,
-  UserState,
-} from "./slices";
+} from "./users";
+export type { UserState } from "./users";

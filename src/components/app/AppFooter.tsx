@@ -4,8 +4,12 @@ import { LinkContainer } from "react-router-bootstrap";
 import { connect, ConnectedProps } from "react-redux";
 import { FormattedDisplayName } from "react-intl";
 import { v4 as uuid } from "uuid";
-import { selectSettingsLocale, updateLocale } from "../../store/settings";
-import { AppDispatch, RootState } from "../../store";
+import {
+  AppDispatch,
+  RootState,
+  selectSettingsLocale,
+  updateLocale,
+} from "../../store";
 import "./AppFooter.scss";
 
 class ConnectedAppFooter extends Component<ConnectedProps<typeof connector>> {

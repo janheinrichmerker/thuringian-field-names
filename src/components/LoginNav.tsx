@@ -4,8 +4,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { connect, ConnectedProps } from "react-redux";
 import { FormattedMessage } from "react-intl";
 import { v4 as uuid } from "uuid";
-import { logout, selectUsersActive } from "../store/users";
-import { AppDispatch, RootState } from "../store";
+import { AppDispatch, RootState, logout, selectUsersActive } from "../store";
 import { User } from "../model";
 
 class ConnectedLoginNav extends Component<ConnectedProps<typeof connector>> {

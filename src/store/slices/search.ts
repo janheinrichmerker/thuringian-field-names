@@ -3,9 +3,9 @@ import {
   createSelector,
   createSlice,
 } from "@reduxjs/toolkit";
-import { RootState } from ".";
-import FieldNamesApi from "../api/fieldNames";
-import { FieldNameSnippet, Loading } from "../model";
+import { RootState } from "..";
+import FieldNamesApi from "../../api/fieldNames";
+import { FieldNameSnippet, Loading } from "../../model";
 
 const api = new FieldNamesApi();
 
@@ -35,7 +35,7 @@ const slice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(searchFieldNames.pending, (state) => {
-      state.query = undefined
+      state.query = undefined;
       state.results = [];
       state.error = undefined;
       state.loading = Loading.Pending;

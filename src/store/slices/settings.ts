@@ -1,5 +1,5 @@
 import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from ".";
+import { RootState } from "..";
 
 export interface SettingsState {
   locale: string;

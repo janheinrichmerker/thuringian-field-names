@@ -3,14 +3,15 @@ import { Container, Row, Col, Card, Nav } from "react-bootstrap";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import { connect, ConnectedProps } from "react-redux";
-import { AppDispatch, RootState } from "../../store";
 import {
+  AppDispatch,
+  RootState,
   login,
   register,
   selectUsersError,
   selectUsersIsActive,
   selectUsersIsLoading,
-} from "../../store/users";
+} from "../../store";
 import { SignInForm, SignUpForm } from "..";
 
 class ConnectedUserPage extends Component<ConnectedProps<typeof connector>> {

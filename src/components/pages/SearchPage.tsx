@@ -2,13 +2,14 @@ import { Component, Fragment } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { connect, ConnectedProps } from "react-redux";
-import { AppDispatch, RootState } from "../../store";
 import {
+  AppDispatch,
+  RootState,
   selectSearchResults,
   selectSearchIsLoading,
   searchFieldNames,
   selectSearchError,
-} from "../../store/search";
+} from "../../store";
 import { SearchForm, ApiErrorAlert, SearchSnippets, LoadingAlert } from "..";
 
 interface Parameters {

@@ -1,13 +1,14 @@
 import { Component } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { connect, ConnectedProps } from "react-redux";
-import { AppDispatch, RootState } from "../../store";
 import {
+  AppDispatch,
+  RootState,
   fetchFeaturedFieldNames,
   selectFeaturedSnippets,
   selectFeaturedIsLoading,
   selectFeaturedError,
-} from "../../store/featured";
+} from "../../store";
 import {
   ApiErrorAlert,
   LoadingAlert,

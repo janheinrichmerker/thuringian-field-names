@@ -3,9 +3,9 @@ import {
   createSelector,
   createSlice,
 } from "@reduxjs/toolkit";
-import { RootState } from ".";
-import UsersApi from "../api/users";
-import { Loading, User } from "../model";
+import { RootState } from "..";
+import UsersApi from "../../api/users";
+import { Loading, User } from "../../model";
 
 const api = new UsersApi();
 
@@ -43,13 +43,13 @@ const slice = createSlice({
   name: "users",
   initialState,
   reducers: {
-    logout: state => {
+    logout: (state) => {
       state.active = undefined;
       state.loading = Loading.Idle;
     },
   },
-  extraReducers: builder => {
-    builder.addCase(login.pending, state => {
+  extraReducers: (builder) => {
+    builder.addCase(login.pending, (state) => {
       state.active = undefined;
       state.error = undefined;
       state.loading = Loading.Pending;
@@ -62,7 +62,7 @@ const slice = createSlice({
       state.error = action.error.message;
       state.loading = Loading.Idle;
     });
-    builder.addCase(register.pending, state => {
+    builder.addCase(register.pending, (state) => {
       state.active = undefined;
       state.error = undefined;
       state.loading = Loading.Pending;
@@ -83,19 +83,19 @@ export const { logout } = slice.actions;
 export const selectUsers = (state: RootState) => state.users;
 export const selectUsersActive = createSelector(
   selectUsers,
-  state => state.active
+  (state) => state.active
 );
 export const selectUsersIsActive = createSelector(
   selectUsers,
-  state => state.active !== undefined
+  (state) => state.active !== undefined
 );
 export const selectUsersError = createSelector(
   selectUsers,
-  state => state.error
+  (state) => state.error
 );
 export const selectUsersIsLoading = createSelector(
   selectUsers,
-  state => state.loading !== Loading.Idle
+  (state) => state.loading !== Loading.Idle
 );
 
 export const usersReducer = slice.reducer;

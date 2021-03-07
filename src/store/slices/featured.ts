@@ -3,9 +3,9 @@ import {
   createSelector,
   createSlice,
 } from "@reduxjs/toolkit";
-import { RootState } from ".";
-import FieldNamesApi from "../api/fieldNames";
-import { FieldNameSnippet, Loading } from "../model";
+import { RootState } from "..";
+import FieldNamesApi from "../../api/fieldNames";
+import { FieldNameSnippet, Loading } from "../../model";
 
 const api = new FieldNamesApi();
 
@@ -20,11 +20,14 @@ const initialState: FeaturedState = {
   loading: Loading.Idle,
 };
 
-export const fetchFeaturedFieldNames = createAsyncThunk("fetchFieldNames", async () => {
-  const featured = await api.getFieldNames(undefined, undefined, 10)
-  // TODO shuffle field names.
-  return featured.reverse().slice(undefined, 5);
-});
+export const fetchFeaturedFieldNames = createAsyncThunk(
+  "fetchFeaturedFieldNames",
+  async () => {
+    const featured = await api.getFieldNames(undefined, undefined, 5);
+    // TODO shuffle field names.
+    return featured;
+  }
+);
 
 const slice = createSlice({
   name: "featured",
