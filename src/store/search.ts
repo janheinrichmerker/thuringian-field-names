@@ -35,7 +35,9 @@ const slice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(searchFieldNames.pending, (state) => {
+      state.query = undefined
       state.results = [];
+      state.error = undefined;
       state.loading = Loading.Pending;
     });
     builder.addCase(searchFieldNames.fulfilled, (state, action) => {

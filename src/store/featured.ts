@@ -33,6 +33,7 @@ const slice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchFeaturedFieldNames.pending, (state) => {
       state.fieldNames = [];
+      state.error = undefined;
       state.loading = Loading.Pending;
     });
     builder.addCase(fetchFeaturedFieldNames.fulfilled, (state, action) => {

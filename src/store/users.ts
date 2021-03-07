@@ -51,11 +51,11 @@ const slice = createSlice({
   extraReducers: builder => {
     builder.addCase(login.pending, state => {
       state.active = undefined;
+      state.error = undefined;
       state.loading = Loading.Pending;
     });
     builder.addCase(login.fulfilled, (state, action) => {
       state.active = action.payload;
-      state.error = undefined;
       state.loading = Loading.Idle;
     });
     builder.addCase(login.rejected, (state, action) => {
@@ -64,11 +64,11 @@ const slice = createSlice({
     });
     builder.addCase(register.pending, state => {
       state.active = undefined;
+      state.error = undefined;
       state.loading = Loading.Pending;
     });
     builder.addCase(register.fulfilled, (state, action) => {
       state.active = action.payload;
-      state.error = undefined;
       state.loading = Loading.Idle;
     });
     builder.addCase(register.rejected, (state, action) => {
