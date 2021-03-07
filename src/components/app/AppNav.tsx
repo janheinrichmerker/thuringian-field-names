@@ -8,7 +8,7 @@ import {
   WrappedComponentProps,
 } from "react-intl";
 import { v4 as uuid } from "uuid";
-import { SearchForm, LoginNav } from ".";
+import { SearchForm, LoginNav } from "..";
 import "./AppNav.scss";
 
 class ConnectedAppNav extends Component<

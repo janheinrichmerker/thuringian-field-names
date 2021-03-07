@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import { connect, ConnectedProps, Provider } from "react-redux";
 import { HashRouter } from "react-router-dom";
+import { connect, ConnectedProps, Provider } from "react-redux";
 import { IntlProvider } from "react-intl";
-import { App } from "./components/App";
 import { reportWebVitals } from "./reportWebVitals";
-import { RootState, store } from "./store";
+import { App } from "./components";
 import { selectSettingsLocale } from "./store/settings";
+import { RootState, store } from "./store";
 import en from "./translations/en.json";
 import de from "./translations/de.json";
 import "./index.scss";

@@ -13,8 +13,8 @@ import {
   PrivacyPage,
   DetailsPage,
   SubmitPage,
-} from "../routes";
-import { AppNav, AppFooter } from ".";
+} from "../../routes";
+import { AppNav, AppFooter } from "..";
 
 export class App extends Component {
   render() {

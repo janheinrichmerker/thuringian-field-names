@@ -1,9 +1,7 @@
 // Re-export components to simplify importing.
 export { ApiErrorAlert, LoadingAlert } from "./alerts";
 export { SearchForm, SignInForm, SignUpForm } from "./forms";
-export { App } from "./App";
-export { AppFooter } from "./AppFooter";
-export { AppNav } from "./AppNav";
+export { App, AppFooter, AppNav } from "./app";
 export { FeaturedFieldName } from "./FeaturedFieldName";
 export { FeaturedFieldNames } from "./FeaturedFieldNames";
 export { FeaturedTeaser } from "./FeaturedTeaser";
