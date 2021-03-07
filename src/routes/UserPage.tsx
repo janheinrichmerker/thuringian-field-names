@@ -11,8 +11,8 @@ import {
   selectUsersIsActive,
   selectUsersIsLoading,
 } from "../store/users";
-import { SignIn } from "../components/forms/SignIn";
-import { SignUp } from "../components/forms/SignUp";
+import { SignInForm } from "../components/forms/SignInForm";
+import { SignUpForm } from "../components/forms/SignUpForm";
 
 class ConnectedUserPage extends Component<ConnectedProps<typeof connector>> {
   render() {
@@ -37,14 +37,14 @@ class ConnectedUserPage extends Component<ConnectedProps<typeof connector>> {
               <Card.Body>
                 <Switch>
                   <Route exact path="/login">
-                    <SignIn
+                    <SignInForm
                       handleLogin={this.props.login}
                       error={this.props.error}
                       loading={this.props.loading}
                     />
                   </Route>
                   <Route exact path="/signup">
-                    <SignUp
+                    <SignUpForm
                       handleRegistration={this.props.register}
                       error={this.props.error}
                       loading={this.props.loading}

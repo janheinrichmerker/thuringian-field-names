@@ -6,7 +6,7 @@ import { v4 as uuid } from "uuid";
 import { connect, ConnectedProps } from "react-redux";
 import { logout, selectUsersActive } from "../store/users";
 import { AppDispatch, RootState } from "../store";
-import { Search } from "./forms/Search";
+import { SearchForm } from "./forms/SearchForm";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import {
   FormattedMessage,
@@ -109,7 +109,7 @@ class ConnectedAppNav extends Component<
                 </NavDropdown>
               </LinkContainer>
             </Nav>
-            <Search handleSearch={this.search.bind(this)} />
+            <SearchForm handleSearch={this.search.bind(this)} />
             {this.renderLogin()}
           </Navbar.Collapse>
         </Container>

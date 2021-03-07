@@ -14,7 +14,7 @@ interface SignUpValues {
   password: string;
 }
 
-class ConnectedSignUp extends Component<
+class ConnectedSignUpForm extends Component<
   SignUpProps & FormikProps<SignUpValues>
 > {
   renderError() {
@@ -112,4 +112,4 @@ const connector = withFormik<SignUpProps, SignUpValues>({
   },
 });
 
-export const SignUp = connector(ConnectedSignUp);
+export const SignUpForm = connector(ConnectedSignUpForm);

@@ -2,20 +2,18 @@ import { Component } from "react";
 import { Form, Button, Alert, Spinner } from "react-bootstrap";
 import { FormikProps, FormikErrors, withFormik } from "formik";
 
-interface SignInProps {
+interface Props {
   handleLogin: (nameOrEmail: string, password: string) => void;
   error?: string;
   loading: boolean;
 }
 
-interface SignInValues {
+interface Values {
   nameOrEmail: string;
   password: string;
 }
 
-class ConnectedSignIn extends Component<
-  SignInProps & FormikProps<SignInValues>
-> {
+class ConnectedSignInForm extends Component<Props & FormikProps<Values>> {
   renderError() {
     if (this.props.error) {
       return <Alert variant="danger">{this.props.error}</Alert>;
@@ -79,12 +77,12 @@ class ConnectedSignIn extends Component<
   }
 }
 
-const connector = withFormik<SignInProps, SignInValues>({
+const connector = withFormik<Props, Values>({
   handleSubmit: (values, { props }) => {
     props.handleLogin(values.nameOrEmail, values.password);
   },
-  validate: (values: SignInValues) => {
-    let errors: FormikErrors<SignInValues> = {};
+  validate: (values: Values) => {
+    let errors: FormikErrors<Values> = {};
     if (!values.nameOrEmail) {
       errors.nameOrEmail = "Required";
     }
@@ -96,4 +94,4 @@ const connector = withFormik<SignInProps, SignInValues>({
   },
 });
 
-export const SignIn = connector(ConnectedSignIn);
+export const SignInForm = connector(ConnectedSignInForm);

@@ -9,7 +9,7 @@ import {
   searchFieldNames,
   selectSearchError,
 } from "../store/search";
-import { Search as SearchForm } from "../components/forms/Search";
+import { SearchForm } from "../components/forms/SearchForm";
 import { ApiErrorAlert } from "../components/ApiErrorAlert";
 import { SearchSnippets } from "../components/SearchSnippets";
 import { LoadingAlert } from "../components/LoadingAlert";

@@ -4,19 +4,17 @@ import { FormikProps, FormikErrors, withFormik } from "formik";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-interface SearchProps {
+interface Props {
   handleSearch: (query: string) => void;
   loading?: boolean;
   query?: string;
 }
 
-interface SearchValues {
+interface Values {
   query: string;
 }
 
-class ConnectedSearch extends Component<
-  SearchProps & FormikProps<SearchValues>
-> {
+class ConnectedSearchForm extends Component<Props & FormikProps<Values>> {
   renderIcon() {
     if (this.props.loading) {
       return (
@@ -52,12 +50,12 @@ class ConnectedSearch extends Component<
   }
 }
 
-const connector = withFormik<SearchProps, SearchValues>({
+const connector = withFormik<Props, Values>({
   handleSubmit: (values, { props }) => {
     props.handleSearch(values.query);
   },
-  validate: (values: SearchValues) => {
-    let errors: FormikErrors<SearchValues> = {};
+  validate: (values: Values) => {
+    let errors: FormikErrors<Values> = {};
     if (!values.query) {
       errors.query = "Required";
     }
@@ -68,4 +66,4 @@ const connector = withFormik<SearchProps, SearchValues>({
   }),
 });
 
-export const Search = connector(ConnectedSearch);
+export const SearchForm = connector(ConnectedSearchForm);
