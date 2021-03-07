@@ -66,3 +66,4 @@ Note that you need to [restart](#run) the development server for changes to take
 
 This project is [MIT licensed](LICENSE), you can use it for whatever you want as long as you mention this repository.
 We use the [React](https://reactjs.org/) framework which is also [open source](https://github.com/facebook/react/blob/master/LICENSE).
+Some texts used in the app are copyright of the [Thuringian Field Name Archive](http://projekte.thulb.uni-jena.de/flurnamen/).
