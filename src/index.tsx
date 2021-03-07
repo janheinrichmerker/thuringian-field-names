@@ -6,8 +6,7 @@ import { IntlProvider } from "react-intl";
 import { reportWebVitals } from "./reportWebVitals";
 import { App } from "./components";
 import { RootState, store, selectSettingsLocale } from "./store";
-import en from "./translations/en.json";
-import de from "./translations/de.json";
+import { en, de } from "./translations";
 import "./index.scss";
 
 function loadLocaleData(locale: string) {
