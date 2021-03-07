@@ -29,7 +29,7 @@ export class FeaturedFieldName extends Component<{
             GND: {this.props.snippet.gndNumber}
             <br />
             Last updated{" "}
-            <FormattedDate value={this.props.snippet.creation.date} />
+            <FormattedDate value={this.props.snippet.lastModification.date} />
           </Card.Text>
           <LinkContainer to={`/details/${this.props.snippet.id}`}>
             <Card.Link>Details</Card.Link>
