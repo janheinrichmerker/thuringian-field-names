@@ -1,7 +1,8 @@
+
 import { Component } from "react";
 import { Container, Row, Col, Alert } from "react-bootstrap";
 
-export class Submit extends Component {
+export class DetailsPage extends Component {
   render() {
     return (
       <Container>
@@ -18,5 +19,6 @@ export class Submit extends Component {
   }
 }
 
-// TODO Redirect if not logged in.
-// Choose location from OpenStreetMap.
+// TODO Parse ID from path.
+// TODO Display detailed information about field name.
+// TODO OpenStreetMap overlay.

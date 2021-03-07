@@ -1,8 +1,7 @@
-
 import { Component } from "react";
 import { Container, Row, Col, Alert } from "react-bootstrap";
 
-export class Details extends Component {
+export class PartnersPage extends Component {
   render() {
     return (
       <Container>
@@ -18,7 +17,3 @@ export class Details extends Component {
     );
   }
 }
-
-// TODO Parse ID from path.
-// TODO Display detailed information about field name.
-// TODO OpenStreetMap overlay.

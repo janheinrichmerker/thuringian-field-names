@@ -14,7 +14,7 @@ import {
 import { SignIn } from "../components/forms/SignIn";
 import { SignUp } from "../components/forms/SignUp";
 
-class ConnectedUser extends Component<ConnectedProps<typeof connector>> {
+class ConnectedUserPage extends Component<ConnectedProps<typeof connector>> {
   render() {
     if (this.props.isLoggedIn) {
       return <Redirect to="/" />;
@@ -87,4 +87,4 @@ const connector = connect(
   })
 );
 
-export const User = connector(ConnectedUser);
+export const UserPage = connector(ConnectedUserPage);

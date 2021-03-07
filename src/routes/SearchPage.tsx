@@ -18,14 +18,14 @@ interface Parameters {
   query: string;
 }
 
-class ConnectedSearch extends Component<
+class ConnectedSearchPage extends Component<
   RouteComponentProps<Parameters> & ConnectedProps<typeof connector>
 > {
   componentDidMount() {
     this.props.search(this.props.match.params.query);
   }
 
-  componentDidUpdate(prevProps: Readonly<ConnectedSearch["props"]>) {
+  componentDidUpdate(prevProps: Readonly<ConnectedSearchPage["props"]>) {
     if (this.props.match.params.query !== prevProps.match.params.query) {
       this.props.search(this.props.match.params.query);
     }
@@ -92,4 +92,4 @@ const connector = connect(
   })
 );
 
-export const Search = connector(withRouter(ConnectedSearch));
+export const SearchPage = connector(withRouter(ConnectedSearchPage));

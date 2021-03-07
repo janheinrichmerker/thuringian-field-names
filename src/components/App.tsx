@@ -1,19 +1,19 @@
 import { Component, Fragment } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { Home } from "../routes/Home";
-import { Archive } from "../routes/Archive";
-import { Project } from "../routes/Project";
+import { HomePage } from "../routes/HomePage";
+import { ArchivePage } from "../routes/ArchivePage";
+import { ProjectPage } from "../routes/ProjectPage";
 import { AppNav } from "./AppNav";
 import { AppFooter } from "./AppFooter";
-import { UnknownRoute } from "../routes/UnknownRoute";
-import { User } from "../routes/User";
-import { Search } from "../routes/Search";
-import { Data } from "../routes/Data";
-import { Partners } from "../routes/Partners";
-import { Imprint } from "../routes/Imprint";
-import { Privacy } from "../routes/Privacy";
-import { Details } from "../routes/Details";
-import { Submit } from "../routes/Submit";
+import { UnknownPage } from "../routes/UnknownPage";
+import { UserPage } from "../routes/UserPage";
+import { SearchPage } from "../routes/SearchPage";
+import { DataPage } from "../routes/DataPage";
+import { PartnersPage } from "../routes/PartnersPage";
+import { ImprintPage } from "../routes/ImprintPage";
+import { PrivacyPage } from "../routes/PrivacyPage";
+import { DetailsPage } from "../routes/DetailsPage";
+import { SubmitPage } from "../routes/SubmitPage";
 
 export class App extends Component {
   render() {
@@ -22,59 +22,59 @@ export class App extends Component {
         <AppNav />
         <Switch>
           <Route exact path="/">
-            <Home />
+            <HomePage />
           </Route>
           <Route exact path="/project">
-            <Project />
+            <ProjectPage />
           </Route>
           <Route exact path="/project/archive">
-            <Archive />
+            <ArchivePage />
           </Route>
           <Route path="/archive">
             {/* Short link to project archive page. */}
             <Redirect to="/project/archive" />
           </Route>
           <Route exact path="/project/data">
-            <Data />
+            <DataPage />
           </Route>
           <Route path="/data">
             {/* Short link to project data page. */}
             <Redirect to="/project/data" />
           </Route>
           <Route exact path="/project/partners">
-            <Partners />
+            <PartnersPage />
           </Route>
           <Route path="/partners">
             {/* Short link to project partners page. */}
             <Redirect to="/project/partners" />
           </Route>
           <Route exact path="/login">
-            <User />
+            <UserPage />
           </Route>
           <Route exact path="/signup">
-            <User />
+            <UserPage />
           </Route>
           <Route exact path="/search">
             TODO Empty search.
           </Route>
           <Route path="/search/:query">
-            <Search />
+            <SearchPage />
           </Route>
           <Route path="/details/:id">
-            <Details />
+            <DetailsPage />
           </Route>
           <Route exact path="/submit">
-            <Submit />
+            <SubmitPage />
           </Route>
           <Route exact path="/imprint">
-            <Imprint />
+            <ImprintPage />
           </Route>
           <Route exact path="/privacy">
-            <Privacy />
+            <PrivacyPage />
           </Route>
           <Route>
             {/* Fallback route if no other route matches. */}
-            <UnknownRoute />
+            <UnknownPage />
           </Route>
         </Switch>
         <AppFooter />

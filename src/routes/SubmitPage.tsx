@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { Container, Row, Col, Alert } from "react-bootstrap";
 
-export class Partners extends Component {
+export class SubmitPage extends Component {
   render() {
     return (
       <Container>
@@ -17,3 +17,6 @@ export class Partners extends Component {
     );
   }
 }
+
+// TODO Redirect if not logged in.
+// Choose location from OpenStreetMap.

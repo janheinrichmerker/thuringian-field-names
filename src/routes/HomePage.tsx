@@ -13,7 +13,7 @@ import { LoadingAlert } from "../components/LoadingAlert";
 import { ProjectBanner } from "../components/ProjectBanner";
 import { FeaturedFieldNames } from "../components/FeaturedFieldNames";
 
-class ConnectedHome extends Component<ConnectedProps<typeof connector>> {
+class ConnectedHomePage extends Component<ConnectedProps<typeof connector>> {
   componentDidMount() {
     this.props.fetchFieldNames();
   }
@@ -50,4 +50,4 @@ const connector = connect(
   })
 );
 
-export const Home = connector(ConnectedHome);
+export const HomePage = connector(ConnectedHomePage);
