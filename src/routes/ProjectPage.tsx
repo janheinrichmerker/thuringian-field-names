@@ -9,9 +9,10 @@ export class ProjectPage extends Component {
         <Row>
           <Col>
             <p>
-              Want to learn more about the <Link to="./archive">archive</Link>,{" "}
-              <Link to="./data">data</Link>, or{" "}
-              <Link to="./data">our partners</Link>?
+              Want to learn more about the{" "}
+              <Link to="/project/archive">archive</Link>,{" "}
+              <Link to="/project/data">data</Link>, or{" "}
+              <Link to="/project/data">our partners</Link>?
             </p>
           </Col>
         </Row>
