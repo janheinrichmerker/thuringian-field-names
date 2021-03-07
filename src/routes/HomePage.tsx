@@ -8,8 +8,8 @@ import {
   selectFeaturedIsLoading,
   selectFeaturedError,
 } from "../store/featured";
-import { ApiErrorAlert } from "../components/ApiErrorAlert";
-import { LoadingAlert } from "../components/LoadingAlert";
+import { ApiErrorAlert } from "../components/alerts/ApiErrorAlert";
+import { LoadingAlert } from "../components/alerts/LoadingAlert";
 import { ProjectBanner } from "../components/ProjectBanner";
 import { FeaturedFieldNames } from "../components/FeaturedFieldNames";
 

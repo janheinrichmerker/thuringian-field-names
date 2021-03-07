@@ -10,9 +10,9 @@ import {
   selectSearchError,
 } from "../store/search";
 import { SearchForm } from "../components/forms/SearchForm";
-import { ApiErrorAlert } from "../components/ApiErrorAlert";
+import { ApiErrorAlert } from "../components/alerts/ApiErrorAlert";
 import { SearchSnippets } from "../components/SearchSnippets";
-import { LoadingAlert } from "../components/LoadingAlert";
+import { LoadingAlert } from "../components/alerts/LoadingAlert";
 
 interface Parameters {
   query: string;
