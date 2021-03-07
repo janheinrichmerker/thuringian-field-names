@@ -10,12 +10,13 @@ export default class FieldNamesApi extends Api {
     start?: number,
     rows?: number
   ): Promise<Array<FieldNameSnippet>> {
-    const wrappedQuery = `"${query}"`
+    const wrappedQuery = query ? `"${query}"` : undefined;
     const typeQuery = "objectType:cbu";
     const typesQuery = `cbuUnitTypes.actual:(${Array.from(types).join(" ")})`;
-    const solrQuery = [wrappedQuery, typeQuery, typesQuery]
-      .filter((element) => element)
-      .join(" AND ");
+    const solrQueryParts = [wrappedQuery, typeQuery, typesQuery].filter(
+      (element) => element
+    );
+    const solrQuery = solrQueryParts.join(" AND ");
     const result = await this.endpoint.get<WrappedSearchResponse>("search", {
       params: {
         q: solrQuery,
