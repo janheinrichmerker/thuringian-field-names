@@ -1,14 +1,16 @@
 import { Component, Fragment } from "react";
-import { Container, Row, Col, Alert } from "react-bootstrap";
+import { Container, Row, Col, Alert, Jumbotron, Button } from "react-bootstrap";
 import { connect, ConnectedProps } from "react-redux";
 import { AppDispatch, RootState } from "../store";
 import {
-  fetchFieldNames,
-  selectFieldNamesList,
-  selectFieldNamesIsLoading,
-  selectFieldNamesError,
-} from "../store/fieldNames";
+  fetchFeaturedFieldNames,
+  selectFeaturedSnippets,
+  selectFeaturedIsLoading,
+  selectFeaturedError,
+} from "../store/featured";
 import { ApiErrorAlert } from "../components/ApiErrorAlert";
+import { FormattedMessage } from "react-intl";
+import { LinkContainer } from "react-router-bootstrap";
 
 class ConnectedHome extends Component<ConnectedProps<typeof connector>> {
   componentDidMount() {
@@ -59,12 +61,12 @@ class ConnectedHome extends Component<ConnectedProps<typeof connector>> {
 
 const connector = connect(
   (state: RootState) => ({
-    fieldNames: selectFieldNamesList(state),
-    loading: selectFieldNamesIsLoading(state),
-    error: selectFieldNamesError(state),
+    fieldNames: selectFeaturedSnippets(state),
+    loading: selectFeaturedIsLoading(state),
+    error: selectFeaturedError(state),
   }),
   (dispatch: AppDispatch) => ({
-    fetchFieldNames: () => dispatch(fetchFieldNames()),
+    fetchFieldNames: () => dispatch(fetchFeaturedFieldNames()),
   })
 );
 

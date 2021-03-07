@@ -1,11 +1,11 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import { usersReducer } from "./users";
-import { fieldNamesReducer } from "./fieldNames";
+import { featuredReducer } from "./featured";
 import { settingsReducer } from "./settings";
 import { searchReducer } from "./search";
 
 export const rootReducer = combineReducers({
-  fieldNames: fieldNamesReducer,
+  featured: featuredReducer,
   search: searchReducer,
   users: usersReducer,
   settings: settingsReducer,

@@ -9,53 +9,53 @@ import { FieldNameSnippet, Loading } from "../model";
 
 const api = new FieldNamesApi();
 
-export interface FieldNamesState {
+export interface FeaturedState {
   loading: Loading;
   fieldNames: Array<FieldNameSnippet>;
   error?: string;
 }
 
-const initialState: FieldNamesState = {
+const initialState: FeaturedState = {
   fieldNames: [],
   loading: Loading.Idle,
 };
 
-export const fetchFieldNames = createAsyncThunk("fetchFieldNames", async () => {
+export const fetchFeaturedFieldNames = createAsyncThunk("fetchFieldNames", async () => {
   return await api.getFieldNames();
 });
 
 const slice = createSlice({
-  name: "fieldNames",
+  name: "featured",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchFieldNames.pending, (state) => {
+    builder.addCase(fetchFeaturedFieldNames.pending, (state) => {
       state.fieldNames = [];
       state.loading = Loading.Pending;
     });
-    builder.addCase(fetchFieldNames.fulfilled, (state, action) => {
+    builder.addCase(fetchFeaturedFieldNames.fulfilled, (state, action) => {
       state.fieldNames = action.payload;
       state.loading = Loading.Idle;
     });
-    builder.addCase(fetchFieldNames.rejected, (state, action) => {
+    builder.addCase(fetchFeaturedFieldNames.rejected, (state, action) => {
       state.error = action.error.message;
       state.loading = Loading.Idle;
     });
   },
 });
 
-export const selectFieldNames = (state: RootState) => state.fieldNames;
-export const selectFieldNamesList = createSelector(
-  selectFieldNames,
+export const selectFeatured = (state: RootState) => state.featured;
+export const selectFeaturedSnippets = createSelector(
+  selectFeatured,
   (state) => state.fieldNames
 );
-export const selectFieldNamesError = createSelector(
-  selectFieldNames,
+export const selectFeaturedError = createSelector(
+  selectFeatured,
   (state) => state.error
 );
-export const selectFieldNamesIsLoading = createSelector(
-  selectFieldNames,
+export const selectFeaturedIsLoading = createSelector(
+  selectFeatured,
   (state) => state.loading !== Loading.Idle
 );
 
-export const fieldNamesReducer = slice.reducer;
+export const featuredReducer = slice.reducer;
