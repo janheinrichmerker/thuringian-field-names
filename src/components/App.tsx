@@ -27,13 +27,28 @@ export class App extends Component {
           <Route exact path="/project/archive">
             <Archive />
           </Route>
+          <Route exact path="/project/data">
+            TODO
+          </Route>
+          <Route exact path="/project/partners">
+            TODO
+          </Route>
           <Route exact path="/login">
             <User />
           </Route>
           <Route exact path="/signup">
             <User />
           </Route>
+          <Route exact path="/search">
+            TODO Empty search.
+          </Route>
           <Route path="/search/:query" component={Search} />
+          <Route exact path="/imprint">
+            TODO
+          </Route>
+          <Route exact path="/privacy">
+            TODO
+          </Route>
           <Route>
             <UnknownRoute />
           </Route>
