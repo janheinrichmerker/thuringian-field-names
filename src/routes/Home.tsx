@@ -43,6 +43,19 @@ class ConnectedHome extends Component<ConnectedProps<typeof connector>> {
   render() {
     return (
       <Container>
+        <Jumbotron>
+          <h1>
+            <FormattedMessage id="project.title" />
+          </h1>
+          <p>
+            <FormattedMessage id="project.shortDescription" />
+          </p>
+          <p>
+            <LinkContainer to="/project">
+              <Button variant="primary">Learn more</Button>
+            </LinkContainer>
+          </p>
+        </Jumbotron>
         <Row>
           <Col>
             {this.props.loading ? (
