@@ -22,11 +22,15 @@ export class FeaturedFieldName extends Component<{
       <Card key={this.props.snippet.id}>
         <Card.Body>
           <Card.Title>{this.props.snippet.title}</Card.Title>
-          <Card.Subtitle className="mb-2 text-muted">
-            Last updated{" "}
-            <FormattedDate value={this.props.snippet.creation.date} />.
+          <Card.Subtitle className="mb-2">
+            {this.typeToString(this.props.snippet.type)}
           </Card.Subtitle>
-          <Card.Text>{this.typeToString(this.props.snippet.type)}</Card.Text>
+          <Card.Text className="text-muted">
+            GND: {this.props.snippet.gndNumber}
+            <br />
+            Last updated{" "}
+            <FormattedDate value={this.props.snippet.creation.date} />
+          </Card.Text>
           <LinkContainer to={`/details/${this.props.snippet.id}`}>
             <Card.Link>Details</Card.Link>
           </LinkContainer>
