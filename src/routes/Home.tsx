@@ -1,5 +1,5 @@
 import { Component, Fragment } from "react";
-import { Container, Row, Col, Alert, Jumbotron, Button } from "react-bootstrap";
+import { Container, Row, Col, Alert } from "react-bootstrap";
 import { connect, ConnectedProps } from "react-redux";
 import { AppDispatch, RootState } from "../store";
 import {
@@ -9,8 +9,7 @@ import {
   selectFeaturedError,
 } from "../store/featured";
 import { ApiErrorAlert } from "../components/ApiErrorAlert";
-import { FormattedMessage } from "react-intl";
-import { LinkContainer } from "react-router-bootstrap";
+import { ProjectBanner } from "../components/ProjectBanner";
 
 class ConnectedHome extends Component<ConnectedProps<typeof connector>> {
   componentDidMount() {
@@ -43,21 +42,10 @@ class ConnectedHome extends Component<ConnectedProps<typeof connector>> {
   render() {
     return (
       <Container>
-        <Jumbotron>
-          <h1>
-            <FormattedMessage id="project.title" />
-          </h1>
-          <p>
-            <FormattedMessage id="project.shortDescription" />
-          </p>
-          <p>
-            <LinkContainer to="/project">
-              <Button variant="primary">Learn more</Button>
-            </LinkContainer>
-          </p>
-        </Jumbotron>
+        <ProjectBanner />
         <Row>
           <Col>
+            <h2>Featured field names</h2>
             {this.props.loading ? (
               this.renderLoading()
             ) : this.props.error ? (
