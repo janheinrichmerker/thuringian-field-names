@@ -3,9 +3,6 @@ import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import "./AppNav.scss";
 import { v4 as uuid } from "uuid";
-import { connect, ConnectedProps } from "react-redux";
-import { logout, selectUsersActive } from "../store/users";
-import { AppDispatch, RootState } from "../store";
 import { SearchForm } from "./forms/SearchForm";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import {
@@ -13,47 +10,12 @@ import {
   injectIntl,
   WrappedComponentProps,
 } from "react-intl";
+import { LoginNav } from "./LoginNav";
 
 class ConnectedAppNav extends Component<
-  WrappedComponentProps & RouteComponentProps & ConnectedProps<typeof connector>
+  WrappedComponentProps & RouteComponentProps
 > {
   private id = uuid();
-
-  renderLogin() {
-    const user = this.props.user;
-    if (user) {
-      return (
-        <Nav>
-          <NavDropdown title={user.name} id={`${this.id}-dropdown-user`}>
-            <LinkContainer to="/submit" exact>
-              <NavDropdown.Item>
-                <FormattedMessage id="app.nav.submitFieldName" />
-              </NavDropdown.Item>
-            </LinkContainer>
-            <NavDropdown.Divider />
-            <NavDropdown.Item onClick={this.props.logout}>
-              <FormattedMessage id="app.nav.signOut" />
-            </NavDropdown.Item>
-          </NavDropdown>
-        </Nav>
-      );
-    } else {
-      return (
-        <Nav>
-          <LinkContainer to="/login" exact>
-            <Nav.Link>
-              <FormattedMessage id="app.nav.signIn" />
-            </Nav.Link>
-          </LinkContainer>
-          <LinkContainer to="/signup" exact>
-            <Nav.Link>
-              <FormattedMessage id="app.nav.signUp" />
-            </Nav.Link>
-          </LinkContainer>
-        </Nav>
-      );
-    }
-  }
 
   render() {
     return (
@@ -110,25 +72,16 @@ class ConnectedAppNav extends Component<
               </LinkContainer>
             </Nav>
             <SearchForm handleSearch={this.search.bind(this)} />
-            {this.renderLogin()}
+            <LoginNav />
           </Navbar.Collapse>
         </Container>
       </Navbar>
     );
   }
 
-  search(query: string) {
+  private search(query: string) {
     this.props.history.push(`/search/${query}`);
   }
 }
 
-const connector = connect(
-  (state: RootState) => ({
-    user: selectUsersActive(state),
-  }),
-  (dispatch: AppDispatch) => ({
-    logout: () => dispatch(logout()),
-  })
-);
-
-export const AppNav = connector(withRouter(injectIntl(ConnectedAppNav)));
+export const AppNav = withRouter(injectIntl(ConnectedAppNav));
