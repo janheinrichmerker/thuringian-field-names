@@ -1,6 +1,14 @@
 // Re-export components to simplify importing.
 export { ApiErrorAlert, LoadingAlert } from "./alerts";
 export { App, AppFooter, AppNav } from "./app";
+export {
+  FormattedFieldNameType,
+  FormattedGeoCoordinate,
+  FormattedGeoCoordinates,
+  FormattedGeoLatitude,
+  FormattedGeoLongitude,
+  FormattedLicense,
+} from "./format";
 export { SearchForm, SignInForm, SignUpForm } from "./forms";
 export { GndLink, GndLinkContainer, GndOverlay } from "./gnd";
 export {
@@ -24,12 +32,6 @@ export { FeaturedFieldNames } from "./FeaturedFieldNames";
 export { FeaturedTeaser } from "./FeaturedTeaser";
 export { FieldNameDetailsTable } from "./FieldNameDetailsTable";
 export { FieldNameHighlight } from "./FieldNameHighlight";
-export { FormattedFieldNameType } from "./FormattedFieldNameType";
-export { FormattedGeoCoordinate } from "./FormattedGeoCoordinate";
-export { FormattedGeoCoordinates } from "./FormattedGeoCoordinates";
-export { FormattedGeoLatitude } from "./FormattedGeoLatitude";
-export { FormattedGeoLongitude } from "./FormattedGeoLongitude";
-export { FormattedLicense } from "./FormattedLicense";
 export { LoginNav } from "./LoginNav";
 export { ProjectBanner } from "./ProjectBanner";
 export { SearchSnippet } from "./SearchSnippet";

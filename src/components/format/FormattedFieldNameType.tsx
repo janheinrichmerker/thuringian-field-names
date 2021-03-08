@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { FormattedMessage } from "react-intl";
-import { FieldNameType } from "../model";
+import { FieldNameType } from "../../model";
 
 export class FormattedFieldNameType extends Component<{
   type: FieldNameType;

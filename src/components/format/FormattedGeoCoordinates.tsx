@@ -1,7 +1,6 @@
 import { Component, Fragment } from "react";
-import { GeoCoordinates } from "../model";
-import { FormattedGeoLatitude } from ".";
-import { FormattedGeoLongitude } from ".";
+import { GeoCoordinates } from "../../model";
+import { FormattedGeoLatitude, FormattedGeoLongitude } from ".";
 
 export class FormattedGeoCoordinates extends Component<{
   coordinates: GeoCoordinates;

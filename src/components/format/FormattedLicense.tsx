@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { FormattedMessage } from "react-intl";
-import { License } from "../model";
+import { License } from "../../model";
 
 export class FormattedLicense extends Component<{
   license: License;

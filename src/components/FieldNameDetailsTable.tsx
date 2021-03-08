@@ -2,9 +2,12 @@ import { Component, Fragment } from "react";
 import { Table } from "react-bootstrap";
 import { FormattedDate } from "react-intl";
 import { FieldName } from "../model";
-import { FormattedFieldNameType, GndLink } from ".";
-import { FormattedLicense } from "./FormattedLicense";
-import { FormattedGeoCoordinates } from "./FormattedGeoCoordinates";
+import {
+  FormattedFieldNameType,
+  GndLink,
+  FormattedLicense,
+  FormattedGeoCoordinates,
+} from ".";
 
 export class FieldNameDetailsTable extends Component<{
   fieldName: FieldName;
