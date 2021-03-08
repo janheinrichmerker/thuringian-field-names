@@ -1,25 +1,164 @@
 export interface WrappedSearchResponse {
-  "response": SearchResponse;
+  response: SearchResponse;
 }
 
 export interface SearchResponse {
-  "numFound": number;
-  "start": number;
-  "docs": Array<SearchDocument>;
+  numFound: number;
+  start: number;
+  docs: Array<SearchDocument>;
 }
 
 export interface SearchDocument {
-  "id": string;
-  "title": Array<string>;
-  "modified": Date;
-  "modifiedby": string;
-  "createdby": Array<string>;
-  "created": Date;
+  id: string;
+  title: Array<string>;
+  modified: Date;
+  modifiedby: string;
+  createdby: Array<string>;
+  created: Date;
   "cbuUnitTypes.actual": CbuUnitType;
-  "place.type.gnd": Array<string>
+  "place.type.gnd": Array<string>;
 }
 
 export enum CbuUnitType {
   Marking = "33.0", // Gemarkungen
   Map = "33.1", // Flurkarten
+}
+
+export interface WrappedMyCoreObject {
+  mycoreobject: MyCoreObject;
+}
+
+export interface MyCoreObject {
+  metadata: Array<MyCoreMetadata>;
+  service: Array<MyCoreService>;
+  attributes: MyCoreObjectAttributes;
+}
+
+export interface MyCoreObjectAttributes {
+  ID: string;
+}
+
+export interface MyCoreMetadata {
+  "def.typeOfUnit": Array<MyCoreTypeOfUnitDef>;
+  "def.title": Array<MyCoreTitleDef>;
+  "def.place": Array<MyCorePlaceDef>;
+  "def.coordinates": Array<MyCoreCoordinatesDef>;
+  "def.license": Array<MyCoreLicenseDef>;
+}
+
+export interface MyCoreTypeOfUnitDef {
+  typeOfUnit: Array<MyCoreTypeOfUnit>;
+}
+
+export interface MyCoreTypeOfUnit {
+  attributes: MyCoreTypeOfUnitAttributes;
+}
+
+export interface MyCoreTypeOfUnitAttributes {
+  categid: MyCoreTypeOfUnitCategory;
+}
+
+type MyCoreTypeOfUnitCategory = CbuUnitType;
+
+export interface MyCoreTitleDef {
+  title: Array<MyCoreTitle>;
+}
+
+export interface MyCoreTitle {
+  attributes: MyCoreTypeOfUnitAttributes;
+  content: string;
+}
+
+export interface MyCoreTitleAttributes {
+  type: "district"; // TODO which types possible
+}
+
+export interface MyCorePlaceDef {
+  place: Array<MyCorePlace>;
+}
+
+export interface MyCorePlace {
+  attributes: MyCorePlaceAttributes;
+  content: string;
+}
+
+export interface MyCorePlaceAttributes {
+  type: "gnd"; // TODO which types possible
+}
+
+export interface MyCoreCoordinatesDef {
+  coordinates: Array<MyCoreCoordinates>;
+}
+
+export interface MyCoreCoordinates {
+  content: string;
+  attributes: MyCoreCoordinatesAttributes;
+}
+
+export interface MyCoreCoordinatesAttributes {
+  type: MyCoreCoordinatesType;
+}
+
+export enum MyCoreCoordinatesType {
+  West = "west",
+  East = "east",
+  North = "north",
+  South = "south",
+}
+
+export interface MyCoreLicenseDef {
+  license: Array<MyCoreLicense>;
+}
+
+export interface MyCoreLicense {
+  attributes: MyCoreLicenseAttributes;
+}
+
+export interface MyCoreLicenseAttributes {
+  categid: MyCoreLicenseType;
+}
+
+export enum MyCoreLicenseType {
+  CcByNcSa40 = "cc_by-nc-sa_4.0",
+}
+
+export interface MyCoreService {
+  servdates: Array<MyCoreServiceDates>;
+  servflags: Array<MyCoreServiceFlags>;
+}
+
+export interface MyCoreServiceDates {
+  servdate: Array<MyCoreServiceDate>;
+}
+
+export interface MyCoreServiceDate {
+  attributes: MyCoreServiceDateAttributes;
+  content: string;
+}
+
+export interface MyCoreServiceDateAttributes {
+  type: MyCoreServiceDateType;
+}
+
+export enum MyCoreServiceDateType {
+  Creation = "createdate",
+  LastModification = "modifydate",
+}
+
+export interface MyCoreServiceFlags {
+  servflag: Array<MyCoreServiceFlag>;
+}
+
+export interface MyCoreServiceFlag {
+  attributes: MyCoreServiceFlagAttributes;
+  content: string;
+}
+
+export interface MyCoreServiceFlagAttributes {
+  type: MyCoreServiceFlagType;
+}
+
+export enum MyCoreServiceFlagType {
+  Creation = "createdby",
+  LastModification = "modifiedby",
 }
