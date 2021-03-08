@@ -37,3 +37,12 @@ export {
   register,
 } from "./users";
 export type { UserState } from "./users";
+export {
+  detailsReducer,
+  selectDetails,
+  selectDetailsFieldName,
+  selectDetailsError,
+  selectDetailsIsLoading,
+  fetchFieldName,
+} from "./details";
+export type { DetailsState } from "./details";

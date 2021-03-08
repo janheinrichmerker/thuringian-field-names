@@ -34,6 +34,12 @@ export {
   login,
   logout,
   register,
+  detailsReducer,
+  selectDetails,
+  selectDetailsFieldName,
+  selectDetailsError,
+  selectDetailsIsLoading,
+  fetchFieldName,
 } from "./slices";
 export type { RootState } from "./rootReducer";
 export type {
@@ -41,4 +47,5 @@ export type {
   SearchState,
   SettingsState,
   UserState,
+  DetailsState,
 } from "./slices";
