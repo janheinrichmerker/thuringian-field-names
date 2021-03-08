@@ -1,24 +1,19 @@
-import { Component, Fragment } from "react";
+import { Fragment, FunctionComponent } from "react";
 import { FormattedMessage } from "react-intl";
 import { FormattedGeoCoordinate } from ".";
 
-export class FormattedGeoLongitude extends Component<{
+export const FormattedGeoLongitude: FunctionComponent<{
   longitude: number;
-}> {
-  private direction() {
-    if (this.props.longitude >= 0) {
-      return <FormattedMessage id="fieldName.geo.direction.east" />;
-    } else {
-      return <FormattedMessage id="fieldName.geo.direction.west" />;
-    }
-  }
-
-  render() {
-    return (
-      <Fragment>
-        {this.direction()}{" "}
-        <FormattedGeoCoordinate coordinate={this.props.longitude} />
-      </Fragment>
+}> = ({ longitude }) => {
+  const direction =
+    longitude >= 0 ? (
+      <FormattedMessage id="fieldName.geo.direction.east" />
+    ) : (
+      <FormattedMessage id="fieldName.geo.direction.west" />
     );
-  }
-}
+  return (
+    <Fragment>
+      {direction} <FormattedGeoCoordinate coordinate={longitude} />
+    </Fragment>
+  );
+};

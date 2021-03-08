@@ -1,16 +1,14 @@
-import { Component, Fragment } from "react";
+import { Fragment, FunctionComponent } from "react";
 import { GeoCoordinates } from "../../model";
 import { FormattedGeoLatitude, FormattedGeoLongitude } from ".";
 
-export class FormattedGeoCoordinates extends Component<{
+export const FormattedGeoCoordinates: FunctionComponent<{
   coordinates: GeoCoordinates;
-}> {
-  render() {
-    return (
-      <Fragment>
-        <FormattedGeoLatitude latitude={this.props.coordinates.latitude} />,{" "}
-        <FormattedGeoLongitude longitude={this.props.coordinates.longitude} />
-      </Fragment>
-    );
-  }
-}
+}> = ({ coordinates }) => {
+  return (
+    <Fragment>
+      <FormattedGeoLatitude latitude={coordinates.latitude} />,{" "}
+      <FormattedGeoLongitude longitude={coordinates.longitude} />
+    </Fragment>
+  );
+};
