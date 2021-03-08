@@ -12,14 +12,13 @@ export default class FieldNamesApi extends Api {
       },
       responseType: "text",
     });
+
     const wrapped: WrappedMyCoreObject = await parseStringPromise(result.data, {
       attrkey: "attributes",
       charkey: "content",
     });
 
     const fieldName = parseWrappedMyCoreObject(wrapped);
-
-    console.log(fieldName.area);
     return fieldName;
   }
 }
