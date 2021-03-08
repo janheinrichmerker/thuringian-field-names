@@ -91,6 +91,7 @@ class ConnectedAppNav extends Component<
                       <FormattedMessage id="app.nav.fieldNames.culture" />
                     </NavDropdown.Item>
                   </LinkContainer>
+                  <NavDropdown.Divider />
                   <LinkContainer to="/field-names/research" exact>
                     <NavDropdown.Item>
                       <FormattedMessage id="app.nav.fieldNames.research" />
