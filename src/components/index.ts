@@ -22,6 +22,7 @@ export {
 export { FeaturedFieldName } from "./FeaturedFieldName";
 export { FeaturedFieldNames } from "./FeaturedFieldNames";
 export { FeaturedTeaser } from "./FeaturedTeaser";
+export { FieldNameHighlight } from "./FieldNameHighlight";
 export { FormattedFieldNameType } from "./FormattedFieldNameType";
 export { LoginNav } from "./LoginNav";
 export { ProjectBanner } from "./ProjectBanner";
