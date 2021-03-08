@@ -10,9 +10,9 @@ export class FeaturedFieldNames extends Component<{
     return (
       <CardColumns>
         {this.props.snippets.map((snippet) => (
-          <FeaturedFieldName snippet={snippet} />
+          <FeaturedFieldName snippet={snippet} key={snippet.id} />
         ))}
-        <FeaturedTeaser />
+        <FeaturedTeaser key="teaser" />
       </CardColumns>
     );
   }

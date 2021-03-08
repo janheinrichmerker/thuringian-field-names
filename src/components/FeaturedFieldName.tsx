@@ -10,7 +10,7 @@ export class FeaturedFieldName extends Component<{
 }> {
   render() {
     return (
-      <Card key={this.props.snippet.id}>
+      <Card>
         <Card.Body>
           <Card.Title>{this.props.snippet.title}</Card.Title>
           <Card.Subtitle className="mb-2">
