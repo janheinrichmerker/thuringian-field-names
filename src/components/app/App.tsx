@@ -13,6 +13,8 @@ import {
   PrivacyPage,
   DetailsPage,
   SubmitPage,
+  ResearchPage,
+  FieldNamesPage,
   AppNav,
   AppFooter,
 } from "..";
@@ -49,6 +51,22 @@ export class App extends Component {
           <Route path="/partners">
             {/* Short link to project partners page. */}
             <Redirect to="/project/partners" />
+          </Route>
+          <Route exact path="/field-names">
+            <FieldNamesPage />
+          </Route>
+          <Route exact path="/field-names/nature">
+            <FieldNamesPage />
+          </Route>
+          <Route exact path="/field-names/culture">
+            <FieldNamesPage />
+          </Route>
+          <Route exact path="/field-names/research">
+            <ResearchPage />
+          </Route>
+          <Route path="/research">
+            {/* Short link to project partners page. */}
+            <Redirect to="/field-names/research" />
           </Route>
           <Route exact path="/login">
             <UserPage />
