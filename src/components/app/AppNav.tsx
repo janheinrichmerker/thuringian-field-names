@@ -69,6 +69,35 @@ class ConnectedAppNav extends Component<
                   </LinkContainer>
                 </NavDropdown>
               </LinkContainer>
+              <LinkContainer to="/field-names">
+                <NavDropdown
+                  title={this.props.intl.formatMessage({
+                    id: "app.nav.fieldNames",
+                  })}
+                  id={`${this.id}-dropdown-field-names`}
+                >
+                  <LinkContainer to="/field-names" exact>
+                    <NavDropdown.Item>
+                      <FormattedMessage id="app.nav.fieldNames.overview" />
+                    </NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to="/field-names/nature" exact>
+                    <NavDropdown.Item>
+                      <FormattedMessage id="app.nav.fieldNames.nature" />
+                    </NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to="/field-names/culture" exact>
+                    <NavDropdown.Item>
+                      <FormattedMessage id="app.nav.fieldNames.culture" />
+                    </NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to="/field-names/research" exact>
+                    <NavDropdown.Item>
+                      <FormattedMessage id="app.nav.fieldNames.research" />
+                    </NavDropdown.Item>
+                  </LinkContainer>
+                </NavDropdown>
+              </LinkContainer>
             </Nav>
             <SearchForm handleSearch={this.search.bind(this)} />
             <LoginNav />
