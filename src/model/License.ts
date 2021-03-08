@@ -1,4 +1,4 @@
 export enum License {
-  CcByNcSa4,
-  Unknown,
+  CcByNcSa40 = "CC-BY-NC-SA 4.0",
+  Unknown = "unknown",
 }
