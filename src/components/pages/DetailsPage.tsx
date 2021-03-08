@@ -1,5 +1,5 @@
 import { Component, Fragment } from "react";
-import { Container, Row, Col, Alert } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { connect, ConnectedProps } from "react-redux";
 import {
@@ -10,7 +10,7 @@ import {
   selectDetailsFieldName,
   selectDetailsIsLoading,
 } from "../../store";
-import { ApiErrorAlert, LoadingAlert } from "..";
+import { ApiErrorAlert, LoadingAlert, FieldNameDetailsTable } from "..";
 
 interface Parameters {
   id: string;
@@ -42,14 +42,13 @@ class ConnectedDetailsPage extends Component<
               <LoadingAlert />
             ) : this.props.error ? (
               <ApiErrorAlert error={this.props.error} />
-            ) : (
+            ) : this.props.fieldName ? (
               <Fragment>
-                <Alert variant="danger">
-                  {/* TODO Implement component */}
-                  Component for {JSON.stringify(this.props.fieldName)} not yet
-                  developed.
-                </Alert>
+                <h2>{this.props.fieldName.title}</h2>
+                <FieldNameDetailsTable fieldName={this.props.fieldName} />
               </Fragment>
+            ) : (
+              <ApiErrorAlert error="TODO" />
             )}
           </Col>
         </Row>
@@ -71,5 +70,4 @@ const connector = connect(
 
 export const DetailsPage = connector(withRouter(ConnectedDetailsPage));
 
-// TODO Display detailed information about field name.
 // TODO OpenStreetMap overlay.
