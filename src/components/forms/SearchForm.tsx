@@ -1,6 +1,6 @@
-import { Component } from "react";
+import { FunctionComponent, MouseEventHandler } from "react";
 import { Form, InputGroup, Spinner } from "react-bootstrap";
-import { FormikProps, FormikErrors, withFormik } from "formik";
+import { FormikErrors, useFormik } from "formik";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
@@ -14,56 +14,63 @@ interface Values {
   query: string;
 }
 
-class ConnectedSearchForm extends Component<Props & FormikProps<Values>> {
-  renderIcon() {
-    if (this.props.loading) {
-      return (
-        <Spinner as="span" animation="border" role="status" size="sm"></Spinner>
-      );
-    } else {
-      return (
-        <FontAwesomeIcon icon={faSearch} onClick={this.props.submitForm} />
-      );
-    }
-  }
-
-  render() {
-    const { handleSubmit, handleChange, values, errors } = this.props;
+const SearchFormIcon: FunctionComponent<{
+  loading?: boolean;
+  submitForm: MouseEventHandler<SVGSVGElement>;
+}> = ({ loading, submitForm }) => {
+  if (loading) {
     return (
-      <Form inline noValidate onSubmit={handleSubmit}>
-        <InputGroup className="mr-sm-2">
-          <Form.Control
-            type="text"
-            name="query"
-            placeholder="Search..."
-            value={values.query || ""}
-            onChange={handleChange}
-            isInvalid={!!errors.query}
-          />
-          {/* TODO Show tooltip with error message. */}
-          <InputGroup.Append>
-            <InputGroup.Text>{this.renderIcon()}</InputGroup.Text>
-          </InputGroup.Append>
-        </InputGroup>
-      </Form>
+      <Spinner as="span" animation="border" role="status" size="sm"></Spinner>
     );
+  } else {
+    return <FontAwesomeIcon icon={faSearch} onClick={submitForm} />;
   }
-}
+};
 
-const connector = withFormik<Props, Values>({
-  handleSubmit: (values, { props }) => {
-    props.handleSearch(values.query);
-  },
-  validate: (values: Values) => {
-    let errors: FormikErrors<Values> = {};
-    if (!values.query) {
-      errors.query = "Required";
-    }
-    return errors;
-  },
-  mapPropsToValues: (props) => ({
-    query: props.query ?? "",
-  }),
-});
-
-export const SearchForm = connector(ConnectedSearchForm);
+export const SearchForm: FunctionComponent<Props> = ({
+  handleSearch,
+  loading,
+  query,
+}) => {
+  const {
+    handleSubmit,
+    handleChange,
+    values,
+    errors,
+    submitForm,
+  } = useFormik<Values>({
+    initialValues: {
+      query: query ?? "",
+    },
+    validate: (values) => {
+      let errors: FormikErrors<typeof values> = {};
+      if (!values.query) {
+        errors.query = "Required";
+      }
+      return errors;
+    },
+    onSubmit: (values) => {
+      handleSearch(values.query);
+    },
+  });
+  return (
+    <Form inline noValidate onSubmit={handleSubmit}>
+      <InputGroup className="mr-sm-2">
+        <Form.Control
+          type="text"
+          name="query"
+          placeholder="Search..."
+          value={values.query || ""}
+          onChange={handleChange}
+          isInvalid={!!errors.query}
+        />
+        {/* TODO Show tooltip with error message. */}
+        <InputGroup.Append>
+          <InputGroup.Text>
+            <SearchFormIcon loading={loading} submitForm={submitForm} />
+          </InputGroup.Text>
+        </InputGroup.Append>
+      </InputGroup>
+    </Form>
+  );
+};
