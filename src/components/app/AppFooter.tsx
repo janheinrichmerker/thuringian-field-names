@@ -66,6 +66,7 @@ class ConnectedAppFooter extends Component<ConnectedProps<typeof connector>> {
               <Nav.Link
                 href="https://github.com/heinrichreimer/thuringian-field-names/"
                 target="_blank"
+                rel="noreferrer"
               >
                 GitHub
               </Nav.Link>
