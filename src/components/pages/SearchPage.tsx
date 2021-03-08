@@ -19,18 +19,21 @@ interface Parameters {
 class ConnectedSearchPage extends Component<
   RouteComponentProps<Parameters> & ConnectedProps<typeof connector>
 > {
-  componentDidMount() {
+  private update() {
     this.props.search(this.props.match.params.query);
   }
 
-  componentDidUpdate(prevProps: Readonly<ConnectedSearchPage["props"]>) {
+  componentDidMount() {
+    this.update();
+  }
+
+  componentDidUpdate(prevProps: Readonly<this["props"]>) {
     if (this.props.match.params.query !== prevProps.match.params.query) {
-      this.props.search(this.props.match.params.query);
+      this.update();
     }
   }
 
   render() {
-    console.log(this.props.location);
     return (
       <Fragment>
         <Container key={this.props.location.pathname}>
