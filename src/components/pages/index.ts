@@ -2,11 +2,13 @@
 export { ArchivePage } from "./ArchivePage";
 export { DataPage } from "./DataPage";
 export { DetailsPage } from "./DetailsPage";
+export { FieldNamesPage } from "./FieldNamesPage";
 export { HomePage } from "./HomePage";
 export { ImprintPage } from "./ImprintPage";
 export { PartnersPage } from "./PartnersPage";
 export { PrivacyPage } from "./PrivacyPage";
 export { ProjectPage } from "./ProjectPage";
+export { ResearchPage } from "./ResearchPage";
 export { SearchPage } from "./SearchPage";
 export { SubmitPage } from "./SubmitPage";
 export { UnknownPage } from "./UnknownPage";
