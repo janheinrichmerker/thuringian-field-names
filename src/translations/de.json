@@ -25,5 +25,11 @@
   "project.status": "Das Projekt wurde im Juni 2019 begonnen und wird voraussichtlich 2021 abgeschlossen. Die Datenbank wird stetig aktualisiert, befindet sich aber noch im Aufbau.",
   "fieldName.type.map": "Flurkarte",
   "fieldName.type.marking": "Gemarkung",
-  "fieldName.type.unknown": "Unbekannter Typ"
+  "fieldName.type.unknown": "Unbekannter Typ",
+  "fieldName.license.ccByNcSa40": "CC-BY-NC-SA 4.0",
+  "fieldName.license.unknown": "Unbekannte Lizenz",
+  "fieldName.geo.direction.north": "N",
+  "fieldName.geo.direction.south": "S",
+  "fieldName.geo.direction.east": "O",
+  "fieldName.geo.direction.west": "W"
 }

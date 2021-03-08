@@ -25,5 +25,11 @@
   "project.status": "The project was started in June 2019 and is scheduled to finish in 2021. The database is constantly being updated, but yet is under construction.",
   "fieldName.type.map": "Map",
   "fieldName.type.marking": "Marking",
-  "fieldName.type.unknown": "Unknown type"
+  "fieldName.type.unknown": "Unknown type",
+  "fieldName.license.ccByNcSa40": "CC-BY-NC-SA 4.0",
+  "fieldName.license.unknown": "Unknown license",
+  "fieldName.geo.direction.north": "N",
+  "fieldName.geo.direction.south": "S",
+  "fieldName.geo.direction.east": "E",
+  "fieldName.geo.direction.west": "W"
 }
