@@ -33,15 +33,17 @@ export class ArchivePage extends Component {
               Wissenschaft noch für die interessierte Öffentlichkeit gut nutzbar
               – es ist vom Zerfall bedroht und befindet sich in Zettelkästen in
               der Obhut von Frau Dr. Barbara Aehnlich, die seit 2004 die
-              Flurnamenforschung in Jena weiter vorantreibt. Die Belegsammlung
-              des Thüringischen Flurnamenarchivs bildet den Grundstock für eine
-              flächendeckende Sammlung und Auswertung der Thüringer
-              Flurnamenlandschaft. Von dieser ist Aufschluss zu erwarten über
-              die Herkunft und die Motivation der Namen sowie über die
-              dialektgebundene Sprachgeschichte des ostmitteldeutschen Raumes.
-              Ausgehend von diesem Grundstock, dessen Digitalisierung im Projekt
-              vorgenommen wird, soll auch der übrige Flurnamenbestand des
-              Freistaates erfasst und nach vorgegebenen Kriterien geordnet
+              Flurnamenforschung in Jena weiter vorantreibt.
+            </p>
+            <p>
+              Die Belegsammlung des Thüringischen Flurnamenarchivs bildet den
+              Grundstock für eine flächendeckende Sammlung und Auswertung der
+              Thüringer Flurnamenlandschaft. Von dieser ist Aufschluss zu
+              erwarten über die Herkunft und die Motivation der Namen sowie über
+              die dialektgebundene Sprachgeschichte des ostmitteldeutschen
+              Raumes. Ausgehend von diesem Grundstock, dessen Digitalisierung im
+              Projekt vorgenommen wird, soll auch der übrige Flurnamenbestand
+              des Freistaates erfasst und nach vorgegebenen Kriterien geordnet
               werden.
             </p>
           </Col>
