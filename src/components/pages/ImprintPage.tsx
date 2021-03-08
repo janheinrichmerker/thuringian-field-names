@@ -10,7 +10,11 @@ export class ImprintPage extends Component {
           <Col>
             <p>
               Text copyright:{" "}
-              <a href="https://projekte.thulb.uni-jena.de/flurnamen/kontakt/impressum.html">
+              <a
+                href="https://projekte.thulb.uni-jena.de/flurnamen/kontakt/impressum.html"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <FormattedMessage id="project.title.full" />
               </a>
             </p>
