@@ -40,9 +40,7 @@ export const AppNav: FunctionComponent = () => {
             </LinkContainer>
             <LinkContainer to="/project">
               <NavDropdown
-                title={formatMessage({
-                  id: "app.nav.project",
-                })}
+                title={formatMessage({ id: "app.nav.project" })}
                 id={`${id}-dropdown-project`}
               >
                 <LinkContainer to="/project" exact>
@@ -70,9 +68,7 @@ export const AppNav: FunctionComponent = () => {
             </LinkContainer>
             <LinkContainer to="/field-names">
               <NavDropdown
-                title={formatMessage({
-                  id: "app.nav.fieldNames",
-                })}
+                title={formatMessage({ id: "app.nav.fieldNames" })}
                 id={`${id}-dropdown-field-names`}
               >
                 <LinkContainer to="/field-names" exact>
