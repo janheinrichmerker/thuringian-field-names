@@ -1,6 +1,7 @@
 import { Component, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link, RouteComponentProps, withRouter } from "react-router-dom";
+import { FieldNameHighlight } from "../FieldNameHighlight";
 
 class ConnectedFieldNamesPage extends Component<RouteComponentProps> {
   private overviewRef = createRef<HTMLDivElement>();
@@ -74,29 +75,57 @@ class ConnectedFieldNamesPage extends Component<RouteComponentProps> {
             </p>
             <p>
               Dazu zählen Allgemeinbezeichnungen für Geländeteile (
-              <em>In den Talländern</em>), für die allgemeine Gestalt der
-              Grundstücke (<em>Gehren</em>, <em>Haken</em>) oder für ihre
-              natürliche Lage (<em>Im Himmelreich</em>). Auch die Morphologie,
-              also die Geländebeschaffenheit, spielt eine Rolle. Dies betrifft
-              die Gruppe der Berge, Hügel, Bergteile und Hänge, ebene Flächen,
-              Täler und Senken: <em>Auf dem Berge</em>, <em>Am Hange</em>,{" "}
-              <em>Auf dem Plane</em>, <em>Im Loche</em>.
+              <FieldNameHighlight query="Talland TODO">
+                In den Talländern
+              </FieldNameHighlight>
+              ), für die allgemeine Gestalt der Grundstücke (
+              <FieldNameHighlight>Gehren</FieldNameHighlight>,{" "}
+              <FieldNameHighlight>Haken</FieldNameHighlight>) oder für ihre
+              natürliche Lage (
+              <FieldNameHighlight query="Himmelreich TODO">
+                Im Himmelreich
+              </FieldNameHighlight>
+              ). Auch die Morphologie, also die Geländebeschaffenheit, spielt
+              eine Rolle. Dies betrifft die Gruppe der Berge, Hügel, Bergteile
+              und Hänge, ebene Flächen, Täler und Senken:{" "}
+              <FieldNameHighlight query="Berg TODO">
+                Auf dem Berge
+              </FieldNameHighlight>
+              , <FieldNameHighlight query="Hang">Am Hange</FieldNameHighlight>,{" "}
+              <FieldNameHighlight query="Plan TODO">
+                Auf dem Plane
+              </FieldNameHighlight>
+              , <FieldNameHighlight query="Loch">Im Loche</FieldNameHighlight>.
             </p>
             <p>
               Bei den geologisch motivierten Namen werden Art und Beschaffenheit
-              des Bodens thematisiert: <em>Auf dem Melm</em>,{" "}
-              <em>In den Kieswiesen</em>. Gewässerbezeichnungen und
-              Sumpfland-Benennungen wären zum Beispiel <em>Borngarten</em> und{" "}
-              <em>Strut</em>.
+              des Bodens thematisiert:{" "}
+              <FieldNameHighlight query="Melm TODO">
+                Auf dem Melm
+              </FieldNameHighlight>
+              ,{" "}
+              <FieldNameHighlight query="Kieswiese">
+                In den Kieswiesen
+              </FieldNameHighlight>
+              . Gewässerbezeichnungen und Sumpfland-Benennungen wären zum
+              Beispiel <FieldNameHighlight>Borngarten</FieldNameHighlight> und{" "}
+              <FieldNameHighlight>Strut</FieldNameHighlight>.
             </p>
             <p>
               Eine große Rolle spielt die Bodenbedeckung. Bildungen mit dem
               Kollektivsuffix <em>‑icht</em> fallen oftmals in den
-              Motivationsbereich Wald, Busch und Bäume: <em>Weidicht</em>,{" "}
-              <em>Erlicht</em>, <em>Tännigt</em>. Als Bezeichnung für Grasland
-              sind häufig Zusammensetzungen mit <em>‑wiese</em> zu finden. Auch
-              Tierbezeichnungen spiegeln sich häufig in Flurnamen (
-              <em>Fuchslöcher</em>, <em>Wolfsgrube</em>).
+              Motivationsbereich Wald, Busch und Bäume:{" "}
+              <FieldNameHighlight query="TODO">Weidicht</FieldNameHighlight>,{" "}
+              <FieldNameHighlight>Erlicht</FieldNameHighlight>,{" "}
+              <FieldNameHighlight>Tännigt</FieldNameHighlight>. Als Bezeichnung
+              für Grasland sind häufig Zusammensetzungen mit{" "}
+              <FieldNameHighlight query="Wiese">‑wiese</FieldNameHighlight> zu
+              finden. Auch Tierbezeichnungen spiegeln sich häufig in Flurnamen (
+              <FieldNameHighlight query="Fuchsloch">
+                Fuchslöcher
+              </FieldNameHighlight>
+              , <FieldNameHighlight query="TODO">Wolfsgrube</FieldNameHighlight>
+              ).
             </p>
           </Col>
         </Row>
@@ -108,51 +137,119 @@ class ConnectedFieldNamesPage extends Component<RouteComponentProps> {
               Die Kulturnamen weisen im Gegensatz zu den Naturnamen auf die
               kultivierende oder zivilisatorische Tätigkeit des Menschen hin.
               Hierher gehören beispielsweise die Namen von Landrodungen (
-              <em>Rodeländer</em>, <em>Bernsroda</em>), die Bezeichnungen von
-              Nutzland (<em>In den kurzen Äckern</em>, <em>Auf der Trift</em>)
-              oder Flurnamen, welche die besondere Nutzung des Flurstücks, etwa
-              durch den Anbau einer bestimmten Pflanze oder die Viehzucht,
-              beinhalten (<em>Flachsäcker</em>, <em>Am Lämmerberge</em>,{" "}
-              <em>Am Weinberge</em>).
+              <FieldNameHighlight query="TODO">Rodeländer</FieldNameHighlight>,{" "}
+              <FieldNameHighlight>Bernsroda</FieldNameHighlight>), die
+              Bezeichnungen von Nutzland (
+              <FieldNameHighlight query="Acker TODO">
+                In den kurzen Äckern
+              </FieldNameHighlight>
+              ,{" "}
+              <FieldNameHighlight query="Trift TODO">
+                Auf der Trift
+              </FieldNameHighlight>
+              ) oder Flurnamen, welche die besondere Nutzung des Flurstücks,
+              etwa durch den Anbau einer bestimmten Pflanze oder die Viehzucht,
+              beinhalten (<FieldNameHighlight>Flachsäcker</FieldNameHighlight>,{" "}
+              <FieldNameHighlight query="Lämmerberg">
+                Am Lämmerberge
+              </FieldNameHighlight>
+              ,{" "}
+              <FieldNameHighlight query="Weinberg">
+                Am Weinberge
+              </FieldNameHighlight>
+              ).
             </p>
             <p>
               Viele Flurnamen sind mit Zahlen oder Maßeinheiten kombiniert (
-              <em>In den dreizehn Gelengen</em>, <em>Auf der Hufe</em>) oder
-              benennen Sonderland (<em>Gemeindeanger</em>).
+              <FieldNameHighlight query="Dreizehn Gelängen">
+                In den dreizehn Gelengen
+              </FieldNameHighlight>
+              ,{" "}
+              <FieldNameHighlight query="Hufe TODO">
+                Auf der Hufe
+              </FieldNameHighlight>
+              ) oder benennen Sonderland (
+              <FieldNameHighlight>Gemeindeanger</FieldNameHighlight>).
             </p>
             <p>
               Durch den Zusatz von Vor- oder Familiennamen oder Hinweise auf den
               Nutzer lassen sich gleiche oder ähnliche Flurnamen unterscheiden (
-              <em>Auf der Pfarrwiese</em>,<em>Helbings Weingarten</em>);
+              <FieldNameHighlight query="Pfarrwiese">
+                Auf der Pfarrwiese
+              </FieldNameHighlight>
+              , <FieldNameHighlight>Helbings Weingarten</FieldNameHighlight>);
               Siedlungsnamen zeigen die Nähe oder die Zugehörigkeit zur
-              betreffenden Siedlung an (<em>Löberschützer Schläge</em>,
-              <em>Im Orlamünder Ratsholz</em>).
+              betreffenden Siedlung an (
+              <FieldNameHighlight query="TODO">
+                Löberschützer Schläge
+              </FieldNameHighlight>
+              ,{" "}
+              <FieldNameHighlight query="TODO">
+                Im Orlamünder Ratsholz
+              </FieldNameHighlight>
+              ).
             </p>
             <p>
               In den Motivationsbereich „Bauwerke und technische Anlagen“ fallen
               Flurstücke, die nach ihrer Nutzung durch den Menschen, ihrer
               Zugehörigkeit oder nach einer baulichen Anlage benannt wurden (
-              <em>Im Kalkofen</em>, <em>Am Friedhof</em>). In entsprechend
-              genutzten Regionen weisen Flurnamen auf den Abbau von
-              Bodenschätzen hin: <em>In den Silbergruben</em>,{" "}
-              <em>Am Steinbruch</em>.
+              <FieldNameHighlight query="Kalkofen">
+                Im Kalkofen
+              </FieldNameHighlight>
+              ,{" "}
+              <FieldNameHighlight query="Friedhof">
+                Am Friedhof
+              </FieldNameHighlight>
+              ). In entsprechend genutzten Regionen weisen Flurnamen auf den
+              Abbau von Bodenschätzen hin:{" "}
+              <FieldNameHighlight query="Silbergrube">
+                In den Silbergruben
+              </FieldNameHighlight>
+              ,{" "}
+              <FieldNameHighlight query="Steinbruch TODO">
+                Am Steinbruch
+              </FieldNameHighlight>
+              .
             </p>
             <p>
               Bezeichnungen für Verkehrswege und Grenzen werden ebenso in die
-              Benennungen aufgenommen (<em>An der Straße</em>,{" "}
-              <em>Über der Bahn</em>, <em>Hinter der Grenze</em>), wie solche
-              für Bauwerke und Plätze, die mit der Verteidigung des Landes im
-              Zusammenhang stehen (<em>Wartberg</em>, <em>Auf der Burg</em>).
+              Benennungen aufgenommen (
+              <FieldNameHighlight query="Straße TODO">
+                An der Straße
+              </FieldNameHighlight>
+              ,{" "}
+              <FieldNameHighlight query="Bahn TODO">
+                Über der Bahn
+              </FieldNameHighlight>
+              ,{" "}
+              <FieldNameHighlight query="Grenze">
+                Hinter der Grenze
+              </FieldNameHighlight>
+              ), wie solche für Bauwerke und Plätze, die mit der Verteidigung
+              des Landes im Zusammenhang stehen (
+              <FieldNameHighlight>Wartberg</FieldNameHighlight>,{" "}
+              <FieldNameHighlight query="Burg">Auf der Burg</FieldNameHighlight>
+              ).
             </p>
             <p>
-              Ältere Rechtsverhältnisse (<em>Am alten Gericht</em>,{" "}
-              <em>Galgenberg</em>) sowie Religion und Kirche (
-              <em>Am Frauenholze</em>, <em>Im Pfaffenborn</em>) stellen weitere
-              Benennungsmotive dar. Einige Flurnamen weisen einen Bezug zu vor-
-              und frühgeschichtlichen Fundplätzen auf oder sind mit Sagen und
-              Erzählungen verknüpft. Hier ist eine genaue Überprüfung der
-              Befunde und Belege notwendig, da es sonst schnell zu
-              Fehletymologien kommen kann.
+              Ältere Rechtsverhältnisse (
+              <FieldNameHighlight query="Gericht TODO">
+                Am alten Gericht
+              </FieldNameHighlight>
+              , <FieldNameHighlight>Galgenberg</FieldNameHighlight>) sowie
+              Religion und Kirche (
+              <FieldNameHighlight query="Frauenholz">
+                Am Frauenholze
+              </FieldNameHighlight>
+              ,{" "}
+              <FieldNameHighlight query="Pfaffenborn">
+                Im Pfaffenborn
+              </FieldNameHighlight>
+              ) stellen weitere Benennungsmotive dar. Einige Flurnamen weisen
+              einen Bezug zu vor- und frühgeschichtlichen Fundplätzen auf oder
+              sind mit Sagen und Erzählungen verknüpft. Hier ist eine genaue
+              Überprüfung der Befunde und Belege notwendig, da es sonst schnell
+              zu Fehletymologien kommen kann.
             </p>
           </Col>
         </Row>
