@@ -1,22 +1,20 @@
-import { Component } from "react";
+import { FunctionComponent, ReactElement } from "react";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
-export class GndOverlay extends Component<{
+export const GndOverlay: FunctionComponent<{
   gndNumber: string;
-  children: React.ReactElement;
-}> {
-  render() {
-    return (
-      <OverlayTrigger
-        placement="top"
-        overlay={
-          <Tooltip id={`gnd-tooltip-${this.props.gndNumber}`}>
-            Number {this.props.gndNumber} in DNB's Integrated Authority File
-          </Tooltip>
-        }
-      >
-        {this.props.children}
-      </OverlayTrigger>
-    );
-  }
-}
+  children: ReactElement;
+}> = ({ gndNumber, children }) => {
+  return (
+    <OverlayTrigger
+      placement="top"
+      overlay={
+        <Tooltip id={`gnd-tooltip-${gndNumber}`}>
+          Number {gndNumber} in DNB's Integrated Authority File
+        </Tooltip>
+      }
+    >
+      {children}
+    </OverlayTrigger>
+  );
+};
