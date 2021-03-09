@@ -9,7 +9,12 @@ import {
   selectDetailsIsLoading,
   useAppDispatch,
 } from "../../store";
-import { ApiErrorAlert, LoadingAlert, FieldNameDetailsTable } from "..";
+import {
+  ApiErrorAlert,
+  LoadingAlert,
+  FieldNameDetailsTable,
+  AreaMap,
+} from "..";
 
 interface Parameters {
   id: string;
@@ -41,6 +46,7 @@ export const DetailsPage: FunctionComponent = () => {
             <Fragment>
               <h2>{fieldName.title}</h2>
               <FieldNameDetailsTable fieldName={fieldName} />
+              <AreaMap area={fieldName.area} />
             </Fragment>
           ) : (
             <ApiErrorAlert error="TODO" />
