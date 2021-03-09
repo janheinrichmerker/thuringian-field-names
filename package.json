@@ -15,7 +15,7 @@
     "cypress:verify": "cypress verify"
   },
   "dependencies": {
-    "@babel/core": "^7.12.13",
+    "@babel/core": "^7.13.10",
     "@babel/preset-env": "^7.12.13",
     "@cypress/code-coverage": "^3.9.2",
     "@cypress/instrument-cra": "^1.4.0",
