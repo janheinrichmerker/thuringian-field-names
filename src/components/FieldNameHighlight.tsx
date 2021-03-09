@@ -1,17 +1,15 @@
-import { Component } from "react";
+import { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
 
-export class FieldNameHighlight extends Component<{
+export const FieldNameHighlight: FunctionComponent<{
   query?: string;
   children: string;
-}> {
-  render() {
-    const query = this.props.query ?? this.props.children;
-    const path = `/search/${query.replaceAll("-", "")}`;
-    return (
-      <Link to={path}>
-        <em>{this.props.children}</em>
-      </Link>
-    );
-  }
-}
+}> = ({ query, children }) => {
+  const queryOrChild = query ?? children;
+  const path = `/search/${queryOrChild.replaceAll("-", "")}`;
+  return (
+    <Link to={path}>
+      <em>{children}</em>
+    </Link>
+  );
+};

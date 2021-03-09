@@ -1,19 +1,17 @@
-import { Component } from "react";
+import { FunctionComponent } from "react";
 import { CardColumns } from "react-bootstrap";
 import { FieldNameSnippet } from "../model";
 import { FeaturedFieldName, FeaturedTeaser } from ".";
 
-export class FeaturedFieldNames extends Component<{
+export const FeaturedFieldNames: FunctionComponent<{
   snippets: Array<FieldNameSnippet>;
-}> {
-  render() {
-    return (
-      <CardColumns>
-        {this.props.snippets.map((snippet) => (
-          <FeaturedFieldName snippet={snippet} key={snippet.id} />
-        ))}
-        <FeaturedTeaser key="teaser" />
-      </CardColumns>
-    );
-  }
-}
+}> = ({ snippets }) => {
+  return (
+    <CardColumns>
+      {snippets.map((snippet) => (
+        <FeaturedFieldName snippet={snippet} key={snippet.id} />
+      ))}
+      <FeaturedTeaser key="teaser" />
+    </CardColumns>
+  );
+};

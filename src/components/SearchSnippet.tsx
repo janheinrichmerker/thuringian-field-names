@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { FunctionComponent } from "react";
 import { Card } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { FormattedDate } from "react-intl";
@@ -9,36 +9,32 @@ import {
   GndLinkContainer,
 } from "../components";
 
-export class SearchSnippet extends Component<{
+export const SearchSnippet: FunctionComponent<{
   snippet: FieldNameSnippet;
-}> {
-  render() {
-    return (
-      <Card key={this.props.snippet.id}>
-        <Card.Body>
-          <Card.Title>{this.props.snippet.title}</Card.Title>
-          <Card.Subtitle className="mb-2">
-            <FormattedFieldNameType type={this.props.snippet.type} />
-          </Card.Subtitle>
-          <Card.Text className="text-muted">
-            GND number: <GndLink gndNumber={this.props.snippet.gndNumber} />
-            <br />
-            Created <FormattedDate
-              value={this.props.snippet.creation.date}
-            />{" "}
-            by {this.props.snippet.creation.author}, last updated{" "}
-            <FormattedDate value={this.props.snippet.lastModification.date} />{" "}
-            by {this.props.snippet.lastModification.author}
-            <br />
-          </Card.Text>
-          <LinkContainer to={`/details/${this.props.snippet.id}`}>
-            <Card.Link>View details</Card.Link>
-          </LinkContainer>
-          <GndLinkContainer gndNumber={this.props.snippet.gndNumber}>
-            <Card.Link>View in GND</Card.Link>
-          </GndLinkContainer>
-        </Card.Body>
-      </Card>
-    );
-  }
-}
+}> = ({ snippet }) => {
+  return (
+    <Card key={snippet.id}>
+      <Card.Body>
+        <Card.Title>{snippet.title}</Card.Title>
+        <Card.Subtitle className="mb-2">
+          <FormattedFieldNameType type={snippet.type} />
+        </Card.Subtitle>
+        <Card.Text className="text-muted">
+          GND number: <GndLink gndNumber={snippet.gndNumber} />
+          <br />
+          Created <FormattedDate value={snippet.creation.date} /> by{" "}
+          {snippet.creation.author}, last updated{" "}
+          <FormattedDate value={snippet.lastModification.date} /> by{" "}
+          {snippet.lastModification.author}
+          <br />
+        </Card.Text>
+        <LinkContainer to={`/details/${snippet.id}`}>
+          <Card.Link>View details</Card.Link>
+        </LinkContainer>
+        <GndLinkContainer gndNumber={snippet.gndNumber}>
+          <Card.Link>View in GND</Card.Link>
+        </GndLinkContainer>
+      </Card.Body>
+    </Card>
+  );
+};
