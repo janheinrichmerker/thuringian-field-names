@@ -1,4 +1,4 @@
 export interface Modification {
-  date: Date;
+  date: Date; // TODO use serializable value here.
   author: string;
 }
