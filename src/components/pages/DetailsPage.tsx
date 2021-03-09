@@ -1,12 +1,13 @@
 import { Fragment, FunctionComponent, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import {
   fetchFieldName,
   selectDetailsError,
   selectDetailsFieldName,
   selectDetailsIsLoading,
+  useAppDispatch,
 } from "../../store";
 import { ApiErrorAlert, LoadingAlert, FieldNameDetailsTable } from "..";
 
@@ -17,7 +18,7 @@ interface Parameters {
 export const DetailsPage: FunctionComponent = () => {
   const params = useParams<Parameters>();
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const fieldName = useSelector(selectDetailsFieldName);
   const loading = useSelector(selectDetailsIsLoading);

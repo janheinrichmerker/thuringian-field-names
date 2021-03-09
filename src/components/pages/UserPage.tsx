@@ -2,18 +2,19 @@ import { FunctionComponent } from "react";
 import { Container, Row, Col, Card, Nav } from "react-bootstrap";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import {
   login,
   register,
   selectUsersError,
   selectUsersIsActive,
   selectUsersIsLoading,
+  useAppDispatch,
 } from "../../store";
 import { SignInForm, SignUpForm } from "..";
 
 export const UserPage: FunctionComponent = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const isLoggedIn = useSelector(selectUsersIsActive);
   const error = useSelector(selectUsersError);

@@ -1,14 +1,18 @@
 import { FunctionComponent } from "react";
 import { Container, Navbar, Nav, NavDropdown, Col } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { FormattedDisplayName } from "react-intl";
 import { v4 as uuid } from "uuid";
-import { selectSettingsLocale, updateLocale } from "../../store";
+import {
+  selectSettingsLocale,
+  updateLocale,
+  useAppDispatch,
+} from "../../store";
 import "./AppFooter.scss";
 
 const LocaleLink: FunctionComponent<{ locale: string }> = ({ locale }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const currentLocale = useSelector(selectSettingsLocale);
 
   return (

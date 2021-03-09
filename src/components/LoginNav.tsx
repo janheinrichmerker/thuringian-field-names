@@ -1,13 +1,13 @@
 import { FunctionComponent } from "react";
 import { Nav, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { FormattedMessage } from "react-intl";
 import { v4 as uuid } from "uuid";
-import { logout, selectUsersActive } from "../store";
+import { logout, selectUsersActive, useAppDispatch } from "../store";
 
 const LoginNavActive: FunctionComponent = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const user = useSelector(selectUsersActive);
   const id = uuid();
   if (!user) throw Error("Component must only be loaded if user is active.");

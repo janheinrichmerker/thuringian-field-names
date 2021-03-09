@@ -1,12 +1,13 @@
 import { FunctionComponent, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useHistory, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import {
   selectSearchResults,
   selectSearchIsLoading,
   searchFieldNames,
   selectSearchError,
+  useAppDispatch,
 } from "../../store";
 import { SearchForm, ApiErrorAlert, SearchSnippets, LoadingAlert } from "..";
 
@@ -18,7 +19,7 @@ export const SearchPage: FunctionComponent = () => {
   const params = useParams<Parameters>();
   const history = useHistory();
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const results = useSelector(selectSearchResults);
   const loading = useSelector(selectSearchIsLoading);

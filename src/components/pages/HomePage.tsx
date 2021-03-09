@@ -1,11 +1,12 @@
 import { FunctionComponent, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import {
   fetchFeaturedFieldNames,
   selectFeaturedSnippets,
   selectFeaturedIsLoading,
   selectFeaturedError,
+  useAppDispatch,
 } from "../../store";
 import {
   ApiErrorAlert,
@@ -15,7 +16,7 @@ import {
 } from "..";
 
 export const HomePage: FunctionComponent = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const fieldNames = useSelector(selectFeaturedSnippets);
   const loading = useSelector(selectFeaturedIsLoading);
