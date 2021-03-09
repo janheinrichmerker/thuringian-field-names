@@ -17,7 +17,6 @@ const LocaleLink: FunctionComponent<{ locale: string }> = ({ locale }) => {
 
   return (
     <NavDropdown.Item
-      key={locale}
       active={currentLocale === locale}
       onClick={() => dispatch(updateLocale(locale))}
     >
@@ -36,7 +35,7 @@ const LocaleNav: FunctionComponent = () => {
   return (
     <NavDropdown drop="up" title="Language" id={`${id}-dropdown-language`}>
       {locales.map((locale) => (
-        <LocaleLink locale={locale} />
+        <LocaleLink locale={locale} key={locale} />
       ))}
     </NavDropdown>
   );
