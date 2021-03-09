@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 import { Form, Button, Alert, Spinner } from "react-bootstrap";
-import { FormikProps, FormikErrors, useFormik } from "formik";
+import { FormikErrors, useFormik } from "formik";
 
 interface SignUpProps {
   handleRegistration: (name: string, email: string, password: string) => void;
