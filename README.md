@@ -62,6 +62,15 @@ REACT_APP_API_PASSWORD=pass
 The app won't work without specifying API credentials.
 Note that you need to [restart](#run) the development server for changes to take effect.
 
+It is recommended to also specify a [Google Maps API](https://developers.google.com/maps/documentation/javascript) key in the same `.env.local` file (replace `key` with your API key):
+
+```properties
+REACT_APP_GOOGLE_API_KEY=key
+```
+
+You can find instructions [here](https://developers.google.com/maps/gmp-get-started) on how to get an API key.
+If no Google API key is specified, maps will appear greyed-out with development watermarks.
+
 ## License
 
 This project is [MIT licensed](LICENSE), you can use it for whatever you want as long as you mention this repository.
