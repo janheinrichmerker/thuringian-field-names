@@ -1,9 +1,7 @@
-import { Component } from "react";
+import { FunctionComponent, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { connect, ConnectedProps } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
-  AppDispatch,
-  RootState,
   fetchFeaturedFieldNames,
   selectFeaturedSnippets,
   selectFeaturedIsLoading,
@@ -16,41 +14,33 @@ import {
   FeaturedFieldNames,
 } from "..";
 
-class ConnectedHomePage extends Component<ConnectedProps<typeof connector>> {
-  componentDidMount() {
-    this.props.fetchFieldNames();
-  }
+export const HomePage: FunctionComponent = () => {
+  const dispatch = useDispatch();
 
-  render() {
-    return (
-      <Container>
-        <ProjectBanner />
-        <Row>
-          <Col>
-            <h2>Featured field names</h2>
-            {this.props.loading ? (
-              <LoadingAlert />
-            ) : this.props.error ? (
-              <ApiErrorAlert error={this.props.error} />
-            ) : (
-              <FeaturedFieldNames snippets={this.props.fieldNames} />
-            )}
-          </Col>
-        </Row>
-      </Container>
-    );
-  }
-}
+  const fieldNames = useSelector(selectFeaturedSnippets);
+  const loading = useSelector(selectFeaturedIsLoading);
+  const error = useSelector(selectFeaturedError);
 
-const connector = connect(
-  (state: RootState) => ({
-    fieldNames: selectFeaturedSnippets(state),
-    loading: selectFeaturedIsLoading(state),
-    error: selectFeaturedError(state),
-  }),
-  (dispatch: AppDispatch) => ({
-    fetchFieldNames: () => dispatch(fetchFeaturedFieldNames()),
-  })
-);
+  // Fetch featured field names.
+  useEffect(() => {
+    dispatch(fetchFeaturedFieldNames());
+  }, [dispatch]);
 
-export const HomePage = connector(ConnectedHomePage);
+  return (
+    <Container>
+      <ProjectBanner />
+      <Row>
+        <Col>
+          <h2>Featured field names</h2>
+          {loading ? (
+            <LoadingAlert />
+          ) : error ? (
+            <ApiErrorAlert error={error} />
+          ) : (
+            <FeaturedFieldNames snippets={fieldNames} />
+          )}
+        </Col>
+      </Row>
+    </Container>
+  );
+};

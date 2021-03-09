@@ -1,11 +1,9 @@
-import { Component, Fragment } from "react";
+import { Fragment, FunctionComponent, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { RouteComponentProps, withRouter } from "react-router-dom";
-import { connect, ConnectedProps } from "react-redux";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import {
-  AppDispatch,
   fetchFieldName,
-  RootState,
   selectDetailsError,
   selectDetailsFieldName,
   selectDetailsIsLoading,
@@ -16,58 +14,40 @@ interface Parameters {
   id: string;
 }
 
-class ConnectedDetailsPage extends Component<
-  RouteComponentProps<Parameters> & ConnectedProps<typeof connector>
-> {
-  private update() {
-    this.props.fetchFieldName(this.props.match.params.id);
-  }
+export const DetailsPage: FunctionComponent = () => {
+  const params = useParams<Parameters>();
 
-  componentDidMount() {
-    this.update();
-  }
+  const dispatch = useDispatch();
 
-  componentDidUpdate(prevProps: Readonly<this["props"]>) {
-    if (this.props.match.params.id !== prevProps.match.params.id) {
-      this.update();
-    }
-  }
+  const fieldName = useSelector(selectDetailsFieldName);
+  const loading = useSelector(selectDetailsIsLoading);
+  const error = useSelector(selectDetailsError);
 
-  render() {
-    return (
-      <Container>
-        <Row>
-          <Col>
-            {this.props.loading ? (
-              <LoadingAlert />
-            ) : this.props.error ? (
-              <ApiErrorAlert error={this.props.error} />
-            ) : this.props.fieldName ? (
-              <Fragment>
-                <h2>{this.props.fieldName.title}</h2>
-                <FieldNameDetailsTable fieldName={this.props.fieldName} />
-              </Fragment>
-            ) : (
-              <ApiErrorAlert error="TODO" />
-            )}
-          </Col>
-        </Row>
-      </Container>
-    );
-  }
-}
+  // Fetch field name details whenever the ID parameter changes.
+  useEffect(() => {
+    dispatch(fetchFieldName(params.id));
+  }, [dispatch, params.id]);
 
-const connector = connect(
-  (state: RootState) => ({
-    fieldName: selectDetailsFieldName(state),
-    loading: selectDetailsIsLoading(state),
-    error: selectDetailsError(state),
-  }),
-  (dispatch: AppDispatch) => ({
-    fetchFieldName: (id: string) => dispatch(fetchFieldName(id)),
-  })
-);
-
-export const DetailsPage = connector(withRouter(ConnectedDetailsPage));
+  return (
+    <Container>
+      <Row>
+        <Col>
+          {loading ? (
+            <LoadingAlert />
+          ) : error ? (
+            <ApiErrorAlert error={error} />
+          ) : fieldName ? (
+            <Fragment>
+              <h2>{fieldName.title}</h2>
+              <FieldNameDetailsTable fieldName={fieldName} />
+            </Fragment>
+          ) : (
+            <ApiErrorAlert error="TODO" />
+          )}
+        </Col>
+      </Row>
+    </Container>
+  );
+};
 
 // TODO OpenStreetMap overlay.

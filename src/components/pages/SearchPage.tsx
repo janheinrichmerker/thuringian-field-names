@@ -1,10 +1,8 @@
-import { Component, Fragment } from "react";
+import { FunctionComponent, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { RouteComponentProps, withRouter } from "react-router-dom";
-import { connect, ConnectedProps } from "react-redux";
+import { useHistory, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import {
-  AppDispatch,
-  RootState,
   selectSearchResults,
   selectSearchIsLoading,
   searchFieldNames,
@@ -16,81 +14,58 @@ interface Parameters {
   query: string;
 }
 
-class ConnectedSearchPage extends Component<
-  RouteComponentProps<Parameters> & ConnectedProps<typeof connector>
-> {
-  private update() {
-    this.props.search(this.props.match.params.query);
+export const SearchPage: FunctionComponent = () => {
+  const params = useParams<Parameters>();
+  const history = useHistory();
+
+  const dispatch = useDispatch();
+
+  const results = useSelector(selectSearchResults);
+  const loading = useSelector(selectSearchIsLoading);
+  const error = useSelector(selectSearchError);
+
+  // Search field names whenever the query changes.
+  useEffect(() => {
+    dispatch(searchFieldNames(params.query));
+  }, [dispatch, params.query]);
+
+  function search(query: string) {
+    history.push(`/search/${query}`);
   }
 
-  componentDidMount() {
-    this.update();
-  }
-
-  componentDidUpdate(prevProps: Readonly<this["props"]>) {
-    if (this.props.match.params.query !== prevProps.match.params.query) {
-      this.update();
-    }
-  }
-
-  render() {
-    return (
-      <Fragment>
-        <Container key={this.props.location.pathname}>
-          <Row>
-            <Col>
-              <SearchForm
-                handleSearch={this.search.bind(this)}
-                query={this.props.match.params.query}
-              />
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <p>
-                {this.props.results.length} results for{" "}
-                <b>{this.props.match.params.query}</b>.
-              </p>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              {this.props.loading ? (
-                <Row>
-                  <Col>
-                    <LoadingAlert />
-                  </Col>
-                </Row>
-              ) : this.props.error ? (
-                <Row>
-                  <Col>
-                    <ApiErrorAlert error={this.props.error} />
-                  </Col>
-                </Row>
-              ) : (
-                <SearchSnippets snippets={this.props.results} />
-              )}
-            </Col>
-          </Row>
-        </Container>
-      </Fragment>
-    );
-  }
-
-  search(query: string) {
-    this.props.history.push(`/search/${query}`);
-  }
-}
-
-const connector = connect(
-  (state: RootState) => ({
-    results: selectSearchResults(state),
-    loading: selectSearchIsLoading(state),
-    error: selectSearchError(state),
-  }),
-  (dispatch: AppDispatch) => ({
-    search: (query: string) => dispatch(searchFieldNames(query)),
-  })
-);
-
-export const SearchPage = connector(withRouter(ConnectedSearchPage));
+  return (
+    <Container>
+      <Row>
+        <Col>
+          <SearchForm handleSearch={search} query={params.query} />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <p>
+            {results.length} results for <b>{params.query}</b>.
+          </p>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          {loading ? (
+            <Row>
+              <Col>
+                <LoadingAlert />
+              </Col>
+            </Row>
+          ) : error ? (
+            <Row>
+              <Col>
+                <ApiErrorAlert error={error} />
+              </Col>
+            </Row>
+          ) : (
+            <SearchSnippets snippets={results} />
+          )}
+        </Col>
+      </Row>
+    </Container>
+  );
+};
