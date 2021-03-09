@@ -34,21 +34,21 @@ export const App: FunctionComponent = () => {
           <ArchivePage />
         </Route>
         <Route path="/archive">
-          {/* Short link to project archive page. */}
+          {/* Short link. */}
           <Redirect to="/project/archive" />
         </Route>
         <Route exact path="/project/data">
           <DataPage />
         </Route>
         <Route path="/data">
-          {/* Short link to project data page. */}
+          {/* Short link. */}
           <Redirect to="/project/data" />
         </Route>
         <Route exact path="/project/partners">
           <PartnersPage />
         </Route>
         <Route path="/partners">
-          {/* Short link to project partners page. */}
+          {/* Short link. */}
           <Redirect to="/project/partners" />
         </Route>
         <Route exact path="/field-names">
@@ -64,8 +64,15 @@ export const App: FunctionComponent = () => {
           <ResearchPage />
         </Route>
         <Route path="/research">
-          {/* Short link to project partners page. */}
+          {/* Short link. */}
           <Redirect to="/field-names/research" />
+        </Route>
+        <Route exact path="/field-names/submit">
+          <SubmitPage />
+        </Route>
+        <Route path="/submit">
+          {/* Short link. */}
+          <Redirect to="/field-names/submit" />
         </Route>
         <Route exact path="/login">
           <UserPage />
@@ -81,9 +88,6 @@ export const App: FunctionComponent = () => {
         </Route>
         <Route path="/details/:id">
           <DetailsPage />
-        </Route>
-        <Route exact path="/submit">
-          <SubmitPage />
         </Route>
         <Route exact path="/imprint">
           <ImprintPage />

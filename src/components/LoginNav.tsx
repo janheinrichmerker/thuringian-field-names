@@ -19,7 +19,7 @@ const LoginNavActive: FunctionComponent = () => {
       >
         <LinkContainer to="/submit" exact>
           <NavDropdown.Item>
-            <FormattedMessage id="app.nav.submitFieldName" />
+            <FormattedMessage id="app.nav.fieldNames.submit" />
           </NavDropdown.Item>
         </LinkContainer>
         <NavDropdown.Divider />

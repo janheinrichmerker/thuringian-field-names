@@ -92,6 +92,11 @@ export const AppNav: FunctionComponent = () => {
                     <FormattedMessage id="app.nav.fieldNames.research" />
                   </NavDropdown.Item>
                 </LinkContainer>
+                <LinkContainer to="/field-names/submit" exact>
+                  <NavDropdown.Item>
+                    <FormattedMessage id="app.nav.fieldNames.submit" />
+                  </NavDropdown.Item>
+                </LinkContainer>
               </NavDropdown>
             </LinkContainer>
           </Nav>
