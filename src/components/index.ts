@@ -11,6 +11,7 @@ export {
 } from "./format";
 export { SearchForm, SignInForm, SignUpForm } from "./forms";
 export { GndLink, GndLinkContainer, GndOverlay } from "./gnd";
+export { AreaMap, OpenStreetMapLayer } from "./maps";
 export {
   ArchivePage,
   DataPage,
