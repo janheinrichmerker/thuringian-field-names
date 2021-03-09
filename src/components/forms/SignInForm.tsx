@@ -3,7 +3,7 @@ import { Form, Button, Alert, Spinner } from "react-bootstrap";
 import { FormikErrors, useFormik } from "formik";
 
 interface Props {
-  handleLogin: (nameOrEmail: string, password: string) => void;
+  login: (nameOrEmail: string, password: string) => void;
   error?: string;
   loading: boolean;
 }
@@ -24,13 +24,13 @@ const SignInFormLoading: FunctionComponent<{ loading: boolean }> = ({
   if (!loading) return null;
   return (
     <Spinner as="span" animation="border" role="status" size="sm">
-      <span className="sr-only">Loading...</span>
+      <span className="sr-only">Signing in...</span>
     </Spinner>
   );
 };
 
 export const SignInForm: FunctionComponent<Props> = ({
-  handleLogin,
+  login: handleLogin,
   error,
   loading,
 }) => {

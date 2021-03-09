@@ -38,7 +38,7 @@ export const SearchPage: FunctionComponent = () => {
     <Container>
       <Row>
         <Col>
-          <SearchForm handleSearch={search} query={params.query} />
+          <SearchForm search={search} query={params.query} />
         </Col>
       </Row>
       <Row>

@@ -2,13 +2,13 @@ import { FunctionComponent } from "react";
 import { Form, Button, Alert, Spinner } from "react-bootstrap";
 import { FormikErrors, useFormik } from "formik";
 
-interface SignUpProps {
-  handleRegistration: (name: string, email: string, password: string) => void;
+interface Props {
+  register: (name: string, email: string, password: string) => void;
   error?: string;
   loading: boolean;
 }
 
-interface SignUpValues {
+interface Values {
   name: string;
   email: string;
   password: string;
@@ -25,13 +25,13 @@ const SignUpFormLoading: FunctionComponent<{ loading: boolean }> = ({
   if (!loading) return null;
   return (
     <Spinner as="span" animation="border" role="status" size="sm">
-      <span className="sr-only">Loading...</span>
+      <span className="sr-only">Signing up...</span>
     </Spinner>
   );
 };
 
-export const SignUpForm: FunctionComponent<SignUpProps> = ({
-  handleRegistration,
+export const SignUpForm: FunctionComponent<Props> = ({
+  register: handleRegistration,
   error,
   loading,
 }) => {
@@ -41,7 +41,7 @@ export const SignUpForm: FunctionComponent<SignUpProps> = ({
     values,
     touched,
     errors,
-  } = useFormik<SignUpValues>({
+  } = useFormik<Values>({
     initialValues: {
       name: "",
       email: "",

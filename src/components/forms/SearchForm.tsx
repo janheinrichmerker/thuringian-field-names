@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
-  handleSearch: (query: string) => void;
+  search: (query: string) => void;
   loading?: boolean;
   query?: string;
 }
@@ -20,7 +20,9 @@ const SearchFormIcon: FunctionComponent<{
 }> = ({ loading, submitForm }) => {
   if (loading) {
     return (
-      <Spinner as="span" animation="border" role="status" size="sm"></Spinner>
+      <Spinner as="span" animation="border" role="status" size="sm">
+        <span className="sr-only">Searching...</span>
+      </Spinner>
     );
   } else {
     return <FontAwesomeIcon icon={faSearch} onClick={submitForm} />;
@@ -28,7 +30,7 @@ const SearchFormIcon: FunctionComponent<{
 };
 
 export const SearchForm: FunctionComponent<Props> = ({
-  handleSearch,
+  search: handleSearch,
   loading,
   query,
 }) => {

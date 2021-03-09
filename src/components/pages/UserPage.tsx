@@ -49,14 +49,14 @@ export const UserPage: FunctionComponent = () => {
               <Switch>
                 <Route exact path="/login">
                   <SignInForm
-                    handleLogin={handleLogin}
+                    login={handleLogin}
                     error={error}
                     loading={loading}
                   />
                 </Route>
                 <Route exact path="/signup">
                   <SignUpForm
-                    handleRegistration={handleRegister}
+                    register={handleRegister}
                     error={error}
                     loading={loading}
                   />

@@ -100,7 +100,7 @@ export const AppNav: FunctionComponent = () => {
               </NavDropdown>
             </LinkContainer>
           </Nav>
-          <SearchForm handleSearch={search} />
+          <SearchForm search={search} />
           <LoginNav />
         </Navbar.Collapse>
       </Container>
