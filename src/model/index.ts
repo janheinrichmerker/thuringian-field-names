@@ -8,3 +8,4 @@ export { License } from "./License";
 export type { FieldNameSnippet } from "./FieldNameSnippet";
 export type { FieldName } from "./FieldName";
 export type { User } from "./User";
+export type { FieldNameInput } from "./FieldNameInput";
