@@ -4,9 +4,9 @@ import { validate as checkEmail } from "isemail";
 import owasp from "owasp-password-strength-test";
 
 /**
- * Fake users API.
+ * Fake API for user state.
  */
-export default class UsersApi extends Api {
+ export default class UsersApi extends Api {
   private users: Array<User> = [
     {
       name: "test",
