@@ -17,7 +17,7 @@ export default class FieldNamesApi extends Api {
     const filterQuery = [typeQuery, typesQuery].join(" AND ");
     const result = await this.endpoint.get<WrappedSearchResponse>("search", {
       params: {
-        q: query,
+        q: query ?? "*",
         fq: filterQuery,
         wt: "json",
         start,
