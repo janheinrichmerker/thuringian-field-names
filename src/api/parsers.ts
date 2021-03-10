@@ -222,7 +222,7 @@ function parseMyCoreMetadata(
       ? parseMyCoreAreaDef(raw["def.area"][0])
       : undefined,
     utilisation: raw["def.utilisation"]
-      ? parseMyCoreTypeOfUnitDef(raw["def.utilisation"][0])
+      ? parseMyCoreUtilisationDef(raw["def.utilisation"][0])
       : undefined,
     evidence: raw["def.evidence"]
       ? parseMyCoreEvidenceDef(raw["def.evidence"][0])
