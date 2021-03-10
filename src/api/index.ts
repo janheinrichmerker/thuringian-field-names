@@ -19,7 +19,8 @@ export default class Api {
     const logConfig: RequestLogConfig & ResponseLogConfig = {
       prefixText: "API",
       dateFormat: "HH:MM:ss",
-      data: true,
+      data: false,
+      url: true,
     };
     this.endpoint.interceptors.request.use(
       (request) => requestLogger(request, logConfig),
