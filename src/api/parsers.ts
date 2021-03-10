@@ -53,8 +53,8 @@ function parseSearchResponse(raw: SearchResponse): Array<FieldNameSnippet> {
 
 function parseCbuUnitType(raw: CbuUnitType): FieldNameType {
   switch (raw) {
-    case CbuUnitType.Map:
-      return FieldNameType.Map;
+    case CbuUnitType.Card:
+      return FieldNameType.Card;
     case CbuUnitType.Marking:
       return FieldNameType.Marking;
   }

@@ -21,7 +21,7 @@ export interface SearchDocument {
 
 export enum CbuUnitType {
   Marking = "33.0", // Gemarkungen
-  Map = "33.1", // Flurkarten
+  Card = "33.1", // Flurkarten
 }
 
 export interface WrappedMyCoreObject {

@@ -43,8 +43,8 @@ export default class FieldNamesApi extends Api {
     return this.getFieldNames([CbuUnitType.Marking], start, rows);
   }
 
-  async getMaps(start?: number, rows?: number) {
-    return this.getFieldNames([CbuUnitType.Map], start, rows);
+  async getCards(start?: number, rows?: number) {
+    return this.getFieldNames([CbuUnitType.Card], start, rows);
   }
 
   async getFieldName(id: string) {

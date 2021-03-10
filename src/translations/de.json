@@ -23,7 +23,7 @@
   "project.shortDescription": "Digitalisierung und Aufbereitung der Belegsammlung des Thüringischen Flurnamenarchivs der Friedrich-Schiller-Universität Jena. Das Projekt ermöglicht eine weitere Befassung mit den Flurnamen Thüringens, sowohl für Laien als auch Wissenschaftler verschiedenster Bereiche.",
   "project.longDescription": "Das Projekt befasst sich mit der Digitalisierung und Aufbereitung der Belegsammlung des Thüringischen Flurnamenarchivs der Friedrich-Schiller-Universität Jena. Dabei werden die Belegzettel des Archivs digitalisiert und die den Fluren übergeordneten Orte mit der zugehörigen Orts-ID der Gemeinsamen Normdatei (GND) der Deutschen Nationalbibliothek verknüpft. Das Datenmaterial präsentiert die Gemarkungen in OpenStreetMap. Durch die Digitalisierung des Thüringischen Flurnamenarchivs und die Verknüpfung mit GND-Daten wird eine weitere Befassung mit den Flurnamen Thüringens möglich, sowohl für Laien als auch Wissenschaftler verschiedenster Bereiche.",
   "project.status": "Das Projekt wurde im Juni 2019 begonnen und wird voraussichtlich 2021 abgeschlossen. Die Datenbank wird stetig aktualisiert, befindet sich aber noch im Aufbau.",
-  "fieldName.type.map": "Flurkarte",
+  "fieldName.type.card": "Flurkarte",
   "fieldName.type.marking": "Gemarkung",
   "fieldName.type.unknown": "Unbekannter Typ",
   "fieldName.license.ccByNcSa40": "CC-BY-NC-SA 4.0",

@@ -6,8 +6,8 @@ export interface FieldNameTypeMessageDescriptor extends MessageDescriptor {
 }
 
 export function getFieldNameTypeMessageDescriptor(type: FieldNameType) {
-  if (type === FieldNameType.Map) {
-    return { id: "fieldName.type.map" };
+  if (type === FieldNameType.Card) {
+    return { id: "fieldName.type.card" };
   } else if (type === FieldNameType.Marking) {
     return { id: "fieldName.type.marking" };
   } else {

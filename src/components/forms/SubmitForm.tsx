@@ -161,8 +161,7 @@ export const SubmitForm: FunctionComponent<Props> = ({
           as="select"
         >
           <option value="">Choose...</option>
-          {[FieldNameType.Marking, FieldNameType.Map].map((type) => {
-            // FIXME
+          {[FieldNameType.Marking, FieldNameType.Card].map((type) => {
             return (
               <option key={type} value={type} selected={type === values.type}>
                 {formatFieldNameType(intl, type)}
@@ -205,7 +204,6 @@ export const SubmitForm: FunctionComponent<Props> = ({
         >
           <option value="">Choose...</option>
           {[License.CcByNcSa40, License.Unknown].map((license) => {
-            // FIXME
             return (
               <option
                 key={license}
