@@ -1,8 +1,27 @@
 import { FunctionComponent } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Alert } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import { SubmitForm } from "..";
+import { FieldNameInput } from "../../model";
+import {
+  selectSubmitError,
+  selectSubmitIsLoading,
+  selectSubmitSuccess,
+  submit,
+  useAppDispatch,
+} from "../../store";
 
 export const SubmitPage: FunctionComponent = () => {
+  const dispatch = useAppDispatch();
+
+  const success = useSelector(selectSubmitSuccess);
+  const error = useSelector(selectSubmitError);
+  const loading = useSelector(selectSubmitIsLoading);
+
+  function handleSubmit(input: FieldNameInput) {
+    dispatch(submit(input));
+  }
+
   return (
     <Container>
       <Row>
@@ -16,7 +35,14 @@ export const SubmitPage: FunctionComponent = () => {
           </p>
         </Col>
       </Row>
-      <SubmitForm submit={() => {}} loading={false} />
+      {success ? (
+        <Row>
+          <Col>
+            <Alert variant="success">Thank you for your contribution!</Alert>
+          </Col>
+        </Row>
+      ) : undefined}
+      <SubmitForm submit={handleSubmit} loading={loading} error={error} />
     </Container>
   );
 };
