@@ -45,13 +45,4 @@ export default class FieldNamesApi extends Api {
   async getCards(start?: number, rows?: number) {
     return this.getFieldNames([CbuUnitType.Card], start, rows);
   }
-
-  async getFieldName(id: string) {
-    const result = await this.endpoint.get(`objects/${id}`, {
-      headers: {
-        "Content-Type": "application/xml; charset=utf-8",
-      },
-    });
-    return result.data;
-  }
 }
