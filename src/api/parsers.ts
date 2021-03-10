@@ -8,6 +8,9 @@ import {
 } from "../model";
 import {
   CbuUnitType,
+  MyCoreChild,
+  MyCoreChildAttributes,
+  MyCoreChildren,
   MyCoreCoordinates,
   MyCoreCoordinatesAttributes,
   MyCoreCoordinatesDef,
@@ -27,6 +30,7 @@ import {
   MyCoreServiceFlag,
   MyCoreServiceFlags,
   MyCoreServiceFlagType,
+  MyCoreStructure,
   MyCoreTitle,
   MyCoreTitleDef,
   MyCoreTypeOfUnit,
@@ -82,7 +86,24 @@ function parseMyCoreObject(raw: MyCoreObject): FieldName {
     id: raw.attributes.ID,
     ...parseMyCoreMetadata(raw.metadata[0]),
     ...parseMyCoreService(raw.service[0]),
+    childrenIds: parseMyCoreStructure(raw.structure[0]),
   };
+}
+
+function parseMyCoreStructure(raw: MyCoreStructure): Array<string> {
+  return raw.children ? parseMyCoreChildren(raw.children[0]) : [];
+}
+
+function parseMyCoreChildren(raw: MyCoreChildren): Array<string> {
+  return raw.child.map(parseMyCoreChild);
+}
+
+function parseMyCoreChild(raw: MyCoreChild): string {
+  return parseMyCoreChildAttributes(raw.attributes);
+}
+
+function parseMyCoreChildAttributes(raw: MyCoreChildAttributes): string {
+  return raw["xlink:href"];
 }
 
 function parseMyCoreService(
