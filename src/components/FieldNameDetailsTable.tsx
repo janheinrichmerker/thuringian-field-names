@@ -29,6 +29,12 @@ export const FieldNameDetailsTable: FunctionComponent<{
               <GndLink gndNumber={fieldName.gndNumber} />
             </td>
           </tr>
+          {fieldName.region ? (
+            <tr>
+              <th>Region</th>
+              <td>{fieldName.region}</td>
+            </tr>
+          ) : undefined}
           {fieldName.area ? (
             <tr>
               <th>Location</th>
@@ -37,6 +43,18 @@ export const FieldNameDetailsTable: FunctionComponent<{
                 <FormattedGeoCoordinates coordinates={fieldName.area.from} /> to{" "}
                 <FormattedGeoCoordinates coordinates={fieldName.area.to} />
               </td>
+            </tr>
+          ) : undefined}
+          {fieldName.utilisation ? (
+            <tr>
+              <th>Utilisation</th>
+              <td>{fieldName.utilisation}</td>
+            </tr>
+          ) : undefined}
+          {fieldName.evidence ? (
+            <tr>
+              <th>Evidence</th>
+              <td>{fieldName.evidence}</td>
             </tr>
           ) : undefined}
           <tr>
