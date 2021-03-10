@@ -29,6 +29,7 @@ export interface WrappedMyCoreObject {
 }
 
 export interface MyCoreObject {
+  structure: Array<MyCoreStructure>;
   metadata: Array<MyCoreMetadata>;
   service: Array<MyCoreService>;
   attributes: MyCoreObjectAttributes;
@@ -36,6 +37,22 @@ export interface MyCoreObject {
 
 export interface MyCoreObjectAttributes {
   ID: string;
+}
+
+export interface MyCoreStructure {
+  children: Array<MyCoreChildren>;
+}
+
+export interface MyCoreChildren {
+  child: Array<MyCoreChild>;
+}
+
+export interface MyCoreChild {
+  attributes: MyCoreChildAttributes;
+}
+
+export interface MyCoreChildAttributes {
+  "xlink:href": string;
 }
 
 export interface MyCoreMetadata {
