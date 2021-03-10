@@ -308,7 +308,6 @@ export const SubmitForm: FunctionComponent<Props> = ({
           </Form.Group>
         </Form.Row>
       </FormGroup>
-      <pre>{JSON.stringify(values, undefined, 2)}</pre>
       <Button variant="primary" type="submit">
         Submit
         <SubmitFormLoading loading={loading} />
