@@ -8,8 +8,6 @@ export const API_PASSWORD = requireEnv(
   "the backend API password"
 );
 
-export const GOOGLE_API_KEY = process.env["REACT_APP_GOOGLE_API_KEY"];
-
 function requireEnv(key: string, name?: string): string {
   const value = process.env[key];
   if (!value) {
