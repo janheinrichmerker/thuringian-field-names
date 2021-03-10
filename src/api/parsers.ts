@@ -172,11 +172,17 @@ function parseMyCoreMetadata(
   raw: MyCoreMetadata
 ): Pick<FieldName, "type" | "title" | "gndNumber" | "area" | "license"> {
   const licenseDefs = raw["def.license"];
+  const coordinateDefs = raw["def.coordinates"];
+  if (!coordinateDefs) {
+    // FIXME Some field names doesn't contain coordinates.
+    // Example: HisBest_cbu_00080392
+    throw Error(`No coordinates for ${JSON.stringify(raw)}.`);
+  }
   return {
     type: parseMyCoreTypeOfUnitDef(raw["def.typeOfUnit"][0]),
     title: parseMyCoreTitleDef(raw["def.title"][0]),
     gndNumber: parseMyCorePlaceDef(raw["def.place"][0]),
-    area: parseMyCoreCoordinatesDef(raw["def.coordinates"][0]),
+    area: parseMyCoreCoordinatesDef(coordinateDefs[0]),
     license: licenseDefs
       ? parseMyCoreLicenseDef(licenseDefs[0])
       : License.Unknown,
@@ -242,6 +248,9 @@ function parseMyCoreCoordinates(
   const seconds = rawSeconds ? parseInt(rawSeconds) : 0;
   const coordinate =
     direction * (degrees + (1 / 60) * (minutes + (1 / 60) * seconds));
+  if (isNaN(coordinate)) {
+    throw Error(`Unable to parse coordinate ${coordinate} of type ${type}.`);
+  }
   return { type, coordinate };
 }
 
