@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { Fragment, FunctionComponent } from "react";
 import { Card } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { FormattedDate } from "react-intl";
@@ -20,8 +20,12 @@ export const SearchSnippet: FunctionComponent<{
           <FormattedFieldNameType type={snippet.type} />
         </Card.Subtitle>
         <Card.Text className="text-muted">
-          GND number: <GndLink gndNumber={snippet.gndNumber} />
-          <br />
+          {snippet.gndNumber ? (
+            <Fragment>
+              GND number: <GndLink gndNumber={snippet.gndNumber} />
+              <br />
+            </Fragment>
+          ) : undefined}
           Created <FormattedDate value={snippet.creation.date} /> by{" "}
           {snippet.creation.author}, last updated{" "}
           <FormattedDate value={snippet.lastModification.date} /> by{" "}
@@ -31,9 +35,11 @@ export const SearchSnippet: FunctionComponent<{
         <LinkContainer to={`/details/${snippet.id}`}>
           <Card.Link>View details</Card.Link>
         </LinkContainer>
-        <GndLinkContainer gndNumber={snippet.gndNumber}>
-          <Card.Link>View in GND</Card.Link>
-        </GndLinkContainer>
+        {snippet.gndNumber ? (
+          <GndLinkContainer gndNumber={snippet.gndNumber}>
+            <Card.Link>View in GND</Card.Link>
+          </GndLinkContainer>
+        ) : undefined}
       </Card.Body>
     </Card>
   );

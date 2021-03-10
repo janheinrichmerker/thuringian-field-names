@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { Fragment, FunctionComponent } from "react";
 import { Card } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { FormattedDate } from "react-intl";
@@ -16,8 +16,12 @@ export const FeaturedFieldName: FunctionComponent<{
           <FormattedFieldNameType type={snippet.type} />
         </Card.Subtitle>
         <Card.Text className="text-muted">
-          GND number: <GndLink gndNumber={snippet.gndNumber} />
-          <br />
+          {snippet.gndNumber ? (
+            <Fragment>
+              GND number: <GndLink gndNumber={snippet.gndNumber} />
+              <br />
+            </Fragment>
+          ) : undefined}
           Last updated <FormattedDate value={snippet.lastModification.date} />
         </Card.Text>
         <LinkContainer to={`/details/${snippet.id}`}>

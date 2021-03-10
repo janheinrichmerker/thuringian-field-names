@@ -23,12 +23,14 @@ export const FieldNameDetailsTable: FunctionComponent<{
               <FormattedFieldNameType type={fieldName.type} />
             </td>
           </tr>
-          <tr>
-            <th>GND number</th>
-            <td>
-              <GndLink gndNumber={fieldName.gndNumber} />
-            </td>
-          </tr>
+          {fieldName.gndNumber ? (
+            <tr>
+              <th>GND number</th>
+              <td>
+                <GndLink gndNumber={fieldName.gndNumber} />
+              </td>
+            </tr>
+          ) : undefined}
           {fieldName.region ? (
             <tr>
               <th>Region</th>

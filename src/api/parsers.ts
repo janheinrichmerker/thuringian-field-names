@@ -69,7 +69,7 @@ function parseCbuUnitType(raw: CbuUnitType): FieldNameType {
 function parseSearchDocument(raw: SearchDocument): FieldNameSnippet {
   return {
     id: raw.id,
-    gndNumber: raw["place.type.gnd"][0],
+    gndNumber: raw["place.type.gnd"]?.[0],
     title: raw.title[0],
     type: parseCbuUnitType(raw["cbuUnitTypes.actual"]),
     creation: {
@@ -211,7 +211,9 @@ function parseMyCoreMetadata(
   return {
     type: parseMyCoreTypeOfUnitDef(raw["def.typeOfUnit"][0]),
     title: parseMyCoreTitleDef(raw["def.title"][0]),
-    gndNumber: parseMyCorePlaceDef(raw["def.place"][0]),
+    gndNumber: raw["def.place"]
+      ? parseMyCorePlaceDef(raw["def.place"][0])
+      : undefined,
     area: raw["def.coordinates"]
       ? parseMyCoreCoordinatesDef(raw["def.coordinates"][0])
       : undefined,

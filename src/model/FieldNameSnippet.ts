@@ -5,7 +5,7 @@ export interface FieldNameSnippet {
   /**
    * Identification number in DNB's "Gemeinsame Normdatei".
    */
-  gndNumber: string;
+  gndNumber?: string;
   title: string;
   type: FieldNameType;
   creation: Modification;
