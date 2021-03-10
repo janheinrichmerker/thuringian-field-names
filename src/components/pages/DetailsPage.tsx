@@ -46,7 +46,7 @@ export const DetailsPage: FunctionComponent = () => {
             <Fragment>
               <h2>{fieldName.title}</h2>
               <FieldNameDetailsTable fieldName={fieldName} />
-              <AreaMap area={fieldName.area} />
+              {fieldName.area ? <AreaMap area={fieldName.area} /> : undefined}
             </Fragment>
           ) : (
             <ApiErrorAlert error="TODO" />
@@ -56,5 +56,3 @@ export const DetailsPage: FunctionComponent = () => {
     </Container>
   );
 };
-
-// TODO OpenStreetMap overlay.

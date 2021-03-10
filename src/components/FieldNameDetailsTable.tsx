@@ -29,13 +29,16 @@ export const FieldNameDetailsTable: FunctionComponent<{
               <GndLink gndNumber={fieldName.gndNumber} />
             </td>
           </tr>
-          <tr>
-            <th>Location</th>
-            <td>
-              From <FormattedGeoCoordinates coordinates={fieldName.area.from} />{" "}
-              to <FormattedGeoCoordinates coordinates={fieldName.area.to} />
-            </td>
-          </tr>
+          {fieldName.area ? (
+            <tr>
+              <th>Location</th>
+              <td>
+                From{" "}
+                <FormattedGeoCoordinates coordinates={fieldName.area.from} /> to{" "}
+                <FormattedGeoCoordinates coordinates={fieldName.area.to} />
+              </td>
+            </tr>
+          ) : undefined}
           <tr>
             <th>Last updated</th>
             <td>
