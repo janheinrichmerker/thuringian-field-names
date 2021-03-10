@@ -61,6 +61,9 @@ export interface MyCoreMetadata {
   "def.place": Array<MyCorePlaceDef>;
   "def.coordinates": Array<MyCoreCoordinatesDef>;
   "def.license": Array<MyCoreLicenseDef>;
+  "def.area": Array<MyCoreAreaDef>;
+  "def.utilisation": Array<MyCoreUtilisationDef>;
+  "def.evidence": Array<MyCoreEvidenceDef>;
 }
 
 export interface MyCoreTypeOfUnitDef {
@@ -137,6 +140,30 @@ export interface MyCoreLicenseAttributes {
 
 export enum MyCoreLicenseType {
   CcByNcSa40 = "cc_by-nc-sa_4.0",
+}
+
+export interface MyCoreAreaDef {
+  area: Array<MyCoreArea>;
+}
+
+export interface MyCoreArea {
+  content: string;
+}
+
+export interface MyCoreUtilisationDef {
+  utilisation: Array<MyCoreUtilisation>;
+}
+
+export interface MyCoreUtilisation {
+  content: string;
+}
+
+export interface MyCoreEvidenceDef {
+  evidence: Array<MyCoreEvidence>;
+}
+
+export interface MyCoreEvidence {
+  content: string;
 }
 
 export interface MyCoreService {
