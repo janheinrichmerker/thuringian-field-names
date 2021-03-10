@@ -8,6 +8,8 @@ import {
 } from "../model";
 import {
   CbuUnitType,
+  MyCoreArea,
+  MyCoreAreaDef,
   MyCoreChild,
   MyCoreChildAttributes,
   MyCoreChildren,
@@ -15,6 +17,8 @@ import {
   MyCoreCoordinatesAttributes,
   MyCoreCoordinatesDef,
   MyCoreCoordinatesType,
+  MyCoreEvidence,
+  MyCoreEvidenceDef,
   MyCoreLicense,
   MyCoreLicenseAttributes,
   MyCoreLicenseDef,
@@ -35,6 +39,8 @@ import {
   MyCoreTitleDef,
   MyCoreTypeOfUnit,
   MyCoreTypeOfUnitDef,
+  MyCoreUtilisation,
+  MyCoreUtilisationDef,
   SearchDocument,
   SearchResponse,
   WrappedMyCoreObject,
@@ -191,7 +197,17 @@ function parseMyCoreServiceFlag(
 
 function parseMyCoreMetadata(
   raw: MyCoreMetadata
-): Pick<FieldName, "type" | "title" | "gndNumber" | "area" | "license"> {
+): Pick<
+  FieldName,
+  | "type"
+  | "title"
+  | "gndNumber"
+  | "area"
+  | "license"
+  | "region"
+  | "utilisation"
+  | "evidence"
+> {
   return {
     type: parseMyCoreTypeOfUnitDef(raw["def.typeOfUnit"][0]),
     title: parseMyCoreTitleDef(raw["def.title"][0]),
@@ -202,6 +218,15 @@ function parseMyCoreMetadata(
     license: raw["def.license"]
       ? parseMyCoreLicenseDef(raw["def.license"][0])
       : License.Unknown,
+    region: raw["def.area"]
+      ? parseMyCoreAreaDef(raw["def.area"][0])
+      : undefined,
+    utilisation: raw["def.utilisation"]
+      ? parseMyCoreTypeOfUnitDef(raw["def.utilisation"][0])
+      : undefined,
+    evidence: raw["def.evidence"]
+      ? parseMyCoreEvidenceDef(raw["def.evidence"][0])
+      : undefined,
   };
 }
 
@@ -331,4 +356,28 @@ function parseMyCoreLicenseType(raw: MyCoreLicenseType): License {
   } else {
     return License.Unknown;
   }
+}
+
+function parseMyCoreAreaDef(raw: MyCoreAreaDef): string {
+  return parseMyCoreArea(raw.area[0]);
+}
+
+function parseMyCoreArea(raw: MyCoreArea): string {
+  return raw.content;
+}
+
+function parseMyCoreUtilisationDef(raw: MyCoreUtilisationDef): string {
+  return parseMyCoreUtilisation(raw.utilisation[0]);
+}
+
+function parseMyCoreUtilisation(raw: MyCoreUtilisation): string {
+  return raw.content;
+}
+
+function parseMyCoreEvidenceDef(raw: MyCoreEvidenceDef): string {
+  return parseMyCoreEvidence(raw.evidence[0]);
+}
+
+function parseMyCoreEvidence(raw: MyCoreEvidence): string {
+  return raw.content;
 }
