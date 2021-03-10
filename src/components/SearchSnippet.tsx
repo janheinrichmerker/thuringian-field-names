@@ -13,7 +13,7 @@ export const SearchSnippet: FunctionComponent<{
   snippet: FieldNameSnippet;
 }> = ({ snippet }) => {
   return (
-    <Card key={snippet.id}>
+    <Card>
       <Card.Body>
         <Card.Title>{snippet.title}</Card.Title>
         <Card.Subtitle className="mb-2">
