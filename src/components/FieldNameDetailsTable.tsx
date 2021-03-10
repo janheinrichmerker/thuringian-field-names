@@ -8,6 +8,7 @@ import {
   FormattedLicense,
   FormattedGeoCoordinates,
 } from ".";
+import { Link } from "react-router-dom";
 
 export const FieldNameDetailsTable: FunctionComponent<{
   fieldName: FieldName;
@@ -67,6 +68,21 @@ export const FieldNameDetailsTable: FunctionComponent<{
               <FormattedLicense license={fieldName.license} />
             </td>
           </tr>
+          {fieldName.childrenIds.length > 0 ? (
+            <tr>
+              <th>Children</th>
+              <td>
+                {fieldName.childrenIds.map((id, index) => {
+                  const link = <Link to={`/details/${id}`}>{index + 1}</Link>;
+                  if (index > 0) {
+                    return <Fragment>, {link}</Fragment>;
+                  } else {
+                    return link;
+                  }
+                })}
+              </td>
+            </tr>
+          ) : undefined}
         </tbody>
       </Table>
     </Fragment>
