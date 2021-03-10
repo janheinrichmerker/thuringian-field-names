@@ -42,6 +42,12 @@ export {
   selectDetailsError,
   selectDetailsIsLoading,
   fetchFieldName,
+  submitReducer,
+  selectSubmit,
+  selectSubmitSuccess,
+  selectSubmitError,
+  selectSubmitIsLoading,
+  submit,
 } from "./slices";
 export type { RootState } from "./rootReducer";
 export type {
@@ -50,4 +56,5 @@ export type {
   SettingsState,
   UserState,
   DetailsState,
+  SubmitState,
 } from "./slices";
