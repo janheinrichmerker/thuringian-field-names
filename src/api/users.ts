@@ -25,7 +25,7 @@ import owasp from "owasp-password-strength-test";
     if (!user) {
       throw Error("Incorrect username or password.");
     }
-    return user;
+    return user; // TODO Fake delay.
   }
 
   async register(name: string, email: string, password: string): Promise<User> {
@@ -51,6 +51,6 @@ import owasp from "owasp-password-strength-test";
       password: password,
     };
     this.users.push(user);
-    return user;
+    return user; // TODO Fake delay.
   }
 }
