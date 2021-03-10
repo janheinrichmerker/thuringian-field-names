@@ -5,6 +5,6 @@ export interface FieldName extends FieldNameSnippet {
   license: License;
   childrenIds: Array<string>;
   region?: string;
-  utilitisation?: string;
+  utilisation?: string;
   evidence?: string;
 }
