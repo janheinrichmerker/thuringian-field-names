@@ -5,6 +5,7 @@ import { FormikErrors, useFormik } from "formik";
 import { FieldNameInput, FieldNameType, License } from "../../model";
 import { formatFieldNameType, formatLicense } from "../../utils";
 import { AsValues, WithFlattenedGeoArea } from "./utils";
+import { FormattedLicense } from "../format";
 
 interface Props {
   submit: (values: FieldNameInput) => void;
@@ -141,6 +142,9 @@ export const SubmitForm: FunctionComponent<Props> = ({
           isValid={touched.title && !errors.title}
           isInvalid={!!errors.title}
         />
+        <Form.Text className="text-muted">
+          Please stick to the original local spelling.
+        </Form.Text>
         <Form.Control.Feedback type="invalid">
           {errors.title}
         </Form.Control.Feedback>
@@ -171,7 +175,7 @@ export const SubmitForm: FunctionComponent<Props> = ({
         </Form.Control.Feedback>
       </Form.Group>
       <Form.Group>
-        <Form.Label>GND-Number</Form.Label>
+        <Form.Label>GND number</Form.Label>
         <Form.Control
           type="text"
           name="gndNumber"
@@ -180,6 +184,10 @@ export const SubmitForm: FunctionComponent<Props> = ({
           isValid={touched.gndNumber && !errors.gndNumber}
           isInvalid={!!errors.gndNumber}
         />
+        <Form.Text className="text-muted">
+          If the place is already linked in DNB's Integrated Authority File,
+          please specify the GND number here. Otherwise leave it empty.
+        </Form.Text>
         <Form.Control.Feedback type="invalid">
           {errors.gndNumber}
         </Form.Control.Feedback>
@@ -209,6 +217,10 @@ export const SubmitForm: FunctionComponent<Props> = ({
             );
           })}
         </Form.Control>
+        <Form.Text className="text-muted">
+          Under which license do you want to publish your record? We recommend
+          the free <FormattedLicense license={License.CcByNcSa40} /> license.
+        </Form.Text>
         <Form.Control.Feedback type="invalid">
           {errors.license}
         </Form.Control.Feedback>
@@ -216,76 +228,83 @@ export const SubmitForm: FunctionComponent<Props> = ({
       <FormGroup>
         {/* TODO Let users select between defining an area and a single point. */}
         <Form.Label>Coordinates (Area)</Form.Label>
+        <Form.Text className="text-muted" style={{ marginBottom: "1ex" }}>
+          Which place is described by the field name? Please describe the area
+          boundaries as precise as you can. Most GPS devices show you the exact
+          position as latitude and longitude.
+        </Form.Text>
         <Form.Row>
-          <Form.Group as={Col} lg="6">
-            <Form.Label>North-east corner</Form.Label>
-            <Form.Row>
-              <Form.Group as={Col} md="6">
-                <Form.Label>Latitude</Form.Label>
-                <Form.Control
-                  type="number"
-                  name="fromLatitude"
-                  placeholder="Latitude"
-                  value={values.fromLatitude || ""}
-                  onChange={handleChange}
-                  isValid={touched.fromLatitude && !errors.fromLatitude}
-                  isInvalid={!!errors.fromLatitude}
-                />
-                <Form.Control.Feedback type="invalid">
-                  {errors.fromLatitude}
-                </Form.Control.Feedback>
-              </Form.Group>
-              <Form.Group as={Col} md="6">
-                <Form.Label>Longitude</Form.Label>
-                <Form.Control
-                  type="number"
-                  name="fromLongitude"
-                  placeholder="Longitude"
-                  value={values.fromLongitude || ""}
-                  onChange={handleChange}
-                  isValid={touched.fromLongitude && !errors.fromLongitude}
-                  isInvalid={!!errors.fromLongitude}
-                />
-                <Form.Control.Feedback type="invalid">
-                  {errors.fromLongitude}
-                </Form.Control.Feedback>
-              </Form.Group>
-            </Form.Row>
+          <Form.Group as={Col} md="6" lg="3">
+            <Form.Label>North</Form.Label>
+            <Form.Control
+              type="number"
+              name="fromLatitude"
+              placeholder="Latitude"
+              value={values.fromLatitude || ""}
+              onChange={handleChange}
+              isValid={touched.fromLatitude && !errors.fromLatitude}
+              isInvalid={!!errors.fromLatitude}
+            />
+            <Form.Text className="text-muted">
+              Northern boundary latitude.
+            </Form.Text>
+            <Form.Control.Feedback type="invalid">
+              {errors.fromLatitude}
+            </Form.Control.Feedback>
           </Form.Group>
-          <Form.Group as={Col} lg="6">
-            <Form.Label>South-west corner</Form.Label>
-            <Form.Row>
-              <Form.Group as={Col} md="6">
-                <Form.Label>Latitude</Form.Label>
-                <Form.Control
-                  type="number"
-                  name="toLatitude"
-                  placeholder="Latitude"
-                  value={values.toLatitude || ""}
-                  onChange={handleChange}
-                  isValid={touched.toLatitude && !errors.toLatitude}
-                  isInvalid={!!errors.toLatitude}
-                />
-                <Form.Control.Feedback type="invalid">
-                  {errors.toLatitude}
-                </Form.Control.Feedback>
-              </Form.Group>
-              <Form.Group as={Col} md="6">
-                <Form.Label>Longitude</Form.Label>
-                <Form.Control
-                  type="number"
-                  name="toLongitude"
-                  placeholder="Longitude"
-                  value={values.toLongitude || ""}
-                  onChange={handleChange}
-                  isValid={touched.toLongitude && !errors.toLongitude}
-                  isInvalid={!!errors.toLongitude}
-                />
-                <Form.Control.Feedback type="invalid">
-                  {errors.toLongitude}
-                </Form.Control.Feedback>
-              </Form.Group>
-            </Form.Row>
+          <Form.Group as={Col} md="6" lg="3">
+            <Form.Label>East</Form.Label>
+            <Form.Control
+              type="number"
+              name="fromLongitude"
+              placeholder="Longitude"
+              value={values.fromLongitude || ""}
+              onChange={handleChange}
+              isValid={touched.fromLongitude && !errors.fromLongitude}
+              isInvalid={!!errors.fromLongitude}
+            />
+            <Form.Text className="text-muted">
+              Eastern boundary longitude.
+            </Form.Text>
+            <Form.Control.Feedback type="invalid">
+              {errors.fromLongitude}
+            </Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group as={Col} md="6" lg="3">
+            <Form.Label>South</Form.Label>
+            <Form.Control
+              type="number"
+              name="toLatitude"
+              placeholder="Latitude"
+              value={values.toLatitude || ""}
+              onChange={handleChange}
+              isValid={touched.toLatitude && !errors.toLatitude}
+              isInvalid={!!errors.toLatitude}
+            />
+            <Form.Text className="text-muted">
+              Southern boundary latitude.
+            </Form.Text>
+            <Form.Control.Feedback type="invalid">
+              {errors.toLatitude}
+            </Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group as={Col} md="6" lg="3">
+            <Form.Label>West</Form.Label>
+            <Form.Control
+              type="number"
+              name="toLongitude"
+              placeholder="Longitude"
+              value={values.toLongitude || ""}
+              onChange={handleChange}
+              isValid={touched.toLongitude && !errors.toLongitude}
+              isInvalid={!!errors.toLongitude}
+            />
+            <Form.Text className="text-muted">
+              Western boundary longitude.
+            </Form.Text>
+            <Form.Control.Feedback type="invalid">
+              {errors.toLongitude}
+            </Form.Control.Feedback>
           </Form.Group>
         </Form.Row>
       </FormGroup>
