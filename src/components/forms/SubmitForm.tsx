@@ -1,35 +1,18 @@
 import { FunctionComponent } from "react";
 import { Form, Button, Alert, Spinner, Col, FormGroup } from "react-bootstrap";
+import { useIntl } from "react-intl";
 import { FormikErrors, useFormik } from "formik";
-import { FieldName, FieldNameType, License } from "../../model";
-import { FormattedFieldNameType, FormattedLicense } from "../format";
+import { FieldNameInput, FieldNameType, License } from "../../model";
+import { formatFieldNameType, formatLicense } from "../../utils";
+import { AsValues, WithFlattenedGeoArea } from "./utils";
 
 interface Props {
-  submit: (values: FieldNameRequirements) => void;
+  submit: (values: FieldNameInput) => void;
   error?: string;
   loading: boolean;
 }
 
-/**
- * Fields that should be given to submit a new field name to the API.
- */
-type FieldNameRequirements = Pick<FieldName, "title" | "type" | "license"> &
-  Partial<Pick<FieldName, "gndNumber" | "area">>;
-
-interface FlattenedGeoArea {
-  fromLatitude: number;
-  fromLongitude: number;
-  toLatitude: number;
-  toLongitude: number;
-}
-
-/**
- * Replace area property with flattened properties.
- */
-type FieldNameWithFlattenedGeoArea = Omit<FieldNameRequirements, "area"> &
-  FlattenedGeoArea;
-
-type Values = Partial<FieldNameWithFlattenedGeoArea>;
+type Values = AsValues<WithFlattenedGeoArea<FieldNameInput>>;
 
 const SubmitFormError: FunctionComponent<{ error?: string }> = ({ error }) => {
   if (!error) return null;
@@ -56,12 +39,73 @@ function isGndNumber(value: string) {
   }
 }
 
-function isLatitude(latitude: number) {
-  return latitude >= -90 && latitude <= 90;
+function isLatitude(value: string) {
+  try {
+    const latitude = parseInt(value);
+    return latitude >= -90 && latitude <= 90;
+  } catch {
+    return false;
+  }
 }
 
-function isLongitude(longitude: number) {
-  return longitude >= -90 && longitude <= 90;
+function isLongitude(value: string) {
+  try {
+    const longitude = parseInt(value);
+    return longitude >= -90 && longitude <= 90;
+  } catch {
+    return false;
+  }
+}
+
+function validate(values: Values) {
+  let errors: FormikErrors<Values> = {};
+  const title = values.title;
+  if (!title) {
+    errors.title = "Required";
+  } else if (title.length < 10) {
+    errors.title = "Must be at least 10 characters.";
+  }
+  if (!values.type || values.type === "required") {
+    errors.type = "Required";
+  }
+  if (values.gndNumber && !isGndNumber(values.gndNumber)) {
+    errors.gndNumber = "Must only contain numbers and dashes.";
+  }
+  if (!values.license || values.license === "required") {
+    errors.license = "Required";
+  }
+  if (values.fromLatitude && !isLatitude(values.fromLatitude)) {
+    errors.fromLatitude = "Must be from -90 to 90.";
+  }
+  if (values.toLatitude && !isLatitude(values.toLatitude)) {
+    errors.toLatitude = "Must be from -90 to 90.";
+  }
+  if (values.fromLongitude && !isLongitude(values.fromLongitude)) {
+    errors.fromLongitude = "Must be from -180 to 180.";
+  }
+  if (values.toLongitude && !isLongitude(values.toLongitude)) {
+    errors.toLongitude = "Must be from -180 to 180.";
+  }
+  return errors;
+}
+
+function convert(values: Values): FieldNameInput {
+  return {
+    title: values.title!,
+    type: values.type! as FieldNameType,
+    license: values.license! as License,
+    gndNumber: values.gndNumber!,
+    area: {
+      from: {
+        latitude: parseFloat(values.fromLatitude!),
+        longitude: parseFloat(values.fromLongitude!),
+      },
+      to: {
+        latitude: parseFloat(values.toLatitude!),
+        longitude: parseFloat(values.toLongitude!),
+      },
+    },
+  };
 }
 
 export const SubmitForm: FunctionComponent<Props> = ({
@@ -69,34 +113,7 @@ export const SubmitForm: FunctionComponent<Props> = ({
   error,
   loading,
 }) => {
-  function validate(values: Values) {
-    let errors: FormikErrors<Values> = {};
-    if (!values.title) {
-      errors.title = "Required";
-    }
-    if (!values.type) {
-      errors.type = "Required";
-    }
-    if (values.gndNumber && !isGndNumber(values.gndNumber)) {
-      errors.gndNumber = "Must only contain numbers and dashes.";
-    }
-    if (!values.license) {
-      errors.license = "Required";
-    }
-    if (values.fromLatitude && !isLatitude(values.fromLatitude)) {
-      errors.fromLatitude = "Must be from -90 to 90.";
-    }
-    if (values.toLatitude && !isLatitude(values.toLatitude)) {
-      errors.toLatitude = "Must be from -90 to 90.";
-    }
-    if (values.fromLongitude && !isLongitude(values.fromLongitude)) {
-      errors.fromLongitude = "Must be from -180 to 180.";
-    }
-    if (values.toLongitude && !isLongitude(values.toLongitude)) {
-      errors.toLongitude = "Must be from -180 to 180.";
-    }
-    return errors;
-  }
+  const intl = useIntl();
 
   const {
     handleSubmit,
@@ -108,23 +125,7 @@ export const SubmitForm: FunctionComponent<Props> = ({
     initialValues: {},
     validate,
     onSubmit: (values) => {
-      const fieldName: FieldNameRequirements = {
-        title: values.title!,
-        type: values.type!,
-        license: values.license!,
-        gndNumber: values.gndNumber!,
-        area: {
-          from: {
-            latitude: values.fromLatitude!,
-            longitude: values.fromLongitude!,
-          },
-          to: {
-            latitude: values.toLatitude!,
-            longitude: values.toLongitude!,
-          },
-        },
-      };
-      submit(fieldName);
+      submit(convert(values));
     },
   });
   return (
@@ -154,14 +155,13 @@ export const SubmitForm: FunctionComponent<Props> = ({
           isValid={touched.type && !errors.type}
           isInvalid={!!errors.type}
           as="select"
-          defaultValue="undefined"
         >
-          <option value="undefined">Choose...</option>
+          <option value="">Choose...</option>
           {[FieldNameType.Marking, FieldNameType.Map].map((type) => {
             // FIXME
             return (
               <option key={type} value={type} selected={type === values.type}>
-                <FormattedFieldNameType type={type} />
+                {formatFieldNameType(intl, type)}
               </option>
             );
           })}
@@ -194,9 +194,8 @@ export const SubmitForm: FunctionComponent<Props> = ({
           isValid={touched.license && !errors.license}
           isInvalid={!!errors.license}
           as="select"
-          defaultValue="undefined"
         >
-          <option value="undefined">Choose...</option>
+          <option value="">Choose...</option>
           {[License.CcByNcSa40, License.Unknown].map((license) => {
             // FIXME
             return (
@@ -205,7 +204,7 @@ export const SubmitForm: FunctionComponent<Props> = ({
                 value={license}
                 selected={license === values.license}
               >
-                <FormattedLicense license={license} />
+                {formatLicense(intl, license)}
               </option>
             );
           })}
@@ -215,7 +214,8 @@ export const SubmitForm: FunctionComponent<Props> = ({
         </Form.Control.Feedback>
       </Form.Group>
       <FormGroup>
-        <Form.Label>Area</Form.Label>
+        {/* TODO Let users select between defining an area and a single point. */}
+        <Form.Label>Coordinates (Area)</Form.Label>
         <Form.Row>
           <Form.Group as={Col} lg="6">
             <Form.Label>North-east corner</Form.Label>
@@ -224,7 +224,7 @@ export const SubmitForm: FunctionComponent<Props> = ({
                 <Form.Label>Latitude</Form.Label>
                 <Form.Control
                   type="number"
-                  name="northEastLatitude"
+                  name="fromLatitude"
                   placeholder="Latitude"
                   value={values.fromLatitude || ""}
                   onChange={handleChange}
@@ -239,7 +239,7 @@ export const SubmitForm: FunctionComponent<Props> = ({
                 <Form.Label>Longitude</Form.Label>
                 <Form.Control
                   type="number"
-                  name="northEastLongitude"
+                  name="fromLongitude"
                   placeholder="Longitude"
                   value={values.fromLongitude || ""}
                   onChange={handleChange}
@@ -259,7 +259,7 @@ export const SubmitForm: FunctionComponent<Props> = ({
                 <Form.Label>Latitude</Form.Label>
                 <Form.Control
                   type="number"
-                  name="southWestLatitude"
+                  name="toLatitude"
                   placeholder="Latitude"
                   value={values.toLatitude || ""}
                   onChange={handleChange}
@@ -274,7 +274,7 @@ export const SubmitForm: FunctionComponent<Props> = ({
                 <Form.Label>Longitude</Form.Label>
                 <Form.Control
                   type="number"
-                  name="southWestLongitude"
+                  name="toLongitude"
                   placeholder="Longitude"
                   value={values.toLongitude || ""}
                   onChange={handleChange}
