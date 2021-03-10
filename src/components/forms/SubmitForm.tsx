@@ -75,17 +75,17 @@ function validate(values: Values) {
   if (!values.license || values.license === "required") {
     errors.license = "Required";
   }
-  if (values.fromLatitude && !isLatitude(values.fromLatitude)) {
-    errors.fromLatitude = "Must be from -90 to 90.";
+  if (values.north && !isLatitude(values.north)) {
+    errors.north = "Must be from -90 to 90.";
   }
-  if (values.toLatitude && !isLatitude(values.toLatitude)) {
-    errors.toLatitude = "Must be from -90 to 90.";
+  if (values.south && !isLatitude(values.south)) {
+    errors.south = "Must be from -90 to 90.";
   }
-  if (values.fromLongitude && !isLongitude(values.fromLongitude)) {
-    errors.fromLongitude = "Must be from -180 to 180.";
+  if (values.east && !isLongitude(values.east)) {
+    errors.east = "Must be from -180 to 180.";
   }
-  if (values.toLongitude && !isLongitude(values.toLongitude)) {
-    errors.toLongitude = "Must be from -180 to 180.";
+  if (values.west && !isLongitude(values.west)) {
+    errors.west = "Must be from -180 to 180.";
   }
   return errors;
 }
@@ -98,12 +98,12 @@ function convert(values: Values): FieldNameInput {
     gndNumber: values.gndNumber!,
     area: {
       from: {
-        latitude: parseFloat(values.fromLatitude!),
-        longitude: parseFloat(values.fromLongitude!),
+        latitude: parseFloat(values.north!),
+        longitude: parseFloat(values.east!),
       },
       to: {
-        latitude: parseFloat(values.toLatitude!),
-        longitude: parseFloat(values.toLongitude!),
+        latitude: parseFloat(values.south!),
+        longitude: parseFloat(values.west!),
       },
     },
   };
@@ -238,72 +238,72 @@ export const SubmitForm: FunctionComponent<Props> = ({
             <Form.Label>North</Form.Label>
             <Form.Control
               type="number"
-              name="fromLatitude"
+              name="north"
               placeholder="Latitude"
-              value={values.fromLatitude || ""}
+              value={values.north || ""}
               onChange={handleChange}
-              isValid={touched.fromLatitude && !errors.fromLatitude}
-              isInvalid={!!errors.fromLatitude}
+              isValid={touched.north && !errors.north}
+              isInvalid={!!errors.north}
             />
             <Form.Text className="text-muted">
               Northern boundary latitude.
             </Form.Text>
             <Form.Control.Feedback type="invalid">
-              {errors.fromLatitude}
+              {errors.north}
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group as={Col} md="6" lg="3">
             <Form.Label>East</Form.Label>
             <Form.Control
               type="number"
-              name="fromLongitude"
+              name="east"
               placeholder="Longitude"
-              value={values.fromLongitude || ""}
+              value={values.east || ""}
               onChange={handleChange}
-              isValid={touched.fromLongitude && !errors.fromLongitude}
-              isInvalid={!!errors.fromLongitude}
+              isValid={touched.east && !errors.east}
+              isInvalid={!!errors.east}
             />
             <Form.Text className="text-muted">
               Eastern boundary longitude.
             </Form.Text>
             <Form.Control.Feedback type="invalid">
-              {errors.fromLongitude}
+              {errors.east}
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group as={Col} md="6" lg="3">
             <Form.Label>South</Form.Label>
             <Form.Control
               type="number"
-              name="toLatitude"
+              name="south"
               placeholder="Latitude"
-              value={values.toLatitude || ""}
+              value={values.south || ""}
               onChange={handleChange}
-              isValid={touched.toLatitude && !errors.toLatitude}
-              isInvalid={!!errors.toLatitude}
+              isValid={touched.south && !errors.south}
+              isInvalid={!!errors.south}
             />
             <Form.Text className="text-muted">
               Southern boundary latitude.
             </Form.Text>
             <Form.Control.Feedback type="invalid">
-              {errors.toLatitude}
+              {errors.south}
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group as={Col} md="6" lg="3">
             <Form.Label>West</Form.Label>
             <Form.Control
               type="number"
-              name="toLongitude"
+              name="west"
               placeholder="Longitude"
-              value={values.toLongitude || ""}
+              value={values.west || ""}
               onChange={handleChange}
-              isValid={touched.toLongitude && !errors.toLongitude}
-              isInvalid={!!errors.toLongitude}
+              isValid={touched.west && !errors.west}
+              isInvalid={!!errors.west}
             />
             <Form.Text className="text-muted">
               Western boundary longitude.
             </Form.Text>
             <Form.Control.Feedback type="invalid">
-              {errors.toLongitude}
+              {errors.west}
             </Form.Control.Feedback>
           </Form.Group>
         </Form.Row>

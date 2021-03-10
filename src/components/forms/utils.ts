@@ -1,10 +1,15 @@
-import { GeoArea } from "../../model";
+import { GeoArea, GeoCoordinates } from "../../model";
 
-interface FlattenedGeoArea {
-  fromLatitude: number;
-  fromLongitude: number;
-  toLatitude: number;
-  toLongitude: number;
+/**
+ * An areas northern, eastern, southern, and western boundaries.
+ *
+ * We derive properties types from coordinate types.
+ */
+interface GeoAreaBounds {
+  north: GeoCoordinates["latitude"];
+  east: GeoCoordinates["longitude"];
+  south: GeoCoordinates["latitude"];
+  west: GeoCoordinates["longitude"];
 }
 
 /**
@@ -20,7 +25,7 @@ export type WithFlattenedGeoArea<T extends Partial<HasGeoArea>> =
   // Omit original property.
   Omit<T, "area"> &
     // Add flattened properties.
-    (T extends HasGeoArea ? FlattenedGeoArea : Partial<FlattenedGeoArea>);
+    (T extends HasGeoArea ? GeoAreaBounds : Partial<GeoAreaBounds>);
 
 /**
  * Convert all properties to optional strings, but keep names intact.
