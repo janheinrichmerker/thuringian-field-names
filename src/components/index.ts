@@ -37,3 +37,4 @@ export { LoginNav } from "./LoginNav";
 export { ProjectBanner } from "./ProjectBanner";
 export { SearchSnippet } from "./SearchSnippet";
 export { SearchSnippets } from "./SearchSnippets";
+export { UserRestrictedContent } from "./UserRestrictedContent";
