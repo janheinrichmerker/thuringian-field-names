@@ -81,7 +81,7 @@ export const App: FunctionComponent = () => {
           <UserPage />
         </Route>
         <Route exact path="/search">
-          TODO Empty search.
+          <SearchPage />
         </Route>
         <Route path="/search/:query">
           <SearchPage />

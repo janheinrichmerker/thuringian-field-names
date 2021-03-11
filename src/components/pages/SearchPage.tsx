@@ -1,5 +1,5 @@
 import { FunctionComponent, useEffect } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Alert } from "react-bootstrap";
 import { useHistory, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import {
@@ -8,6 +8,7 @@ import {
   searchFieldNames,
   selectSearchError,
   useAppDispatch,
+  emptySearch,
 } from "../../store";
 import { SearchForm, ApiErrorAlert, SearchSnippets, LoadingAlert } from "..";
 
@@ -27,7 +28,11 @@ export const SearchPage: FunctionComponent = () => {
 
   // Search field names whenever the query changes.
   useEffect(() => {
-    dispatch(searchFieldNames(params.query));
+    if (params.query) {
+      dispatch(searchFieldNames(params.query));
+    } else {
+      dispatch(emptySearch());
+    }
   }, [dispatch, params.query]);
 
   function search(query: string) {
@@ -41,32 +46,43 @@ export const SearchPage: FunctionComponent = () => {
           <SearchForm search={search} query={params.query} />
         </Col>
       </Row>
-      <Row>
-        <Col>
-          <p>
-            {results.length} results for <b>{params.query}</b>.
-          </p>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          {loading ? (
-            <Row>
-              <Col>
-                <LoadingAlert />
-              </Col>
-            </Row>
-          ) : error ? (
-            <Row>
-              <Col>
-                <ApiErrorAlert error={error} />
-              </Col>
-            </Row>
-          ) : (
-            <SearchSnippets snippets={results} />
-          )}
-        </Col>
-      </Row>
+      {results.length > 0 ? (
+        <Row style={{ marginTop: "1ex" }}>
+          <Col>
+            <p>
+              Found {results.length} results for <b>{params.query}</b>.
+            </p>
+          </Col>
+        </Row>
+      ) : undefined}
+      <hr />
+      {results.length > 0 ? (
+        <Row>
+          <Col>
+            {loading ? (
+              <Row>
+                <Col>
+                  <LoadingAlert />
+                </Col>
+              </Row>
+            ) : error ? (
+              <Row>
+                <Col>
+                  <ApiErrorAlert error={error} />
+                </Col>
+              </Row>
+            ) : (
+              <SearchSnippets snippets={results} />
+            )}
+          </Col>
+        </Row>
+      ) : (
+        <Row>
+          <Col>
+            <Alert variant="info">Type in your search query above.</Alert>
+          </Col>
+        </Row>
+      )}
     </Container>
   );
 };
