@@ -46,7 +46,9 @@ export const DetailsPage: FunctionComponent = () => {
             <Fragment>
               <h2>{fieldName.title}</h2>
               <FieldNameDetailsTable fieldName={fieldName} />
-              {fieldName.area ? <AreaMap area={fieldName.area} /> : undefined}
+              {fieldName.area ? (
+                <AreaMap area={fieldName.area} label={fieldName.title} />
+              ) : undefined}
             </Fragment>
           ) : (
             <ApiErrorAlert error="TODO" />
