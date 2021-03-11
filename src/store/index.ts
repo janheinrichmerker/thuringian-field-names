@@ -23,6 +23,7 @@ export {
   selectSearchError,
   selectSearchIsLoading,
   searchFieldNames,
+  emptySearch,
   settingsReducer,
   selectSettings,
   selectSettingsLocale,

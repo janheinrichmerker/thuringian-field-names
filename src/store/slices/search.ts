@@ -32,7 +32,14 @@ export const searchFieldNames = createAsyncThunk<
 const slice = createSlice({
   name: "search",
   initialState,
-  reducers: {},
+  reducers: {
+    emptySearch: (state) => {
+      state.query = undefined;
+      state.results = [];
+      state.error = undefined;
+      state.loading = Loading.Idle;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(searchFieldNames.pending, (state) => {
       state.query = undefined;
@@ -50,6 +57,8 @@ const slice = createSlice({
     });
   },
 });
+
+export const { emptySearch } = slice.actions;
 
 export const selectSearch = (state: RootState) => state.search;
 export const selectSearchQuery = createSelector(

@@ -16,6 +16,7 @@ export {
   selectSearchError,
   selectSearchIsLoading,
   searchFieldNames,
+  emptySearch,
 } from "./search";
 export type { SearchState } from "./search";
 export {
