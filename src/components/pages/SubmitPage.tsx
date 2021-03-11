@@ -10,6 +10,7 @@ import {
   submit,
   useAppDispatch,
 } from "../../store";
+import { UserRestrictedContent } from "..";
 
 export const SubmitPage: FunctionComponent = () => {
   const dispatch = useAppDispatch();
@@ -24,25 +25,27 @@ export const SubmitPage: FunctionComponent = () => {
 
   return (
     <Container>
-      <Row>
-        <Col>
-          <h2>Submit a new field name</h2>
-          <p>
-            Using this form, you can contribute to the Thuringian Field Names
-            Archive. If you know a field name and have verified that the field
-            name not yet exists please submit a new name. We will check your
-            contribution and publish it if it meets our quality requirements.
-          </p>
-        </Col>
-      </Row>
-      {success ? (
+      <UserRestrictedContent>
         <Row>
           <Col>
-            <Alert variant="success">Thank you for your contribution!</Alert>
+            <h2>Submit a new field name</h2>
+            <p>
+              Using this form, you can contribute to the Thuringian Field Names
+              Archive. If you know a field name and have verified that the field
+              name not yet exists please submit a new name. We will check your
+              contribution and publish it if it meets our quality requirements.
+            </p>
           </Col>
         </Row>
-      ) : undefined}
-      <SubmitForm submit={handleSubmit} loading={loading} error={error} />
+        {success ? (
+          <Row>
+            <Col>
+              <Alert variant="success">Thank you for your contribution!</Alert>
+            </Col>
+          </Row>
+        ) : undefined}
+        <SubmitForm submit={handleSubmit} loading={loading} error={error} />
+      </UserRestrictedContent>
     </Container>
   );
 };
