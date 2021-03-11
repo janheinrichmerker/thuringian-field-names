@@ -60,7 +60,7 @@ export const SignInForm: FunctionComponent<Props> = ({
       <Form.Group>
         <Form.Label>Email or username</Form.Label>
         <Form.Control
-          type="email"
+          type="text"
           name="nameOrEmail"
           placeholder="john.doe@example.com"
           value={values.nameOrEmail || ""}
