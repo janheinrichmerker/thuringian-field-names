@@ -61,19 +61,19 @@ context("Account", () => {
   it("can switch tabs", () => {
     cy.visit("#/login")
       .get("#root > .container")
-      .within(() => {})
-      .get(".nav.nav-tabs")
       .within(() => {
-        cy.get(".nav-link")
-          .contains(/Sign up/i)
-          .click()
-          .url()
-          .should("match", /#\/signup$/);
-        cy.get(".nav-link")
-          .contains(/Sign in/i)
-          .click()
-          .url()
-          .should("match", /#\/login$/);
+        cy.get(".nav.nav-tabs").within(() => {
+          cy.get(".nav-link")
+            .contains(/Sign up/i)
+            .click()
+            .url()
+            .should("match", /#\/signup$/);
+          cy.get(".nav-link")
+            .contains(/Sign in/i)
+            .click()
+            .url()
+            .should("match", /#\/login$/);
+        });
       });
   });
 
