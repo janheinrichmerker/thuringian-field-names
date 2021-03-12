@@ -2,6 +2,11 @@ import { FunctionComponent } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { FormattedMessage } from "react-intl";
 
+/**
+ * Page component describing the project archive.
+ *
+ * Mounted at `/project/archive`
+ */
 export const ArchivePage: FunctionComponent = () => {
   return (
     <Container>

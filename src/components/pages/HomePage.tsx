@@ -15,6 +15,11 @@ import {
   FeaturedFieldNames,
 } from "..";
 
+/**
+ * Home page component.
+ *
+ * Mounted at `/`.
+ */
 export const HomePage: FunctionComponent = () => {
   const dispatch = useAppDispatch();
 

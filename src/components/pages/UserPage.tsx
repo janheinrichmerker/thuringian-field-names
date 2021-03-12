@@ -13,6 +13,11 @@ import {
 } from "../../store";
 import { SignInForm, SignUpForm } from "..";
 
+/**
+ * Page component for handling login and sign-up.
+ *
+ * Mounted at `/login` and `/signup`.
+ */
 export const UserPage: FunctionComponent = () => {
   const dispatch = useAppDispatch();
 

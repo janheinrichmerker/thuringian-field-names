@@ -3,6 +3,12 @@ import { Container, Row, Col } from "react-bootstrap";
 import { Link, useRouteMatch } from "react-router-dom";
 import { FieldNameHighlight } from "../FieldNameHighlight";
 
+/**
+ * Page component describing field names in general.
+ *
+ * Mounted at `/field-names`, `/field-names/nature`, and `/field-names/culture`.
+ * Auto-scrolls to the section matching the current path.
+ */
 export const FieldNamesPage: FunctionComponent = () => {
   const overviewRef = createRef<HTMLDivElement>();
   const natureRef = createRef<HTMLDivElement>();

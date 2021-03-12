@@ -2,6 +2,9 @@ import { FunctionComponent } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
+/**
+ * Page component if no other page could be found.
+ */
 export const UnknownPage: FunctionComponent = () => {
   return (
     <Container>

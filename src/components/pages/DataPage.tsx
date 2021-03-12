@@ -1,6 +1,11 @@
 import { FunctionComponent } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
+/**
+ * Page component describing the project data.
+ *
+ * Mounted at `/project/data`
+ */
 export const DataPage: FunctionComponent = () => {
   return (
     <Container>

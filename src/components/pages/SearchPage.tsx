@@ -16,6 +16,11 @@ interface Parameters {
   query: string;
 }
 
+/**
+ * Page component describing the field name search.
+ *
+ * Mounted at `/search/:query` where query is the string to search for.
+ */
 export const SearchPage: FunctionComponent = () => {
   const params = useParams<Parameters>();
   const history = useHistory();

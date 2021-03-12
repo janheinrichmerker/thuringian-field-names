@@ -1,6 +1,11 @@
 import { FunctionComponent } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
+/**
+ * Page component describing field name research.
+ *
+ * Mounted at `/field-names/research`.
+ */
 export const ResearchPage: FunctionComponent = () => {
   return (
     <Container>

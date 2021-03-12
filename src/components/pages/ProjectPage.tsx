@@ -3,6 +3,11 @@ import { Container, Row, Col } from "react-bootstrap";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
 
+/**
+ * Page component describing the project overview.
+ *
+ * Mounted at `/project`.
+ */
 export const ProjectPage: FunctionComponent = () => {
   return (
     <Container>

@@ -2,6 +2,12 @@ import { FunctionComponent } from "react";
 import { Container, Row, Col, Alert } from "react-bootstrap";
 import { FormattedMessage } from "react-intl";
 
+/**
+ * Page component describing the imprint.
+ *
+ * Mounted at `/imprint`.
+ * Currently the imprint is just a placeholder.
+ */
 export const ImprintPage: FunctionComponent = () => {
   return (
     <Container>

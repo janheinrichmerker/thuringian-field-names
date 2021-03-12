@@ -20,6 +20,11 @@ interface Parameters {
   id: string;
 }
 
+/**
+ * Page component describing the details of a single field name.
+ *
+ * Mounted at `/details/:id` where `:id` is the field name's unique ID.
+ */
 export const DetailsPage: FunctionComponent = () => {
   const params = useParams<Parameters>();
 

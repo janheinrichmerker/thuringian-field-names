@@ -1,6 +1,11 @@
 import { FunctionComponent } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
+/**
+ * Page component describing the project's partners.
+ *
+ * Mounted at `/project/partners`.
+ */
 export const PartnersPage: FunctionComponent = () => {
   return (
     <Container>

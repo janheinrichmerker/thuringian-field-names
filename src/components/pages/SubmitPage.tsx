@@ -12,6 +12,11 @@ import {
 } from "../../store";
 import { UserRestrictedContent } from "..";
 
+/**
+ * Page component for submitting new field names.
+ *
+ * Mounted at `/field-names/submit`.
+ */
 export const SubmitPage: FunctionComponent = () => {
   const dispatch = useAppDispatch();
 
