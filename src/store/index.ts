@@ -18,7 +18,6 @@ export {
   fetchFeaturedFieldNames,
   searchReducer,
   selectSearch,
-  selectSearchQuery,
   selectSearchResults,
   selectSearchError,
   selectSearchIsLoading,

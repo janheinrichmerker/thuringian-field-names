@@ -13,7 +13,6 @@ export interface SearchState {
   loading: Loading;
   results: Array<FieldNameSnippet>;
   error?: string;
-  query?: string;
 }
 
 const initialState: SearchState = {
@@ -22,11 +21,11 @@ const initialState: SearchState = {
 };
 
 export const searchFieldNames = createAsyncThunk<
-  [string, Array<FieldNameSnippet>],
+  Array<FieldNameSnippet>,
   string
 >("searchFieldNames", async (query) => {
   const fieldNames = await api.searchFieldNames(query);
-  return [query, fieldNames];
+  return fieldNames;
 });
 
 const slice = createSlice({
@@ -34,7 +33,6 @@ const slice = createSlice({
   initialState,
   reducers: {
     emptySearch: (state) => {
-      state.query = undefined;
       state.results = [];
       state.error = undefined;
       state.loading = Loading.Idle;
@@ -42,13 +40,12 @@ const slice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(searchFieldNames.pending, (state) => {
-      state.query = undefined;
       state.results = [];
       state.error = undefined;
       state.loading = Loading.Pending;
     });
     builder.addCase(searchFieldNames.fulfilled, (state, action) => {
-      [state.query, state.results] = action.payload;
+      state.results = action.payload;
       state.loading = Loading.Idle;
     });
     builder.addCase(searchFieldNames.rejected, (state, action) => {
@@ -61,10 +58,6 @@ const slice = createSlice({
 export const { emptySearch } = slice.actions;
 
 export const selectSearch = (state: RootState) => state.search;
-export const selectSearchQuery = createSelector(
-  selectSearch,
-  (state) => state.query
-);
 export const selectSearchResults = createSelector(
   selectSearch,
   (state) => state.results

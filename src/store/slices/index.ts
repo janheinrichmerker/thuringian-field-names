@@ -11,7 +11,6 @@ export type { FeaturedState } from "./featured";
 export {
   searchReducer,
   selectSearch,
-  selectSearchQuery,
   selectSearchResults,
   selectSearchError,
   selectSearchIsLoading,
