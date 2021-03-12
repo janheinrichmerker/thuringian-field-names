@@ -68,7 +68,7 @@ export const PartnersPage: FunctionComponent = () => {
               <dd>Beratung bei DH-relevanten Fragen</dd>
               <dt>
                 <a
-                  href="https://mscj.uni-jena.de"
+                  href="https://mscj.uni-jena.de/"
                   target="_blank"
                   rel="noreferrer"
                 >
