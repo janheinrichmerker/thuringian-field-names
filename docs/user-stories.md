@@ -63,17 +63,18 @@ The result list should be empty and show a information that no results could be 
 
 ### Card from search
 
-**Story:** Having searched for "Hahnengrundweg", I now want to find detailed information about the search result snippet "Hahnengrundweg" with the GND number "7621021-2".
+**Story:** Having searched for "Hahnengrundweg", I now want to find detailed information about the search result snippet "Hahnengrundweg" with the GND number "7621022-4".
 
 **Details:**
-TODO
+The GND number should link to the DNB database entry.
 
 ### Details from URL/ID
 
 **Story:** I've received a [link](http://example.com/details/HisBest_cbu_00038239) to a field name card from a friend, and now want to see detailed information about that.
 
 **Details:**
-TODO
+Details should include the type, GND number, region, location, utilisation, timestamps, the ID, and license.
+A map should be shown.
 
 ### Details missing
 
@@ -89,23 +90,24 @@ An information should be shown that no field name was found for that URL/ID.
 **Story:** Having searched for "Marolterode", I now want to find detailed information about the search result snippet "Marolterode" with the GND number "7740698-9".
 
 **Details:**
-TODO
+The GND number should link to the DNB database entry.
 
 ### Marking from URL/ID
 
 **Story:** I've received a [link](http://example.com/details/HisBest_cbu_00038730) to a field name marking from a friend, and now want to see detailed information about that.
 
 **Details:**
-TODO
+Details should include the type, GND number, TODO, the ID, and license.
+A map should be shown.
 
 ### Marking missing
 
 **Story:** I've accidentially mistyped the [URL](http://example.com/details/Urgh) for a marking detail page.
 
-## Submit
-
 **Details:**
 An information should be shown that no field name was found for that URL/ID.
+
+## Submit
 
 ### Submit logged in
 
