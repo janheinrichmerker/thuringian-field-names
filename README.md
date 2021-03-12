@@ -31,10 +31,10 @@ Now you use the app from [http://localhost:3000](http://localhost:3000) in your 
 
 ### Test
 
-Launch the interactive Cypress test runner:
+Run Cypress tests:
 
 ```shell script
-yarn cypress:open
+yarn test
 ```
 
 For more information, see the [`cypress`](cypress) directory.
