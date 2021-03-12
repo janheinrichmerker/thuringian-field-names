@@ -60,7 +60,7 @@ context("Marking details", () => {
           .contains(/Created/i)
           .siblings("td")
           .within(() => {
-            cy.contains(/May 12, 2019 at 11:05 AM/i).should("have.length", 1);
+            cy.contains(/May 12, 2019/i).should("have.length", 1);
             cy.contains(/arcadmin/i).should("have.length", 1);
           });
         cy.get("th")

@@ -70,7 +70,7 @@ context("Card details", () => {
           .contains(/Created/i)
           .siblings("td")
           .within(() => {
-            cy.contains(/October 11, 2018 at 9:05 AM/i).should(
+            cy.contains(/October 11, 2018/i).should(
               "have.length",
               1
             );
