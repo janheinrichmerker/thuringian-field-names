@@ -10,6 +10,9 @@ import {
   submitReducer,
 } from "./slices";
 
+/**
+ * App root reducer that combines all other reducers/slices.
+ */
 export const rootReducer = combineReducers({
   featured: featuredReducer,
   search: searchReducer,
@@ -19,4 +22,9 @@ export const rootReducer = combineReducers({
   submit: submitReducer,
 });
 
+/**
+ * App root state.
+ * 
+ * The type is inferred from the root reducer.
+ */
 export type RootState = ReturnType<typeof rootReducer>;
