@@ -1,6 +1,9 @@
 import { Fragment, FunctionComponent } from "react";
 import { FormattedNumber } from "react-intl";
 
+/**
+ * Component for displaying a geographical coordinate.
+ */
 export const FormattedGeoCoordinate: FunctionComponent<{
   coordinate: number;
 }> = ({ coordinate }) => {

@@ -3,6 +3,11 @@ import { FormattedMessage } from "react-intl";
 import { License } from "../../model";
 import { getLicenseMessageDescriptor } from "../../utils";
 
+/**
+ * Component for locale-aware displaying a license type.
+ * 
+ * If the license has a public URL, the license name links to that.
+ */
 export const FormattedLicense: FunctionComponent<{
   license: License;
 }> = ({ license }) => {

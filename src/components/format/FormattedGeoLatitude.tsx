@@ -2,6 +2,9 @@ import { Fragment, FunctionComponent } from "react";
 import { FormattedMessage } from "react-intl";
 import { FormattedGeoCoordinate } from ".";
 
+/**
+ * Component for locale-aware displaying a latitude coordinate.
+ */
 export const FormattedGeoLatitude: FunctionComponent<{
   latitude: number;
 }> = ({ latitude }) => {
