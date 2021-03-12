@@ -38,3 +38,5 @@ export { ProjectBanner } from "./ProjectBanner";
 export { SearchSnippet } from "./SearchSnippet";
 export { SearchSnippets } from "./SearchSnippets";
 export { UserRestrictedContent } from "./UserRestrictedContent";
+export { LocaleLink } from "./LocaleLink";
+export { LocaleNav } from "./LocaleNav";
