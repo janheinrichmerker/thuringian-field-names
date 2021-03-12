@@ -97,7 +97,7 @@ The GND number should link to the DNB database entry.
 **Story:** I've received a [link](http://example.com/details/HisBest_cbu_00038730) to a field name marking from a friend, and now want to see detailed information about that.
 
 **Details:**
-Details should include the type, GND number, TODO, the ID, and license.
+Details should include the type, GND number, location, timestamps, the ID, license, and children cards.
 A map should be shown.
 
 ### Marking missing
