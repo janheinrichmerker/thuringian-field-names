@@ -7,7 +7,7 @@ import { FieldNameType } from "./FieldNameType";
  */
 export interface FieldNameInput {
   /**
-   * Identification number in DNB's "Gemeinsame Normdatei".
+   * Identification number in DNB's Gemeinsame Normdatei.
    */
   gndNumber?: string;
   title: string;
