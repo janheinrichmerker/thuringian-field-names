@@ -43,7 +43,7 @@ context("Search", () => {
       });
   });
 
-  it("finds card 'Hahnengrundweg' with link to GND 7621021-2", () => {
+  it("finds card 'Hahnengrundweg' with link to GND 7621022-4", () => {
     cy.visit("#/search")
       .get("#root > .container")
       .within(() => {
@@ -57,9 +57,49 @@ context("Search", () => {
             .contains(/Hahnengrundweg/i)
             .should("have.lengthOf.at.least", 1)
             .siblings(".card-text")
-            .contains(/7621021-2/i)
+            .contains(/7621022-4/i)
             .invoke("attr", "href")
-            .should("contain", "http://d-nb.info/gnd/7621021-2");
+            .should("contain", "http://d-nb.info/gnd/7621022-4");
+        });
+      });
+  });
+
+  it("finds marking 'Marolterode'", () => {
+    cy.visit("#/search")
+      .get("#root > .container")
+      .within(() => {
+        cy.get("form")
+          .within(() => {
+            cy.get("input").type("Marolterode");
+          })
+          .submit();
+        cy.get(".card").within(() => {
+          cy.get(".card-title")
+            .contains(/Marolterode/i)
+            .should("have.lengthOf.at.least", 1)
+            .siblings(".card-subtitle")
+            .contains(/Marking/i);
+        });
+      });
+  });
+
+  it("finds marking 'Marolterode' with link to GND 7740698-9", () => {
+    cy.visit("#/search")
+      .get("#root > .container")
+      .within(() => {
+        cy.get("form")
+          .within(() => {
+            cy.get("input").type("Marolterode");
+          })
+          .submit();
+        cy.get(".card").within(() => {
+          cy.get(".card-title")
+            .contains(/Marolterode/i)
+            .should("have.lengthOf.at.least", 1)
+            .siblings(".card-text")
+            .contains(/7740698-9/i)
+            .invoke("attr", "href")
+            .should("contain", "http://d-nb.info/gnd/7740698-9");
         });
       });
   });
