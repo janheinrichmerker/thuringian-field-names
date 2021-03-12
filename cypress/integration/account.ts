@@ -77,7 +77,7 @@ context("Account", () => {
       });
   });
 
-  it("login has inputs and button", () => {
+  it("has login inputs and button", () => {
     cy.visit("#/login")
       .get("#root > .container")
       .within(() => {
@@ -101,7 +101,7 @@ context("Account", () => {
       });
   });
 
-  it("login rejects blank email", () => {
+  it("rejects login with blank email", () => {
     cy.visit("#/login")
       .get("#root > .container")
       .within(() => {
@@ -121,7 +121,7 @@ context("Account", () => {
       });
   });
 
-  it("login rejects blank password", () => {
+  it("rejects login with blank password", () => {
     cy.visit("#/login")
       .get("#root > .container")
       .within(() => {
@@ -141,7 +141,7 @@ context("Account", () => {
       });
   });
 
-  it("login rejects invalid credentials", () => {
+  it("rejects login with invalid credentials", () => {
     cy.visit("#/login")
       .get("#root > .container")
       .within(() => {
@@ -165,7 +165,7 @@ context("Account", () => {
       });
   });
 
-  it("login with valid credentials", () => {
+  it("can login with valid credentials", () => {
     cy.visit("#/login")
       .get("#root > .container")
       .within(() => {
@@ -241,7 +241,7 @@ context("Account", () => {
     });
   });
 
-  it("sign up has inputs and button", () => {
+  it("has sign up inputs and button", () => {
     cy.visit("#/signup")
       .get("#root > .container")
       .within(() => {
@@ -271,7 +271,7 @@ context("Account", () => {
       });
   });
 
-  it("sign up rejects blank username", () => {
+  it("rejects sign up with blank username", () => {
     cy.visit("#/signup")
       .get("#root > .container")
       .within(() => {
@@ -295,7 +295,7 @@ context("Account", () => {
       });
   });
 
-  it("sign up rejects blank email", () => {
+  it("rejects sign up with blank email", () => {
     cy.visit("#/signup")
       .get("#root > .container")
       .within(() => {
@@ -319,7 +319,7 @@ context("Account", () => {
       });
   });
 
-  it("sign up rejects blank password", () => {
+  it("rejects sign up with blank password", () => {
     cy.visit("#/signup")
       .get("#root > .container")
       .within(() => {
@@ -343,7 +343,7 @@ context("Account", () => {
       });
   });
 
-  it("sign up rejects invalid email", () => {
+  it("rejects sign up with invalid email", () => {
     cy.visit("#/signup")
       .get("#root > .container")
       .within(() => {
@@ -371,7 +371,7 @@ context("Account", () => {
       });
   });
 
-  it("sign up rejects weak password", () => {
+  it("rejects sign up with weak password", () => {
     cy.visit("#/signup")
       .get("#root > .container")
       .within(() => {
@@ -399,7 +399,7 @@ context("Account", () => {
       });
   });
 
-  it("sign up rejects existing username", () => {
+  it("rejects sign up with existing username", () => {
     cy.visit("#/signup")
       .get("#root > .container")
       .within(() => {
@@ -427,7 +427,7 @@ context("Account", () => {
       });
   });
 
-  it("sign up rejects existing email", () => {
+  it("rejects sign up with existing email", () => {
     cy.visit("#/signup")
       .get("#root > .container")
       .within(() => {
@@ -455,7 +455,7 @@ context("Account", () => {
       });
   });
 
-  it("sign up with unique username/email and valid credentials", () => {
+  it("can sign up with unique username/email and valid credentials", () => {
     cy.visit("#/signup")
       .get("#root > .container")
       .within(() => {
