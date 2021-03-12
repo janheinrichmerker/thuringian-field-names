@@ -11,6 +11,10 @@ function tilesUrl(variant?: Variant) {
   }
 }
 
+/**
+ * Component to include an OpenStreetMap layer
+ * inside a Leaflet map container.
+ */
 export const OpenStreetMapLayer: FunctionComponent<{
   variant?: Variant;
 }> = ({ variant }) => {

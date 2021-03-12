@@ -22,6 +22,13 @@ function getDimensions(bounds: LatLngBounds) {
   return [getWidth(bounds), getHeight(bounds)];
 }
 
+/**
+ * Component to display an area with an optional label tooltip
+ * inside a Leaflet map container.
+ *
+ * Based on the initial map bounds and the area size,
+ * the area is either shown as rectangle or as marker.
+ */
 export const Area: FunctionComponent<{
   area: LatLngBoundsExpression;
   label?: string;

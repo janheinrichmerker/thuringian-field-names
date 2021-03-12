@@ -21,6 +21,9 @@ function isPoint(bounds: LatLngBounds) {
   );
 }
 
+/**
+ * Component to display a Leaflet map for a given area with an optional label.
+ */
 export const AreaMap: FunctionComponent<{ area: GeoArea; label?: string }> = ({
   area,
   label,
