@@ -86,12 +86,14 @@ context("Account", () => {
             .contains(/Email|Username/i)
             .should("have.length", 1)
             .siblings("input")
+            .should("have.length", 1)
             .invoke("attr", "type")
             .should("match", /^email|text$/i);
           cy.get("label")
             .contains(/Password/i)
             .should("have.length", 1)
             .siblings("input")
+            .should("have.length", 1)
             .invoke("attr", "type")
             .should("match", /^password$/i);
           cy.get("button")
@@ -250,18 +252,21 @@ context("Account", () => {
             .contains(/Username/i)
             .should("have.length", 1)
             .siblings("input")
+            .should("have.length", 1)
             .invoke("attr", "type")
             .should("match", /^text$/i);
           cy.get("label")
             .contains(/Email/i)
             .should("have.length", 1)
             .siblings("input")
+            .should("have.length", 1)
             .invoke("attr", "type")
             .should("match", /^email$/i);
           cy.get("label")
             .contains(/Password/i)
             .should("have.length", 1)
             .siblings("input")
+            .should("have.length", 1)
             .invoke("attr", "type")
             .should("match", /^password$/i);
           cy.get("button")
