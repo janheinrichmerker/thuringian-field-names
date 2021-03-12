@@ -14,10 +14,11 @@ context("Marking details", () => {
             .contains(/7740698-9/i)
             .parents(".card")
             .within(() => {
-              cy.get(".card-title").contains(/Marolterode/i);
+              cy.get(".card-title")
+                .contains(/Marolterode/i)
+                .should("have.length", 1);
               cy.get(".card-link")
                 .contains(/View details/i)
-                .should("have.length", 1)
                 .click();
             });
         });

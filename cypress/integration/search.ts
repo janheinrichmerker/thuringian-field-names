@@ -53,13 +53,27 @@ context("Search", () => {
           })
           .submit();
         cy.get(".card").within(() => {
-          cy.get(".card-title")
-            .contains(/Hahnengrundweg/i)
-            .should("have.lengthOf.at.least", 1)
-            .siblings(".card-text")
+          cy.get(".card-text")
             .contains(/7621022-4/i)
-            .invoke("attr", "href")
-            .should("contain", "http://d-nb.info/gnd/7621022-4");
+            .parents(".card")
+            .within(() => {
+              cy.get(".card-title")
+                .contains(/Hahnengrundweg/i)
+                .should("have.length", 1);
+              cy.get(".card-text")
+                .contains(/7621022-4/i)
+                .should("have.length", 1)
+                .invoke("attr", "href")
+                .should("contain", "http://d-nb.info/gnd/7621022-4");
+              cy.get(".card-link")
+                .contains(/View details/i)
+                .should("have.length", 1);
+              cy.get(".card-link")
+                .contains(/View in GND/i)
+                .should("have.length", 1)
+                .invoke("attr", "href")
+                .should("contain", "http://d-nb.info/gnd/7621022-4");
+            });
         });
       });
   });
@@ -93,13 +107,27 @@ context("Search", () => {
           })
           .submit();
         cy.get(".card").within(() => {
-          cy.get(".card-title")
-            .contains(/Marolterode/i)
-            .should("have.lengthOf.at.least", 1)
-            .siblings(".card-text")
+          cy.get(".card-text")
             .contains(/7740698-9/i)
-            .invoke("attr", "href")
-            .should("contain", "http://d-nb.info/gnd/7740698-9");
+            .parents(".card")
+            .within(() => {
+              cy.get(".card-title")
+                .contains(/Marolterode/i)
+                .should("have.length", 1);
+              cy.get(".card-text")
+                .contains(/7740698-9/i)
+                .should("have.length", 1)
+                .invoke("attr", "href")
+                .should("contain", "http://d-nb.info/gnd/7740698-9");
+              cy.get(".card-link")
+                .contains(/View details/i)
+                .should("have.length", 1);
+              cy.get(".card-link")
+                .contains(/View in GND/i)
+                .should("have.length", 1)
+                .invoke("attr", "href")
+                .should("contain", "http://d-nb.info/gnd/7740698-9");
+            });
         });
       });
   });

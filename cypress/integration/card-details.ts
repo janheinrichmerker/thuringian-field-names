@@ -14,11 +14,11 @@ context("Card details", () => {
             .contains(/7621022-4/i)
             .parents(".card")
             .within(() => {
-              cy.contains(/Hahnengrundweg/i);
               cy.get(".card-title")
-                .get(".card-link")
+                .contains(/Hahnengrundweg/i)
+                .should("have.length", 1);
+              cy.get(".card-link")
                 .contains(/View details/i)
-                .should("have.length", 1)
                 .click();
             });
         });
