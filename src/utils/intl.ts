@@ -5,7 +5,12 @@ export interface FieldNameTypeMessageDescriptor extends MessageDescriptor {
   id: string | number;
 }
 
-export function getFieldNameTypeMessageDescriptor(type: FieldNameType) {
+/**
+ * Get a message descriptor for displaying a field name type.
+ */
+export function getFieldNameTypeMessageDescriptor(
+  type: FieldNameType
+): FieldNameTypeMessageDescriptor {
   if (type === FieldNameType.Card) {
     return { id: "fieldName.type.card" };
   } else if (type === FieldNameType.Marking) {
@@ -15,6 +20,9 @@ export function getFieldNameTypeMessageDescriptor(type: FieldNameType) {
   }
 }
 
+/**
+ * Get an internationalized string describing a field name type.
+ */
 export function formatFieldNameType(intl: IntlShape, type: FieldNameType) {
   return intl.formatMessage(getFieldNameTypeMessageDescriptor(type));
 }
@@ -24,7 +32,13 @@ export interface LicenseMessageDescriptor extends MessageDescriptor {
   url?: string;
 }
 
-export function getLicenseMessageDescriptor(license: License) {
+
+/**
+ * Get a message descriptor for displaying a license.
+ */
+export function getLicenseMessageDescriptor(
+  license: License
+): LicenseMessageDescriptor {
   if (license === License.CcByNcSa40) {
     return {
       id: "fieldName.license.ccByNcSa40",
@@ -35,6 +49,9 @@ export function getLicenseMessageDescriptor(license: License) {
   }
 }
 
+/**
+ * Get an internationalized string describing a license.
+ */
 export function formatLicense(intl: IntlShape, license: License) {
   return intl.formatMessage(getLicenseMessageDescriptor(license));
 }
