@@ -19,7 +19,7 @@ export const ProjectPage: FunctionComponent = () => {
             Want to learn more about the{" "}
             <Link to="/project/archive">archive</Link>,{" "}
             <Link to="/project/data">data</Link>, or{" "}
-            <Link to="/project/data">our partners</Link>?
+            <Link to="/project/partners">our partners</Link>?
           </p>
         </Col>
       </Row>
