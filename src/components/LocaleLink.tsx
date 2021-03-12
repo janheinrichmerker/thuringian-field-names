@@ -4,6 +4,9 @@ import { useSelector } from "react-redux";
 import { FormattedDisplayName } from "react-intl";
 import { selectSettingsLocale, updateLocale, useAppDispatch } from "../store";
 
+/**
+ * Component for displaying a navigation dropdown item for a locale link.
+ */
 export const LocaleLink: FunctionComponent<{ locale: string }> = ({
   locale,
 }) => {

@@ -1,6 +1,12 @@
 import { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
 
+/**
+ * Component for highlighting a field name in text.
+ * 
+ * The field name links to a search of either 
+ * the field name itself or a custom query.
+ */
 export const FieldNameHighlight: FunctionComponent<{
   query?: string;
   children: string;
