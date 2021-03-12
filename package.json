@@ -6,13 +6,11 @@
   "scripts": {
     "start": "react-scripts -r @cypress/instrument-cra start",
     "build": "react-scripts build",
-    "test": "yarn-or-npm cypress:run",
+    "test": "cypress run",
     "eject": "react-scripts eject",
     "predeploy": "yarn-or-npm build",
     "deploy": "gh-pages -d build",
-    "cypress:open": "cypress open",
-    "cypress:run": "cypress run",
-    "cypress:verify": "cypress verify"
+    "test-gui": "cypress open"
   },
   "dependencies": {
     "@babel/core": "^7.13.10",
