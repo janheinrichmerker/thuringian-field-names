@@ -46,16 +46,27 @@ export const SearchPage: FunctionComponent = () => {
           <SearchForm search={search} query={params.query} />
         </Col>
       </Row>
-      {results.length > 0 ? (
-        <Row style={{ marginTop: "1ex" }}>
-          <Col>
+      <Row style={{ marginTop: "1ex" }}>
+        <Col>
+          {results.length > 0 ? (
             <p>
               Found {results.length} results for <b>{params.query}</b>.
             </p>
+          ) : params.query ? (
+            <p>
+              No results found for <b>{params.query}</b>.
+            </p>
+          ) : undefined}
+        </Col>
+      </Row>
+      <hr />
+      {!params.query ? (
+        <Row>
+          <Col>
+            <Alert variant="info">Type in your search query above.</Alert>
           </Col>
         </Row>
       ) : undefined}
-      <hr />
       {results.length > 0 ? (
         <Row>
           <Col>
@@ -76,13 +87,7 @@ export const SearchPage: FunctionComponent = () => {
             )}
           </Col>
         </Row>
-      ) : (
-        <Row>
-          <Col>
-            <Alert variant="info">Type in your search query above.</Alert>
-          </Col>
-        </Row>
-      )}
+      ) : undefined}
     </Container>
   );
 };
