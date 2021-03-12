@@ -1,46 +1,16 @@
 import { FunctionComponent } from "react";
-import { Container, Navbar, Nav, NavDropdown, Col } from "react-bootstrap";
+import { Container, Navbar, Nav, Col } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import { useSelector } from "react-redux";
-import { FormattedDisplayName } from "react-intl";
 import { v4 as uuid } from "uuid";
-import {
-  selectSettingsLocale,
-  updateLocale,
-  useAppDispatch,
-} from "../../store";
+import { LocaleNav } from "..";
 import "./AppFooter.scss";
 
-const LocaleLink: FunctionComponent<{ locale: string }> = ({ locale }) => {
-  const dispatch = useAppDispatch();
-  const currentLocale = useSelector(selectSettingsLocale);
-
-  return (
-    <NavDropdown.Item
-      active={currentLocale === locale}
-      onClick={() => dispatch(updateLocale(locale))}
-    >
-      <FormattedDisplayName type="language" value={locale} />
-    </NavDropdown.Item>
-  );
-};
-
-const LocaleNav: FunctionComponent = () => {
-  const id = uuid();
-  const currentLocale = useSelector(selectSettingsLocale);
-  const locales = Array.from(
-    new Set(["en-US", "de-DE", currentLocale, navigator.language])
-  );
-
-  return (
-    <NavDropdown drop="up" title="Language" id={`${id}-dropdown-language`}>
-      {locales.map((locale) => (
-        <LocaleLink locale={locale} key={locale} />
-      ))}
-    </NavDropdown>
-  );
-};
-
+/**
+ * Main app footer component.
+ *
+ * Displays a navigation bar at the top of the screen,
+ * containing legal information and infrequently used links.
+ */
 export const AppFooter: FunctionComponent = () => {
   const id = uuid();
 

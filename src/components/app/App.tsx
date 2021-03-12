@@ -19,6 +19,14 @@ import {
   AppFooter,
 } from "..";
 
+/**
+ * Root visual app component/entrypoint.
+ *
+ * Even though there might be other providers wrapping this component,
+ * this component is the visual entrypoint and hosts all child pages.
+ *
+ * The component also switches pages based on the current route.
+ */
 export const App: FunctionComponent = () => {
   return (
     <Fragment>

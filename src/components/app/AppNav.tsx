@@ -7,6 +7,15 @@ import { v4 as uuid } from "uuid";
 import { SearchForm, LoginNav } from "..";
 import "./AppNav.scss";
 
+/**
+ * Main app navigation component.
+ *
+ * Displays a navigation bar at the top of the screen,
+ * containing most frequently used links,
+ * structured in dropdowns.
+ *
+ * A search bar is included to start a search from any page.
+ */
 export const AppNav: FunctionComponent = () => {
   const id = uuid();
   const history = useHistory();
