@@ -1,8 +1,7 @@
-import { FunctionComponent, MouseEventHandler } from "react";
-import { Form, InputGroup, Spinner } from "react-bootstrap";
+import { FunctionComponent } from "react";
+import { Form, InputGroup } from "react-bootstrap";
 import { FormikErrors, useFormik } from "formik";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { SearchFormIcon } from ".";
 
 interface Props {
   search: (query: string) => void;
@@ -14,21 +13,11 @@ interface Values {
   query: string;
 }
 
-const SearchFormIcon: FunctionComponent<{
-  loading?: boolean;
-  submitForm: MouseEventHandler<SVGSVGElement>;
-}> = ({ loading, submitForm }) => {
-  if (loading) {
-    return (
-      <Spinner as="span" animation="border" role="status" size="sm">
-        <span className="sr-only">Searching...</span>
-      </Spinner>
-    );
-  } else {
-    return <FontAwesomeIcon icon={faSearch} onClick={submitForm} />;
-  }
-};
-
+/**
+ * Search query form component.
+ *
+ * Submitting will trigger the given callback function.
+ */
 export const SearchForm: FunctionComponent<Props> = ({
   search: handleSearch,
   loading,

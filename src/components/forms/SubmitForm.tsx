@@ -15,11 +15,13 @@ interface Props {
 
 type Values = AsValues<WithFlattenedGeoArea<FieldNameInput>>;
 
+// Helper component to display alert on input errors.
 const SubmitFormError: FunctionComponent<{ error?: string }> = ({ error }) => {
   if (!error) return null;
   return <Alert variant="danger">{error}</Alert>;
 };
 
+// Helper component to display loading spinner while processing inputs.
 const SubmitFormLoading: FunctionComponent<{ loading: boolean }> = ({
   loading,
 }) => {
@@ -31,84 +33,11 @@ const SubmitFormLoading: FunctionComponent<{ loading: boolean }> = ({
   );
 };
 
-function isGndNumber(value: string) {
-  try {
-    parseInt(value.replaceAll("-", ""));
-    return true;
-  } catch {
-    return false;
-  }
-}
-
-function isLatitude(value: string) {
-  try {
-    const latitude = parseInt(value);
-    return latitude >= -90 && latitude <= 90;
-  } catch {
-    return false;
-  }
-}
-
-function isLongitude(value: string) {
-  try {
-    const longitude = parseInt(value);
-    return longitude >= -90 && longitude <= 90;
-  } catch {
-    return false;
-  }
-}
-
-function validate(values: Values) {
-  let errors: FormikErrors<Values> = {};
-  const title = values.title;
-  if (!title) {
-    errors.title = "Required";
-  } else if (title.length < 10) {
-    errors.title = "Must be at least 10 characters.";
-  }
-  if (!values.type || values.type === "required") {
-    errors.type = "Required";
-  }
-  if (values.gndNumber && !isGndNumber(values.gndNumber)) {
-    errors.gndNumber = "Must only contain numbers and dashes.";
-  }
-  if (!values.license || values.license === "required") {
-    errors.license = "Required";
-  }
-  if (values.north && !isLatitude(values.north)) {
-    errors.north = "Must be from -90 to 90.";
-  }
-  if (values.south && !isLatitude(values.south)) {
-    errors.south = "Must be from -90 to 90.";
-  }
-  if (values.east && !isLongitude(values.east)) {
-    errors.east = "Must be from -180 to 180.";
-  }
-  if (values.west && !isLongitude(values.west)) {
-    errors.west = "Must be from -180 to 180.";
-  }
-  return errors;
-}
-
-function convert(values: Values): FieldNameInput {
-  return {
-    title: values.title!,
-    type: values.type! as FieldNameType,
-    license: values.license! as License,
-    gndNumber: values.gndNumber!,
-    area: {
-      from: {
-        latitude: parseFloat(values.north!),
-        longitude: parseFloat(values.east!),
-      },
-      to: {
-        latitude: parseFloat(values.south!),
-        longitude: parseFloat(values.west!),
-      },
-    },
-  };
-}
-
+/**
+ * Field name submit form component.
+ *
+ * Submitting will trigger the given callback function.
+ */
 export const SubmitForm: FunctionComponent<Props> = ({
   submit,
   error,
@@ -313,3 +242,96 @@ export const SubmitForm: FunctionComponent<Props> = ({
     </Form>
   );
 };
+
+/**
+ * Check whether the typed in values are valid.
+ */
+function validate(values: Values) {
+  let errors: FormikErrors<Values> = {};
+  const title = values.title;
+  if (!title) {
+    errors.title = "Required";
+  } else if (title.length < 10) {
+    errors.title = "Must be at least 10 characters.";
+  }
+  if (!values.type || values.type === "required") {
+    errors.type = "Required";
+  }
+  if (values.gndNumber && !isGndNumber(values.gndNumber)) {
+    errors.gndNumber = "Must only contain numbers and dashes.";
+  }
+  if (!values.license || values.license === "required") {
+    errors.license = "Required";
+  }
+  if (values.north && !isLatitude(values.north)) {
+    errors.north = "Must be from -90 to 90.";
+  }
+  if (values.south && !isLatitude(values.south)) {
+    errors.south = "Must be from -90 to 90.";
+  }
+  if (values.east && !isLongitude(values.east)) {
+    errors.east = "Must be from -180 to 180.";
+  }
+  if (values.west && !isLongitude(values.west)) {
+    errors.west = "Must be from -180 to 180.";
+  }
+  return errors;
+}
+
+/**
+ * Convert the raw inputs to values needed for a field name.
+ */
+function convert(values: Values): FieldNameInput {
+  return {
+    title: values.title!,
+    type: values.type! as FieldNameType,
+    license: values.license! as License,
+    gndNumber: values.gndNumber!,
+    area: {
+      from: {
+        latitude: parseFloat(values.north!),
+        longitude: parseFloat(values.east!),
+      },
+      to: {
+        latitude: parseFloat(values.south!),
+        longitude: parseFloat(values.west!),
+      },
+    },
+  };
+}
+
+/**
+ * Check if the string is a valid GND number.
+ */
+function isGndNumber(value: string) {
+  try {
+    parseInt(value.replaceAll("-", ""));
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Check if the string is a valid latitude.
+ */
+function isLatitude(value: string) {
+  try {
+    const latitude = parseInt(value);
+    return latitude >= -90 && latitude <= 90;
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Check if the string is a valid longitude.
+ */
+function isLongitude(value: string) {
+  try {
+    const longitude = parseInt(value);
+    return longitude >= -90 && longitude <= 90;
+  } catch {
+    return false;
+  }
+}

@@ -14,11 +14,13 @@ interface Values {
   password: string;
 }
 
+// Helper component to display alert on input errors.
 const SignUpFormError: FunctionComponent<{ error?: string }> = ({ error }) => {
   if (!error) return null;
   return <Alert variant="danger">{error}</Alert>;
 };
 
+// Helper component to display loading spinner while processing inputs.
 const SignUpFormLoading: FunctionComponent<{ loading: boolean }> = ({
   loading,
 }) => {
@@ -30,6 +32,11 @@ const SignUpFormLoading: FunctionComponent<{ loading: boolean }> = ({
   );
 };
 
+/**
+ * Sign up form component.
+ *
+ * Submitting will trigger the given callback function.
+ */
 export const SignUpForm: FunctionComponent<Props> = ({
   register: handleRegistration,
   error,
