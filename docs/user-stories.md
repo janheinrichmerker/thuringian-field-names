@@ -7,14 +7,15 @@
 **Story:** As a Thuringian citizen, I want to read basic, simple information about the field name project and how I can contribute.
 
 **Details:**
-Information should include 
+Information should include digitalization, the university, GND, and map references.
+Further information should be linked.
 
 ### Detailed information
 
 **Story:** As a researcher, I want to read information about the field name archive and dataset.
 
 **Details:**
-Information should include 
+Information should include basic information as well as detailed information about the project archive, data, and partners (with links).
 
 ## Account
 
@@ -114,7 +115,7 @@ An information should be shown that no field name was found for that URL/ID.
 **Story:** As a signed in user, I want to submit a new field name.
 
 **Details:**
-TODO
+The form should contain fields for title, type, GND number, license, and location coordinates (area boundaries).
 
 ### Submit logged out
 
