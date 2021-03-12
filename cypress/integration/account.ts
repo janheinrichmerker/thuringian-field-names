@@ -187,6 +187,56 @@ context("Account", () => {
     cy.get("#root > nav.AppNav").within(() => {
       cy.get(".nav-link")
         .contains(/Signed in/i)
+        .should("have.length", 1)
+        .click()
+        .siblings(".dropdown-menu")
+        .within(() => {
+          cy.get(".dropdown-item")
+            .contains(/Submit field name/i)
+            .should("have.length", 1);
+          cy.get(".dropdown-item")
+            .contains(/Sign out/i)
+            .should("have.length", 1);
+        });
+    });
+  });
+
+  it("can logout after login", () => {
+    cy.visit("#/login")
+      .get("#root > .container")
+      .within(() => {
+        cy.get("form").within(() => {
+          cy.get("label")
+            .contains(/Email|Username/i)
+            .siblings("input")
+            .type("test");
+          cy.get("label")
+            .contains(/Password/i)
+            .siblings("input")
+            .type("test");
+          cy.get("button")
+            .contains(/Sign in/i)
+            .click();
+        });
+      });
+    cy.get("#root > nav.AppNav").within(() => {
+      cy.get(".nav-link")
+        .contains(/Signed in/i)
+        .click()
+        .siblings(".dropdown-menu")
+        .within(() => {
+          cy.get(".dropdown-item")
+            .contains(/Sign out/i)
+            .click();
+        });
+      cy.get(".nav-link")
+        .contains(/Signed in/i)
+        .should("have.length", 0);
+      cy.get(".nav-link")
+        .contains(/Sign in/i)
+        .should("have.length", 1);
+      cy.get(".nav-link")
+        .contains(/Sign up/i)
         .should("have.length", 1);
     });
   });
