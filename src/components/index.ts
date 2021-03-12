@@ -9,7 +9,13 @@ export {
   FormattedGeoLongitude,
   FormattedLicense,
 } from "./format";
-export { SearchForm, SignInForm, SignUpForm, SubmitForm } from "./forms";
+export {
+  SearchForm,
+  SearchFormIcon,
+  SignInForm,
+  SignUpForm,
+  SubmitForm,
+} from "./forms";
 export { GndLink, GndLinkContainer, GndOverlay } from "./gnd";
 export { Area, AreaMap, OpenStreetMapLayer } from "./maps";
 export {
