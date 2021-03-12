@@ -6,6 +6,17 @@ import { FormattedMessage } from "react-intl";
 import { v4 as uuid } from "uuid";
 import { logout, selectUsersActive, useAppDispatch } from "../store";
 
+/**
+ * Component for displaying navigation either to login or to logout.
+ */
+export const LoginNav: FunctionComponent = () => {
+  const isActive = useSelector(selectUsersActive);
+  return isActive ? <LoginNavActive /> : <LoginNavInactive />;
+};
+
+/**
+ * Component for displaying navigation to logout and submit field names.
+ */
 const LoginNavActive: FunctionComponent = () => {
   const dispatch = useAppDispatch();
   const user = useSelector(selectUsersActive);
@@ -31,6 +42,9 @@ const LoginNavActive: FunctionComponent = () => {
   );
 };
 
+/**
+ * Component for displaying navigation to login.
+ */
 const LoginNavInactive: FunctionComponent = () => {
   return (
     <Nav>
@@ -46,9 +60,4 @@ const LoginNavInactive: FunctionComponent = () => {
       </LinkContainer>
     </Nav>
   );
-};
-
-export const LoginNav: FunctionComponent = () => {
-  const isActive = useSelector(selectUsersActive);
-  return isActive ? <LoginNavActive /> : <LoginNavInactive />;
 };

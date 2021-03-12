@@ -10,6 +10,9 @@ import {
 } from ".";
 import { Link } from "react-router-dom";
 
+/**
+ * Component for displaying detailes information of a single field name.
+ */
 export const FieldNameDetailsTable: FunctionComponent<{
   fieldName: FieldName;
 }> = ({ fieldName }) => {

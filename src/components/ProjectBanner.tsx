@@ -3,6 +3,10 @@ import { Button, Jumbotron } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { FormattedMessage } from "react-intl";
 
+/**
+ * Component for displaying a welcoming banner 
+ * with the project's title and short description.
+ */
 export const ProjectBanner: FunctionComponent = () => {
   return (
     <Jumbotron>

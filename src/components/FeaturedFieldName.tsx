@@ -5,6 +5,9 @@ import { FormattedDate } from "react-intl";
 import { FieldNameSnippet } from "../model";
 import { FormattedFieldNameType, GndLink } from ".";
 
+/**
+ * Component for displaying a single featured field name snippet.
+ */
 export const FeaturedFieldName: FunctionComponent<{
   snippet: FieldNameSnippet;
 }> = ({ snippet }) => {

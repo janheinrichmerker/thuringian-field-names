@@ -5,6 +5,9 @@ import { v4 as uuid } from "uuid";
 import { selectSettingsLocale } from "../store";
 import { LocaleLink } from ".";
 
+/**
+ * Component for displaying a navigation dropdown for locale switching.
+ */
 export const LocaleNav: FunctionComponent = () => {
   const id = uuid();
   const currentLocale = useSelector(selectSettingsLocale);

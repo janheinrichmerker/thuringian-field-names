@@ -3,6 +3,9 @@ import { CardColumns } from "react-bootstrap";
 import { FieldNameSnippet } from "../model";
 import { SearchSnippet } from "../components";
 
+/**
+ * Component for displaying multiple field name search snippets in a list.
+ */
 export const SearchSnippets: FunctionComponent<{
   snippets: Array<FieldNameSnippet>;
 }> = ({ snippets }) => {

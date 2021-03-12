@@ -9,6 +9,9 @@ import {
   GndLinkContainer,
 } from "../components";
 
+/**
+ * Component for displaying a single field name search snippet.
+ */
 export const SearchSnippet: FunctionComponent<{
   snippet: FieldNameSnippet;
 }> = ({ snippet }) => {

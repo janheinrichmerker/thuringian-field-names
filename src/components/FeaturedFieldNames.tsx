@@ -3,6 +3,9 @@ import { CardColumns } from "react-bootstrap";
 import { FieldNameSnippet } from "../model";
 import { FeaturedFieldName, FeaturedTeaser } from ".";
 
+/**
+ * Component for displaying multiple featured field name snippets in columns.
+ */
 export const FeaturedFieldNames: FunctionComponent<{
   snippets: Array<FieldNameSnippet>;
 }> = ({ snippets }) => {

@@ -2,6 +2,11 @@ import { FunctionComponent } from "react";
 import { Card } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
+/**
+ * Component for displaying a teaser after featured field names.
+ *
+ * The teaser links to the search page to explore more field names.
+ */
 export const FeaturedTeaser: FunctionComponent = () => {
   return (
     <Card key="teaser">
