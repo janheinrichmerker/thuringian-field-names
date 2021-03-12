@@ -6,6 +6,12 @@ import {
 } from "react";
 import { GndOverlay } from ".";
 
+/**
+ * Component for modifying an existing anchor element's destionation
+ * to point to the DNB's GND number lookup.
+ *
+ * @see https://www.dnb.de/EN/Professionell/Standardisierung/GND/gnd_node.html
+ */
 export const GndLinkContainer: FunctionComponent<{
   gndNumber: string;
   children: ReactElement<AnchorHTMLAttributes<HTMLAnchorElement>>;
