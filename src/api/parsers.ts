@@ -47,6 +47,22 @@ import {
   WrappedSearchResponse,
 } from "./model";
 
+// Parsers from the raw data returned from the API server
+// to the app's internal data structure.
+
+/**
+ * Parse a field name snippet, containing most important information,
+ * from the JSON object returned by the API server.
+ *
+ * The method recursively delegates parsing
+ * to individual parts of the response.
+ * This way we can change parts easily and parsing functions
+ * keep a manageable size.
+ *
+ * @param raw API response JSON object.
+ *
+ * @returns Field name snippet.
+ */
 export function parseWrappedSearchResponse(
   raw: WrappedSearchResponse
 ): Array<FieldNameSnippet> {
@@ -83,6 +99,19 @@ function parseSearchDocument(raw: SearchDocument): FieldNameSnippet {
   };
 }
 
+/**
+ * Parse full field name details,
+ * from the XML object returned by the API server.
+ *
+ * The method recursively delegates parsing
+ * to individual parts of the response.
+ * This way we can change parts easily and parsing functions
+ * keep a manageable size.
+ *
+ * @param raw API response XML object.
+ *
+ * @returns Field name details.
+ */
 export function parseWrappedMyCoreObject(raw: WrappedMyCoreObject): FieldName {
   return parseMyCoreObject(raw.mycoreobject);
 }

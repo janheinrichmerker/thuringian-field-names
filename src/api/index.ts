@@ -6,13 +6,23 @@ import {
   ResponseLogConfig,
 } from "axios-logger/lib/common/types";
 
+/**
+ * Wrapper to be extended by all endpoints.
+ * Handles authentication and logging.
+ */
 export default class Api {
+  // API credentials, parsed from enviroment variables.
+  private credentials = {
+    username: API_USERNAME,
+    password: API_PASSWORD,
+  };
+
+  // Axois endpoint to use for all requests.
+  // We specify the base URL here to be able
+  // to use relative paths for requests.
   protected endpoint = axios.create({
     baseURL: "https://collections.thulb.uni-jena.de/api/v1",
-    auth: {
-      username: API_USERNAME,
-      password: API_PASSWORD,
-    },
+    auth: this.credentials,
   });
 
   constructor() {

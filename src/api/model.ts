@@ -1,3 +1,8 @@
+// Model interfaces for the raw, original data (JSON or XML),
+// returned directly by the API.
+// Interfaces should give us a rather type-safe way
+// to write parsers from this API model to the app's data model.
+
 export interface WrappedSearchResponse {
   response: SearchResponse;
 }
@@ -20,8 +25,8 @@ export interface SearchDocument {
 }
 
 export enum CbuUnitType {
-  Marking = "33.0", // Gemarkungen
-  Card = "33.1", // Flurkarten
+  Marking = "33.0",
+  Card = "33.1",
 }
 
 export interface WrappedMyCoreObject {

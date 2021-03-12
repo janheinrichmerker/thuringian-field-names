@@ -7,6 +7,6 @@ import { FieldNameInput } from "../model";
 export default class SubmitApi extends Api {
   async submit(_input: FieldNameInput): Promise<true> {
     // Here we would submit to backend and check if requirements are met.
-    return true; // TODO Fake delay.
+    return true;
   }
 }
