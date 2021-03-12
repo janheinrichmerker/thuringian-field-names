@@ -1,5 +1,4 @@
-import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "..";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface SettingsState {
   locale: string;
@@ -9,10 +8,16 @@ const initialState: SettingsState = {
   locale: navigator.language,
 };
 
+/**
+ * Create a slice for loading and storing settings.
+ */
 const slice = createSlice({
   name: "users",
   initialState,
   reducers: {
+    /**
+     * Update the selected locale for localization.
+     */
     updateLocale: (state, action: PayloadAction<string>) => {
       state.locale = action.payload;
     },
@@ -20,11 +25,5 @@ const slice = createSlice({
 });
 
 export const { updateLocale } = slice.actions;
-
-export const selectSettings = (state: RootState) => state.settings;
-export const selectSettingsLocale = createSelector(
-  selectSettings,
-  (state) => state.locale
-);
 
 export const settingsReducer = slice.reducer;

@@ -1,9 +1,4 @@
-import {
-  createAsyncThunk,
-  createSelector,
-  createSlice,
-} from "@reduxjs/toolkit";
-import { RootState } from "..";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import FieldNamesApi from "../../api/fieldNames";
 import { FieldNameSnippet, Loading } from "../../model";
 
@@ -20,6 +15,9 @@ const initialState: FeaturedState = {
   loading: Loading.Idle,
 };
 
+/**
+ * Fetch featured field name snippets.
+ */
 export const fetchFeaturedFieldNames = createAsyncThunk(
   "fetchFeaturedFieldNames",
   async () => {
@@ -29,39 +27,31 @@ export const fetchFeaturedFieldNames = createAsyncThunk(
   }
 );
 
+/**
+ * Create a slice for loading featured field name snippets.
+ */
 const slice = createSlice({
   name: "featured",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    // Update state when a featured field names request is started.
     builder.addCase(fetchFeaturedFieldNames.pending, (state) => {
       state.fieldNames = [];
       state.error = undefined;
       state.loading = Loading.Pending;
     });
+    // Update state when a featured field names request completed successfully.
     builder.addCase(fetchFeaturedFieldNames.fulfilled, (state, action) => {
       state.fieldNames = action.payload;
       state.loading = Loading.Idle;
     });
+    // Update state when a featured field names request completed with an error.
     builder.addCase(fetchFeaturedFieldNames.rejected, (state, action) => {
       state.error = action.error.message;
       state.loading = Loading.Idle;
     });
   },
 });
-
-export const selectFeatured = (state: RootState) => state.featured;
-export const selectFeaturedSnippets = createSelector(
-  selectFeatured,
-  (state) => state.fieldNames
-);
-export const selectFeaturedError = createSelector(
-  selectFeatured,
-  (state) => state.error
-);
-export const selectFeaturedIsLoading = createSelector(
-  selectFeatured,
-  (state) => state.loading !== Loading.Idle
-);
 
 export const featuredReducer = slice.reducer;

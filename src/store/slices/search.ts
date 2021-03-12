@@ -1,9 +1,4 @@
-import {
-  createAsyncThunk,
-  createSelector,
-  createSlice,
-} from "@reduxjs/toolkit";
-import { RootState } from "..";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import FieldNamesApi from "../../api/fieldNames";
 import { FieldNameSnippet, Loading } from "../../model";
 
@@ -20,6 +15,9 @@ const initialState: SearchState = {
   loading: Loading.Idle,
 };
 
+/**
+ * Search field name snippets by query.
+ */
 export const searchFieldNames = createAsyncThunk<
   Array<FieldNameSnippet>,
   string
@@ -28,10 +26,16 @@ export const searchFieldNames = createAsyncThunk<
   return fieldNames;
 });
 
+/**
+ * Create a slice for loading search result field name snippets.
+ */
 const slice = createSlice({
   name: "search",
   initialState,
   reducers: {
+    /**
+     * Clear the search result list.
+     */
     emptySearch: (state) => {
       state.results = [];
       state.error = undefined;
@@ -39,15 +43,18 @@ const slice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    // Update state when a search request is started.
     builder.addCase(searchFieldNames.pending, (state) => {
       state.results = [];
       state.error = undefined;
       state.loading = Loading.Pending;
     });
+    // Update state when a search request completed successfully.
     builder.addCase(searchFieldNames.fulfilled, (state, action) => {
       state.results = action.payload;
       state.loading = Loading.Idle;
     });
+    // Update state when a search request completed with an error.
     builder.addCase(searchFieldNames.rejected, (state, action) => {
       state.error = action.error.message;
       state.loading = Loading.Idle;
@@ -56,19 +63,5 @@ const slice = createSlice({
 });
 
 export const { emptySearch } = slice.actions;
-
-export const selectSearch = (state: RootState) => state.search;
-export const selectSearchResults = createSelector(
-  selectSearch,
-  (state) => state.results
-);
-export const selectSearchError = createSelector(
-  selectSearch,
-  (state) => state.error
-);
-export const selectSearchIsLoading = createSelector(
-  selectSearch,
-  (state) => state.loading !== Loading.Idle
-);
 
 export const searchReducer = slice.reducer;
