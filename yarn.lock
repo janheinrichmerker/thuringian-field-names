@@ -1531,6 +1531,13 @@
   dependencies:
     tslib "^2.1.0"
 
+"@formatjs/ecma402-abstract@1.6.3":
+  version "1.6.3"
+  resolved "https://registry.yarnpkg.com/@formatjs/ecma402-abstract/-/ecma402-abstract-1.6.3.tgz#f82bd2cf3aa8aaa0f12f9339902942b8d4b96912"
+  integrity sha512-7ijswObmYXabVy5GvcpKG29jbyJ9rGtFdRBdmdQvoDmMo0PwlOl/L08GtrjA4YWLAZ0j2owb2YrRLGNAvLBk+Q==
+  dependencies:
+    tslib "^2.1.0"
+
 "@formatjs/intl-datetimeformat@3.2.12", "@formatjs/intl-datetimeformat@^3.2.12":
   version "3.2.12"
   resolved "https://registry.yarnpkg.com/@formatjs/intl-datetimeformat/-/intl-datetimeformat-3.2.12.tgz#c9b2e85f0267ee13ea615a8991995da3075e3b13"
@@ -1539,12 +1546,20 @@
     "@formatjs/ecma402-abstract" "1.6.2"
     tslib "^2.1.0"
 
-"@formatjs/intl-displaynames@4.0.10", "@formatjs/intl-displaynames@^4.0.10":
+"@formatjs/intl-displaynames@4.0.10":
   version "4.0.10"
   resolved "https://registry.yarnpkg.com/@formatjs/intl-displaynames/-/intl-displaynames-4.0.10.tgz#5bbd1bbcd64a036b4be27798b650c864dcf4466a"
   integrity sha512-KmYJQHynGnnMeqIWVXhbzCMcEC8lg1TfGVdcO9May6paDT+dksZoOBQc741t7iXi/YVO/wXEZdmXhUNX7ODZug==
   dependencies:
     "@formatjs/ecma402-abstract" "1.6.2"
+    tslib "^2.1.0"
+
+"@formatjs/intl-displaynames@^4.0.11":
+  version "4.0.11"
+  resolved "https://registry.yarnpkg.com/@formatjs/intl-displaynames/-/intl-displaynames-4.0.11.tgz#7872625234c15f6e9ab91473a6de1ab26def1fda"
+  integrity sha512-e3917+HmXStxb2fNP3sOr3R1DMALdWrUteBb3nerA2AKa12mXwmL0lDavrdltwZWqF7/Egh8fF/esB0Z/fqOgQ==
+  dependencies:
+    "@formatjs/ecma402-abstract" "1.6.3"
     tslib "^2.1.0"
 
 "@formatjs/intl-listformat@5.0.10":
