@@ -1531,12 +1531,27 @@
   dependencies:
     tslib "^2.1.0"
 
-"@formatjs/intl-datetimeformat@3.2.12", "@formatjs/intl-datetimeformat@^3.2.12":
+"@formatjs/ecma402-abstract@1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@formatjs/ecma402-abstract/-/ecma402-abstract-1.7.1.tgz#1459a9dad654d5d5ec34765965b8e4f22ad6ff81"
+  integrity sha512-FjewVLB2DVEVCvvC7IMffzXVhysvi442i6ed0H7qcrT6xtUpO4vr0oZgpOmsv6D9I4Io0GVebIuySwteS/k3gg==
+  dependencies:
+    tslib "^2.1.0"
+
+"@formatjs/intl-datetimeformat@3.2.12":
   version "3.2.12"
   resolved "https://registry.yarnpkg.com/@formatjs/intl-datetimeformat/-/intl-datetimeformat-3.2.12.tgz#c9b2e85f0267ee13ea615a8991995da3075e3b13"
   integrity sha512-qvY5+dl3vlgH0iWRXwl8CG9UkSVB5uP2+HH//fyZZ01G4Ww5rxMJmia1SbUqatpoe/dX+Z+aLejCqUUyugyL2g==
   dependencies:
     "@formatjs/ecma402-abstract" "1.6.2"
+    tslib "^2.1.0"
+
+"@formatjs/intl-datetimeformat@^3.3.5":
+  version "3.3.5"
+  resolved "https://registry.yarnpkg.com/@formatjs/intl-datetimeformat/-/intl-datetimeformat-3.3.5.tgz#c812452bfddda88efa1ff554dc80f24abdbcbab6"
+  integrity sha512-JbjkS2OHSyrNgHBiELmaywZ9Yy03HwRj69adWrc9N6baAl/sN6INtyxU+uv3MhTjOEyMtw5FrFO5Juk9VY5o5A==
+  dependencies:
+    "@formatjs/ecma402-abstract" "1.7.1"
     tslib "^2.1.0"
 
 "@formatjs/intl-displaynames@4.0.10", "@formatjs/intl-displaynames@^4.0.10":
