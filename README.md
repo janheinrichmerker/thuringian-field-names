@@ -1,4 +1,4 @@
-[![CI](https://img.shields.io/github/workflow/status/heinrichreimer/thuringian-field-names/CI?style=flat-square)](https://github.com/heinrichreimer/thuringian-field-names/actions?query=workflow%3A"CI")
+[![CI](https://img.shields.io/github/actions/workflow/status/heinrichreimer/thuringian-field-names/ci.yml?branch=main&style=flat-square)](https://github.com/heinrichreimer/thuringian-field-names/actions/workflows/ci.yml)
 [![Code coverage](https://img.shields.io/codecov/c/github/heinrichreimer/thuringian-field-names?style=flat-square)](https://codecov.io/github/heinrichreimer/thuringian-field-names/)
 [![Issues](https://img.shields.io/github/issues/heinrichreimer/thuringian-field-names?style=flat-square)](https://github.com/heinrichreimer/thuringian-field-names/issues)
 [![Commit activity](https://img.shields.io/github/commit-activity/m/heinrichreimer/thuringian-field-names?style=flat-square)](https://github.com/heinrichreimer/thuringian-field-names/commits)
