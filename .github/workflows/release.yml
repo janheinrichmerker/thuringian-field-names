@@ -11,7 +11,7 @@ on:
 jobs:
   deploy:
     name: "📤 Deploy"
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         node: [12, 14]
@@ -41,7 +41,7 @@ jobs:
           publish_dir: ./build
   release:
     name: "🚀 Release"
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: "📥 Check-out"
         uses: actions/checkout@v2
