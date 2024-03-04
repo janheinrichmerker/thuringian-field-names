@@ -60,7 +60,7 @@ jobs:
       - name: "🧰 Install dependencies"
         run: yarn install
       - name: "🧪 Run Cypress tests"
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v6
         with:
           install: false
           start: yarn start
