@@ -63,7 +63,7 @@
     "uuid": "^9.0.1",
     "web-vitals": "^3.5.2",
     "webpack": "4.44.2",
-    "xml2js": "^0.4.23",
+    "xml2js": "^0.6.2",
     "yarn-or-npm": "^3.0.1"
   },
   "eslintConfig": {
