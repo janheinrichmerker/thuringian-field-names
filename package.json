@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.24.4",
-    "@babel/preset-env": "^7.24.4",
+    "@babel/preset-env": "^7.24.5",
     "@cypress/code-coverage": "^3.11.0",
     "@cypress/instrument-cra": "^1.4.0",
     "@formatjs/intl-datetimeformat": "^6.12.3",
