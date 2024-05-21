@@ -17,7 +17,7 @@
     "@babel/preset-env": "^7.24.5",
     "@cypress/code-coverage": "^3.11.0",
     "@cypress/instrument-cra": "^1.4.0",
-    "@formatjs/intl-datetimeformat": "^6.12.3",
+    "@formatjs/intl-datetimeformat": "^6.12.5",
     "@formatjs/intl-displaynames": "^6.6.8",
     "@formatjs/intl-relativetimeformat": "^11.2.14",
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
