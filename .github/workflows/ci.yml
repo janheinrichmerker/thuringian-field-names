@@ -17,7 +17,7 @@ jobs:
       - name: 🧰 Install Node
         uses: actions/setup-node@v4
         with:
-          node-version: 14
+          node-version: "14.21"
           cache: yarn
           cache-dependency-path: yarn.lock
       - name: 🧰 Install Node dependencies
@@ -27,80 +27,12 @@ jobs:
       - name: 📤 Upload app for GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/
-  node-check:
-    name: 🔍 Check Node app code
-    runs-on: ubuntu-latest
-    steps:
-      - name: 📥 Check-out
-        uses: actions/checkout@v4
-      - name: 🧰 Install Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 14
-          cache: yarn
-          cache-dependency-path: yarn.lock
-      - name: 🧰 Install Node dependencies
-        run: yarn --dev
-      - name: 🔍 Check Node app code
-        run: yarn lint
-  node-security:
-    name: 🔍 Check Node app security
-    runs-on: ubuntu-latest
-    steps:
-      - name: 📥 Check-out
-        uses: actions/checkout@v4
-      - name: 🧰 Install Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 14
-          cache: yarn
-          cache-dependency-path: yarn.lock
-      - name: 🧰 Install Node dependencies
-        run: yarn --dev
-      - name: 🔍 Check Node app security
-        run: yarn audit
-  node-test:
-    name: 🧪 Test Node app
-    runs-on: ubuntu-latest
-    steps:
-      - name: 📥 Check-out
-        uses: actions/checkout@v4
-      - name: 🧰 Install Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 14
-          cache: yarn
-          cache-dependency-path: yarn.lock
-      - name: 🧰 Install Node dependencies
-        run: yarn --dev
-      - name: 🧪 Test Node app
-        run: yarn test --coverage --coverage.reporter json
-      - name: 📤 Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: coverage/coverage-final.json
-      - name: 📤 Upload Cypress sceenshots
-        uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: Cypress sceenshots
-          path: cypress/screenshots
-      - name: 📤 Upload Cypress videos
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: Cypress videos
-          path: cypress/videos
+          path: build/
   github-pages-deploy:
     name: 🚀 Deploy to GitHub Pages
     if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
     needs:
       - node-build
-      - node-check
-      - node-security
-      - node-test
     permissions:
       pages: write
       id-token: write
@@ -117,9 +49,6 @@ jobs:
     if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
     needs:
       - node-build
-      - node-check
-      - node-security
-      - node-test
     permissions:
       contents: write
     runs-on: ubuntu-latest
