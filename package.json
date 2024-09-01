@@ -13,7 +13,7 @@
     "test-gui": "cypress open"
   },
   "dependencies": {
-    "@babel/core": "^7.24.5",
+    "@babel/core": "^7.25.2",
     "@babel/preset-env": "^7.24.7",
     "@cypress/code-coverage": "^3.11.0",
     "@cypress/instrument-cra": "^1.4.0",
