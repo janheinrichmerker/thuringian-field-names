@@ -1,8 +1,8 @@
-[![CI](https://img.shields.io/github/actions/workflow/status/heinrichreimer/thuringian-field-names/ci.yml?branch=main&style=flat-square)](https://github.com/heinrichreimer/thuringian-field-names/actions/workflows/ci.yml)
-[![Code coverage](https://img.shields.io/codecov/c/github/heinrichreimer/thuringian-field-names?style=flat-square)](https://codecov.io/github/heinrichreimer/thuringian-field-names/)
-[![Issues](https://img.shields.io/github/issues/heinrichreimer/thuringian-field-names?style=flat-square)](https://github.com/heinrichreimer/thuringian-field-names/issues)
-[![Commit activity](https://img.shields.io/github/commit-activity/m/heinrichreimer/thuringian-field-names?style=flat-square)](https://github.com/heinrichreimer/thuringian-field-names/commits)
-[![License](https://img.shields.io/github/license/heinrichreimer/thuringian-field-names?style=flat-square)](LICENSE)
+[![CI](https://img.shields.io/github/actions/workflow/status/janheinrichmerker/thuringian-field-names/ci.yml?branch=main&style=flat-square)](https://github.com/janheinrichmerker/thuringian-field-names/actions/workflows/ci.yml)
+[![Code coverage](https://img.shields.io/codecov/c/github/janheinrichmerker/thuringian-field-names?style=flat-square)](https://codecov.io/github/janheinrichmerker/thuringian-field-names/)
+[![Issues](https://img.shields.io/github/issues/janheinrichmerker/thuringian-field-names?style=flat-square)](https://github.com/janheinrichmerker/thuringian-field-names/issues)
+[![Commit activity](https://img.shields.io/github/commit-activity/m/janheinrichmerker/thuringian-field-names?style=flat-square)](https://github.com/janheinrichmerker/thuringian-field-names/commits)
+[![License](https://img.shields.io/github/license/janheinrichmerker/thuringian-field-names?style=flat-square)](LICENSE)
 
 # 🏞️ thuringian-field-names
 

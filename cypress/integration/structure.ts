@@ -109,7 +109,7 @@ context("Structure", () => {
         .should(
           "have.attr",
           "href",
-          "https://github.com/heinrichreimer/thuringian-field-names/"
+          "https://github.com/janheinrichmerker/thuringian-field-names/"
         );
     });
   });

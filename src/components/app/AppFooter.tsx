@@ -36,7 +36,7 @@ export const AppFooter: FunctionComponent = () => {
             </LinkContainer>
             <LocaleNav />
             <Nav.Link
-              href="https://github.com/heinrichreimer/thuringian-field-names/"
+              href="https://github.com/janheinrichmerker/thuringian-field-names/"
               target="_blank"
               rel="noreferrer"
             >
