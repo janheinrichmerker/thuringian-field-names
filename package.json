@@ -18,7 +18,7 @@
     "@cypress/code-coverage": "^3.11.0",
     "@cypress/instrument-cra": "^1.4.0",
     "@formatjs/intl-datetimeformat": "^6.12.5",
-    "@formatjs/intl-displaynames": "^6.8.1",
+    "@formatjs/intl-displaynames": "^6.8.5",
     "@formatjs/intl-relativetimeformat": "^11.2.14",
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
     "@fortawesome/free-regular-svg-icons": "^6.6.0",
