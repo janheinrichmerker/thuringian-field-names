@@ -19,7 +19,7 @@
     "@cypress/instrument-cra": "^1.4.0",
     "@formatjs/intl-datetimeformat": "^6.18.0",
     "@formatjs/intl-displaynames": "^6.8.10",
-    "@formatjs/intl-relativetimeformat": "^11.2.14",
+    "@formatjs/intl-relativetimeformat": "^11.4.11",
     "@fortawesome/fontawesome-svg-core": "^6.7.1",
     "@fortawesome/free-regular-svg-icons": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
